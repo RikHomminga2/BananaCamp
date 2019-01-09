@@ -2,7 +2,10 @@
 
 ### Projectleden
 
-Annabel, Rik, Marcel, Kaj
+* Annabel
+* Rik 
+* Marcel
+* Kaj
 
 Er is geen vaste rolverdeling.
 
@@ -14,31 +17,31 @@ We vinden het een waardevol idee dat ook goed te implementeren is en waarbij ook
 
 Het idee is een webapplicatie te maken die het beheren/managen van een bootcamp eenvoudiger maakt.
 
-Het PRIMARIARE doel is een project ontwikkelen dat als showcase voor de vaardigheden van de teamleden kan dienen zodat eventuele werkgevers daar inzicht in kunnen krijgen.
+Het *primaire* doel is een project ontwikkelen dat als showcase voor de vaardigheden van de teamleden kan dienen zodat eventuele werkgevers daar inzicht in kunnen krijgen.
 
-Het SECUNDAIRE doel is een project ontwikkelen dat productiegereed is en in de markt gezet kan worden.
+Het *secundaire* doel is een project ontwikkelen dat productiegereed is en in de markt gezet kan worden.
 
 ### Hoe, wat, waarmee?
 
 Bij het werken maken we gebruik van verschillende methodieken die uit de Agile filosofie voortkomen waaronder (maar niet beperkt tot):
 
-* SCRUM voor dagelijkse en wekelijks planning
-* PAIR-PROGRAMMING (XP)
-* CONTINUOUS DELIVERY
-* Vanuit AGILE/CRYSTAL omarmen we het idee van PERSONAL SAFETY waarbij de teamleden volledige vrijheid hebben om hun ideeen te uiten en daartoe ook aangemoedigd worden zodat we onderling vertrouwen creeren
-* Vanuit Extreme Programming omarmen we het concept HUMANITY. We houden in het oog dat software wordt ontwikkeld door mensen en dat mensen behoefte hebben aan en recht hebben op VEILIGHEID, VOLDOENING, GROEI en VERBONDENHEID
+* Scrum voor dagelijkse en wekelijks planning
+* Pair-Programming (XP)
+* Continious Delivery
+* Vanuit Agile/Crystal omarmen we het idee van *personal safety* waarbij de teamleden volledige vrijheid hebben om hun ideeen te uiten en daartoe ook aangemoedigd worden zodat we onderling vertrouwen creeren
+* Vanuit Extreme Programming omarmen we het concept *humanity*. We houden in het oog dat software wordt ontwikkeld door mensen en dat mensen behoefte hebben aan en recht hebben op *veilheid, voldoening, groei en verbondenheid*
 * We houden de onderlinge consistentie van de code in de gaten en houden bestaande codeconventies daarbij aan als richtlijn
 
 ### Customer Journey
 
-Personas
+Personas:
 
-* PRODUCT OWNER - De organisator van de bootcamp
-* PRODUCT USER - Coach van de bootcamp
-* PRODUCT USER - Cursist van de bootcamp
-* DEVELOPER - Het ontwikkelteam
+* Product Owner - De organisator van de bootcamp
+* Product User - Coach van de bootcamp
+* Product User - Cursist van de bootcamp
+* Developer - Het ontwikkelteam
 
-Voor de USER STORIES wordt tevens gebruikt gemaakt van een 'super' persona te weten GEBRUIKER als verzamelbegrip voor de andere personas
+Voor de User Stories wordt tevens gebruikt gemaakt van een 'super' persona te weten *gebruiker* als verzamelbegrip voor de andere personas
 
 ### Definitief Eindproduct
 
