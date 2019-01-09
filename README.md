@@ -74,3 +74,4 @@ We proberen waar mogelijk gebruik te maken van beschikbare gereedschappen zoals 
 ### Weekplanning
 Week 1 - Initialisatiefase, inschatting maken van de haalbare scope, opzetten eerste minimum viable product.
 Week 2 - Evaluatie week 1, herziening haalbare scope, uitbouwen van minimum viable product.
+
