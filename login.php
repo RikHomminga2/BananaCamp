@@ -17,6 +17,17 @@
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 		}
+		
+			if(count(file("assets/questions.txt")) != 0){
+			
+					$file = file("assets/questions.txt");
+						
+						foreach(($file) as $line) {
+									
+							//$csv = explode('|', $line);
+							echo $line;
+						}
+		}
 		?>
 	</body>
 </html>
