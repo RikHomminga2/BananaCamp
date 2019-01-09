@@ -14,20 +14,17 @@
 		</form>
 		<?php
 		if(isset($_POST['submitLogin'])){
+			
 			$username = $_POST['username'];
 			$password = $_POST['password'];
-		}
-		
-			if(count(file("assets/questions.txt")) != 0){
 			
-					$file = file("assets/questions.txt");
-						
-						foreach(($file) as $line) {
-									
-							//$csv = explode('|', $line);
-							echo $line;
-						}
+			if($username != "banana" && $password != "camp"){
+				echo "login is invalid";
+			}else{
+				header ("Location: profile.php");
+			}
+		
 		}
-		?>
+		?>		
 	</body>
 </html>
