@@ -1,11 +1,17 @@
 # BANANACAMP
+### Lving document
+Dit is een levend document en zal gaandeweg het project met regelmaat herzien worden.
 
 ### Projectleden
 
 * Annabel
-* Rik 
+** Annabel wil graag doorgroeien richting front-end development  and design en wil vooral kennis van javascript icm jquery opvijzelen en in de praktijk kunnen brengen in samenhang met haar kennis van html5/css3 en bootstrap
+* Rik
+** Rik wil graag doorgroeien richting front-end full stack developer met goed oog voor design en wil graag zijn kennis van het werken met API's en de het concept MVC uitbreiden.
 * Marcel
+** Marcel wil graag doorgroeien naar all-round full-stack developer met nadruk op het programmeertechnische aspect en wil ook graag zijn kennis van het werken met API's en het concept MVC uitbreiden en in de praktijk brengen
 * Kaj
+** Kaj wil graag zijn all-round kennis blijven uitdiepen en groeien in het werken in een team en wil daarbij vooral proberen om agile principes toe te passen en kennis ook over te dragen, het grotere doel is doorgroeien richting devops.
 
 Er is geen vaste rolverdeling.
 
