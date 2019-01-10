@@ -1,0 +1,25 @@
+technische specificaties
+levend document: status = proposal
+site structuur:
+
+//php
+index.php 
+main.php
+profile.php
+php/functions.php
+php/config.php
+
+//javascript
+scripts/functions.js
+
+//css
+styles/style.css
+
+//html
+login.html
+register.html
+
+database structuur:
+dbname = bananacamp
+tables: users
+table users: id, username, password, role=student
