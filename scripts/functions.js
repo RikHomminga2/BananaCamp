@@ -1,16 +1,27 @@
-function fetchForm(inputForm){
-	fetch(inputForm).then(function(response) {
+const fstatus = (response) => {
+		return (response.status == 200) ? Promise.resolve(response) : Promise.reject(new Error(response.statusText));
+	}
+	
+const json = (response) => {
+	return response.json(); 
+}
+
+const ferror = (error) => {
+	console.log('Request failed: ', error);
+}
+const fetchForm = (inputForm) => {
+	fetch(inputForm).then(fstatus).then(function(response) {
 		return response.text();
 	}).then(function(data) {
 		document.querySelector('main').innerHTML = data;
-	});		
+	}).catch(ferror);
 }
-function getLoginForm(){
+const getLoginForm = () => {
 	let inputForm = 'login.html';
 	fetchForm(inputForm);
 }
-function getRegisterForm(){
+const getRegisterForm = () => {
 	let inputForm = 'register.html';
-	fetchForm(inputForm);	
+	fetchForm(inputForm);
 }
 
