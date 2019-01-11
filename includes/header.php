@@ -10,8 +10,8 @@
 	<body>
 		<ul class="sidenav">
 			<button><a href="index.php">BananaCamp</a></button>
-			<button onclick="fetchHTML('login.html')">Register</button>
-			<button onclick="fetchHTML('register.html')">Login</button>
+			<button onclick="fetchHTML('register.html')">Register</button>
+			<button onclick="fetchHTML('login.html')">Login</button>
 			<!-- <button><a href="">Contact</a></button> -->
 			<button><a href="#">About</a></button>     
 		</ul>
