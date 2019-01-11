@@ -1,14 +1,16 @@
-function getLoginForm(){
-	fetch('login.html').then(function(response) {
+function fetchForm(inputForm){
+	fetch(inputForm).then(function(response) {
 		return response.text();
 	}).then(function(data) {
 		document.querySelector('main').innerHTML = data;
-	});				
+	});		
+}
+function getLoginForm(){
+	let inputForm = 'login.html';
+	fetchForm(inputForm);
 }
 function getRegisterForm(){
-	fetch('register.html').then(function(response) {
-		return response.text();
-	}).then(function(data) {
-		document.querySelector('main').innerHTML = data;
-	});				
+	let inputForm = 'register.html';
+	fetchForm(inputForm);	
 }
+
