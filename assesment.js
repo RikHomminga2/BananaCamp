@@ -4,6 +4,12 @@ let assesment = {
 	categories: ['html', 'css', 'javascript', 'php', 'sql']
 };
 */
+
+const emptyMain = () => {
+	document.querySelector('main').innerText = '';
+}
+
+
 const fstatus = (response) => {
 		return (response.status == 200) ? Promise.resolve(response) : Promise.reject(new Error(response.statusText));
 	}
@@ -16,42 +22,41 @@ const ferror = (error) => {
 	console.log('Request failed: ', error);
 }
 
+function makeElement(type, attributes=[], innerText='') {
+	let el = document.createElement(type);
+	for(let attribute of attributes) {
+		el.setAttribute(attribute[0], attribute[1]);
+	}
+	el.innerText = innerText;
+	return el;
+}
+
 function createAssesmentForm(obj) {
+	emptyMain();
 	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
 	let main = document.querySelector('main');
-	let h1 = document.createElement('h1');
-	let p = document.createElement('p')
-	let frm = document.createElement('form');
-	let btn = document.createElement('button');
-	frm.setAttribute('method', 'post');
-	frm.setAttribute('action', 'main.php');
-	frm.setAttribute('id', 'assesment');
-	h1.innerText = 'Self-Assesment';
-	p.innerText = obj.question;
-	btn.setAttribute('onclick', 'getResult()');
-	btn.innerText = 'submit';
+	let h1 = makeElement('h1', [], 'Self-Assesment');
+	let p = makeElement('p', [], obj.question);
+	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'assesment']])
+	let btn = makeElement('button', [['onclick', 'getResult()']], 'submit');
 	main.appendChild(h1);
 	main.appendChild(p);
 	main.appendChild(frm)
 	for(let category of obj.categories) {
-		let hr = document.createElement('hr');
-		let h2 = document.createElement('h3');
-		let fs = document.createElement('fieldset');
-		fs.setAttribute('id', category);
-		h2.innerText = category;
+		let hr = makeElement('hr');
+		let h2 = makeElement('h2', [], category);
+		let fs = makeElement('fieldset', [['id', category]])
 		frm.appendChild(hr);
 		frm.appendChild(h2);
 		frm.appendChild(fs)
 		for(let i = 0; i < 10; i++) {
-			let iradio = document.createElement('input');
-			if(i == 0) { iradio.setAttribute('required', 'true'); }
-			iradio.setAttribute('type', 'radio');
-			iradio.setAttribute('id', `${category}${i}`);
-			iradio.setAttribute('name', category);
-			iradio.setAttribute('value', i+1);
+			let stager = [['type', 'radio'], ['id', `${category}${i}`], ['name', category], ['value', i+1]];
+			if(i == 0) { stager.push(['required', 'true']); }
+			let iradio = makeElement('input', stager);
 			fs.appendChild(iradio)
 		}
-	}	main.appendChild(btn);
+	}
+	main.appendChild(btn);
 }
 
 function fetchAssesment() {
@@ -63,7 +68,6 @@ function fetchAssesment() {
 		body: 'request=getAssesment'
 	}
 	fetch('main.php', post).then(fstatus).then(json).then(createAssesmentForm).catch(ferror);
-	//fetch('main.php', post).then(json).then(console.log);
 }
 
 function getResult() {
@@ -77,6 +81,7 @@ function getResult() {
 }
 
 function displayResult(dataset) {
+	emptyMain();
 	const w = 500;
 	const h = 100;
 	const svg = d3.select("main")
