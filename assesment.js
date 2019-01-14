@@ -51,7 +51,7 @@ function createAssesmentForm(obj) {
 		frm.appendChild(fs)
 		for(let i = 0; i < 10; i++) {
 			let stager = [['type', 'radio'], ['id', `${category}${i}`], ['name', category], ['value', i+1]];
-			if(i == 0) { stager.push(['required', 'true']); }
+			if(i == 0) { stager.push(['required', true]); }
 			let iradio = makeElement('input', stager);
 			fs.appendChild(iradio)
 		}
@@ -77,6 +77,7 @@ function getResult() {
 		let val = document.querySelector(`input[name="${cat}"]:checked`).value; 
 		res.push((val == 'on') ? 0 : parseInt(val));
 	}
+	storeResult(res);
 	displayResult(res);
 }
 

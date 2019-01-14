@@ -14,4 +14,8 @@
 		if($request == 'getAssesment') {
 			getAssesment();
 		}
+		if($request == 'storeAssesment') {
+			storeAssesment();
+			return true;
+		}
 	}
