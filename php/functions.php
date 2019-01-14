@@ -16,3 +16,7 @@
 		mysqli_query($con, "INSERT INTO users (username, password) VALUES('${un}','${pw}');");
 		login($un, $pw);
 	}
+	
+	function getAssesment() {
+		echo json_encode(["question" => "What is your skill level on a scale from 1 - 10", "categories" => ['html','css','js', 'php', 'sql']]);
+	}

@@ -11,4 +11,7 @@
 		if($request == 'register') {
 			register($un, $pw);
 		}
+		if($request == 'getAssesment') {
+			getAssesment();
+		}
 	}
