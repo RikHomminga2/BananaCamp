@@ -4,11 +4,22 @@
 		return mysqli_connect($host, $username, $password, $dbname);
 	}
 	
+	function doAssesment() {
+		//db functionality 'hasTakenAssesment'
+		header('Location: assesment.php');
+	}
+	
 	function login($un, $pw) {
 		$con = connectToDatabase();
 		$res = mysqli_query($con, "SELECT COUNT(id) AS cnt FROM users WHERE username='${un}' and password='${pw}';");
 		$row = mysqli_fetch_assoc($res);
-		($row['cnt'] == '1') ? header('Location: profile.php') : header('Location: index.php');
+		//var_dump($row); die;
+		if($row['cnt'] == '1') {
+			$_SESSION['authenticated'] = true;
+			doAssesment();
+		} else { 
+			header('Location: index.php');
+		}
 	}
 	
 	function register($un, $pw) {
@@ -19,4 +30,11 @@
 	
 	function getAssesment() {
 		echo json_encode(["question" => "What is your skill level on a scale from 1 - 10", "categories" => ['html','css','js', 'php', 'sql']]);
+	}
+	
+	function storeAssesment() {
+		// $user = $_SESSION['blah'];
+		$con = connectToDatabase();
+		mysqli_query();
+		header('Location: profile.php');
 	}
