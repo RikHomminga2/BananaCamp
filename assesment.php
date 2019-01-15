@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Self assesment</title>
-		<script src="assesment.js"></script>
+		<script src="scripts/functions.js"></script>
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 		<script>
 			document.addEventListener("DOMContentLoaded", fetchAssesment);
