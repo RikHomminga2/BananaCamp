@@ -6,9 +6,8 @@
 		$email = isset($_POST['email']) ? $_POST['email'] : false;
 		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
 
-
 		if($request == 'login') {
-			($emails && $password) ? login($email, $password): header('Location: index.php');
+			($email && $password) ? login($email, $password): header('Location: index.php');
 		}
 		if($request == 'register') {
 			($email && $password) ? register($email, $password) : header('Location: index.php');
