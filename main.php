@@ -19,7 +19,8 @@
 		}
 		
 		if($request == 'storeAssesment') {
-			storeAssesment();
+			$result = $_POST['result'];
+			storeAssesment($result);
 		}
 		
 		if($request == 'addQuestion') {

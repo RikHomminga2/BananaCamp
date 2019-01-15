@@ -32,10 +32,11 @@
 		echo json_encode(["question" => "What is your skill level on a scale from 1 - 10", "categories" => ['html','css','js', 'php', 'sql']]);
 	}
 	
-	function storeAssesment() {
+	function storeAssesment($result) {
 		// $user = $_SESSION['blah'];
 		$con = connectToDatabase();
-		mysqli_query();
+		$result = json_encode($result);
+		//mysqli_query($con, "INSERT INTO users (username, password) VALUES('${result}','${result}');");
 		header('Location: profile.php');
 	}
 	
