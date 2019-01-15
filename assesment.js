@@ -77,7 +77,7 @@ function getResult() {
 		let val = document.querySelector(`input[name="${cat}"]:checked`).value; 
 		res.push((val == 'on') ? 0 : parseInt(val));
 	}
-	//displayResult(res);
+	displayResult(res);
 	storeAssesment(res);
 }
 
