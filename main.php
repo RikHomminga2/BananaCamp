@@ -3,15 +3,15 @@
 	require_once('php/functions.php');
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$request = isset($_POST['request']) ? $_POST['request'] : false;
-		$emailadres = isset($_POST['emailadres']) ? $_POST['emailadres'] : false;
+		$email = isset($_POST['email']) ? $_POST['email'] : false;
 		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
 
 
 		if($request == 'login') {
-			($emailadres && $password) ? login($emailadres, $password): header('Location: index.php');
+			($emails && $password) ? login($email, $password): header('Location: index.php');
 		}
 		if($request == 'register') {
-			($emailadres && $password) ? register($emailadres, $password) : header('Location: index.php');
+			($email && $password) ? register($email, $password) : header('Location: index.php');
 		}
 	
 		

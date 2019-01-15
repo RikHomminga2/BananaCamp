@@ -1,23 +1,24 @@
 <?php
+
 	
 	function doAssesment() {
 		//db functionality 'hasTakenAssesment'
 		header('Location: assesment.php');
 	}
 	
-	function register($emailadres, $password) {
+	function register($email, $password) {
 		$con = connectToDatabase();
-		mysqli_query($con, "INSERT INTO users (emailadres, password) VALUES('${emailadres}','${password}');");
-		login($emailadres, $password);
+		mysqli_query($con, "INSERT INTO users (email, password) VALUES('${email}','${password}');");
+		login($email, $password);
 	}
 
 
 
-function login($emailadres, $password) {
+function login($email, $password) {
 		$con = connectToDatabase();
-		$res = mysqli_query($con, "SELECT COUNT(id) AS cnt FROM users WHERE emailadres='${emailadres}' and password='${password}';");
+		$res = mysqli_query($con, "SELECT COUNT(id) AS cnt FROM users WHERE email='${email}' and password='${password}';");
 		$row = mysqli_fetch_assoc($res);
-		var_dump($row); die;
+		
 		if($row['cnt'] == '1') {
 			$_SESSION['authenticated'] = true;
 			doAssesment();
