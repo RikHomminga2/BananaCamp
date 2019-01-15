@@ -51,7 +51,7 @@
 		$con = connectToDatabase();
 		$res = mysqli_query($con, "SELECT * FROM questions");
 		while($row = mysqli_fetch_assoc($res)) {
-			$stager[] = [$row['id'], $row['question'], $row['answers']];
+			$stager[] = ["id" => $row['id'], "question" => $row['question'], "answers" => json_decode($row['answers'])];
 		}
 		echo json_encode($stager);
 	}
