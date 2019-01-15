@@ -1,0 +1,87 @@
+header {
+  margin: 10px;
+  padding: 10px;
+}
+
+.card {
+  padding: 15px;
+  margin: auto 125px;
+  border: 1px solid black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.top {
+  padding: 15px;
+  border: 1px solid black;
+  margin: 5px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.bottom {
+  padding: 15px;
+  border: 1px solid black;
+  margin: 5px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+/*grid1*/
+[class*="col"] {
+  float: left;
+  padding: 15px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.col1 {width: 8.33%;}
+.col2 {width: 16.66%;}
+.col3 {width: 24%;}
+.col4 {width: 33.33%;}
+.col5 {width: 41.66%;}
+.col6 {width: 49%;}
+.col7 {width: 58.33%;}
+.col8 {width: 66.66%;}
+.col9 {width: 79.99%;}
+.col10 {width: 83.33%;}
+.col11 {width: 91.66%;}
+.col12 {width: 100%;}
+
+/*grid2*/
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 24%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {
+  width: 50%;
+  max-height: 650px;
+  overflow: auto;
+}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 50%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+footer {
+  margin: 10px;
+  padding: 10px;
+}
