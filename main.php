@@ -21,6 +21,20 @@
 		if($request == 'storeAssesment') {
 			storeAssesment();
 		}
+		
+		if($request == 'addQuestion') {
+			$question = $_POST['question'];
+			$answer1 = $_POST['answer1'];
+			$answer2 = $_POST['answer2'];
+			$answer3 = $_POST['answer3'];
+			$answer4 = $_POST['answer4'];
+			addQuestion($question, [$answer1, $answer2, $answer3, $answer4]);
+		}
+		
+		if($request == 'getQuestions') {
+			getQuestions();
+		}
+		
 	} else {
 		header('Location: index.php');
 	}

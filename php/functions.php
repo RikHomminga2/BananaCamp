@@ -38,3 +38,20 @@
 		mysqli_query();
 		header('Location: profile.php');
 	}
+	
+	function addQuestion($q, $arr) {
+		$a = json_encode($arr);
+		$con = connectToDatabase();
+		mysqli_query($con, "INSERT INTO questions (question, answers) VALUES ('${q}','${a}');");
+		header('Location: add.php');
+	}
+	
+	function getQuestions() {
+		$stager = [];
+		$con = connectToDatabase();
+		$res = mysqli_query($con, "SELECT * FROM questions");
+		while($row = mysqli_fetch_assoc($res)) {
+			$stager[] = [$row['id'], $row['question'], $row['answers']];
+		}
+		echo json_encode($stager);
+	}
