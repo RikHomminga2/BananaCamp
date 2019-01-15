@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Trainer interface</title>
-		<script src="exam.js"></script>
+		<script src="scripts/functions.js"></script>
 		<script>
 			document.addEventListener('DOMContentLoaded', fetchQuestions)
 		</script>
