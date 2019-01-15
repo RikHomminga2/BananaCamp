@@ -1,3 +1,0 @@
-"Wie staat bekend als de uitvinder van het World Wide Web?", Tim Berners-Lee, Bill Gates, Homer Simpson, Steve Jobs
-"Wie is de oorspronkelijke ontwikkelaar van PHP?", Rasmus Leerdorf, Linus Torvalds, Eric S Raymond, Peter Griffin
-"Wie is de bedenker van Javascript?", Brandon Eich, Steve Wozniak, Dennis Ritchie, Eric Cartman
