@@ -1,31 +1,29 @@
 <?php
-	function connectToDatabase() {
-		include 'config.php';
-		return mysqli_connect($host, $username, $password, $dbname);
-	}
 	
 	function doAssesment() {
 		//db functionality 'hasTakenAssesment'
 		header('Location: assesment.php');
 	}
 	
-	function login($un, $pw) {
+	function register($emailadres, $password) {
 		$con = connectToDatabase();
-		$res = mysqli_query($con, "SELECT COUNT(id) AS cnt FROM users WHERE username='${un}' and password='${pw}';");
+		mysqli_query($con, "INSERT INTO users (emailadres, password) VALUES('${emailadres}','${password}');");
+		login($emailadres, $password);
+	}
+
+
+
+function login($emailadres, $password) {
+		$con = connectToDatabase();
+		$res = mysqli_query($con, "SELECT COUNT(id) AS cnt FROM users WHERE emailadres='${emailadres}' and password='${password}';");
 		$row = mysqli_fetch_assoc($res);
-		//var_dump($row); die;
+		var_dump($row); die;
 		if($row['cnt'] == '1') {
 			$_SESSION['authenticated'] = true;
 			doAssesment();
 		} else { 
 			header('Location: index.php');
 		}
-	}
-	
-	function register($un, $pw) {
-		$con = connectToDatabase();
-		mysqli_query($con, "INSERT INTO users (username, password) VALUES('${un}','${pw}');");
-		login($un, $pw);
 	}
 	
 	function getAssesment() {
