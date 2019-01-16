@@ -82,18 +82,10 @@ function createAssesmentForm(obj) {
 	let h1 = makeElement('h1', [], obj.title);
 	let p = makeElement('p', [], obj.description);
 	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'assesment']])
-	let btn = makeElement('button', [['onclick', 'getResult()']], 'submit');
+	let btn = makeElement('button', [['onclick', 'getResult('+obj.id+','+obj.assesment+')']], 'submit');
 	main.appendChild(h1);
 	main.appendChild(p);
 	main.appendChild(frm)
-	
-	//should be refactored
-	let id = document.createElement('input');
-	id.type = 'hidden';
-	id.name = 'assesment';
-	id.value = obj.id;
-	frm.appendChild(id);
-	
 	for(let category of JSON.parse(obj.assesment)) {
 		let hr = makeElement('hr');
 		let h2 = makeElement('h2', [], category);
@@ -122,24 +114,26 @@ function fetchAssesment() {
 	fetch('main.php', post).then(fstatus).then(json).then(createAssesmentForm).catch(ferror);
 }
 
-function getResult() {
+function getResult(id, assesments) {
 	let res = [];
-	let cats = ['html', 'css', 'js', 'php', 'sql'];
+	let cats = assesments;
 	for(let cat of cats) {
 		let val = document.querySelector(`input[name="${cat}"]:checked`).value; 
 		res.push((val == 'on') ? 0 : parseInt(val));
 	}
 	displayResult(res);
-	storeAssesment(res);
+	storeAssesmentResult(id, res);
+	console.log(id, res);
 }
 
-function storeAssesment(res){
+function storeAssesmentResult(id, res){
 	let post = {
 		method: 'post',
 		headers: {
 			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 		},
-		body: 'request=storeAssesment&result='+JSON.stringify(res)+''
+		//body: 'request=storeAssesmentResult&result='+JSON.stringify(res)+''
+		body: 'request=storeAssesmentResult&id='+id+'&result='+JSON.stringify(res)+''
 	}
 	fetch('main.php', post).catch(ferror);	
 }
