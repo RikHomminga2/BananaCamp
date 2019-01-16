@@ -7,7 +7,7 @@
 	function register($email, $password) {
 		$con = connectToDatabase();
 		mysqli_query($con, "INSERT INTO users (email, password) VALUES('${email}','${password}');");
-		login($email, $password);
+		return true;
 	}
 
 	function login($email, $password) {
@@ -23,9 +23,9 @@
 	
 	function getAssesment() {
 		$con = connectToDatabase();
-		$q = mysqli_query($con, "SELECT * FROM assesments WHERE id =1");
-		while($r = mysqli_fetch_assoc($q)){
-			echo json_encode(["id" => $r['id'], "title" => $r['title'], "description" => $r['description'], "assesment" => $r['assesment']]);
+		$res = mysqli_query($con, "SELECT * FROM assesments WHERE id=1");
+		while($row = mysqli_fetch_assoc($res)){
+			echo json_encode(["id" => $row['id'], "title" => $row['title'], "description" => $row['description'], "assesment" => $row['assesment']]);
 		}
 	}
 	

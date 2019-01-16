@@ -10,7 +10,7 @@
 			($email && $password && login($email, $password)) ? header('Location: profile.php') : header('Location: index.php');
 		}
 		if($request == 'register') {
-			($email && $password) ? register($email, $password) : header('Location: index.php');
+			($email && $password && register($email, $password)) ? header('Location: profile.php') : header('Location: index.php');
 		}
 	
 		if($request == 'getAssesment') {
