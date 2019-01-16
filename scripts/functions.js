@@ -66,14 +66,22 @@ function createAssesmentForm(obj) {
 	emptyMain();
 	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
 	let main = document.querySelector('main');
-	let h1 = makeElement('h1', [], 'Self-Assesment');
-	let p = makeElement('p', [], obj.question);
+	let h1 = makeElement('h1', [], obj.title);
+	let p = makeElement('p', [], obj.description);
 	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'assesment']])
 	let btn = makeElement('button', [['onclick', 'getResult()']], 'submit');
 	main.appendChild(h1);
 	main.appendChild(p);
 	main.appendChild(frm)
-	for(let category of obj.categories) {
+	
+	//should be refactored
+	let id = document.createElement('input');
+	id.type = 'hidden';
+	id.name = 'assesment';
+	id.value = obj.id;
+	frm.appendChild(id);
+	
+	for(let category of JSON.parse(obj.assesment)) {
 		let hr = makeElement('hr');
 		let h2 = makeElement('h2', [], category);
 		let fs = makeElement('fieldset', [['id', category]])
@@ -121,6 +129,18 @@ function storeAssesment(res){
 		body: 'request=storeAssesment&result='+JSON.stringify(res)+''
 	}
 	fetch('main.php', post).catch(ferror);	
+}
+
+function getResultsUser (){
+	let post = {
+		method: 'post',
+		headers: {
+			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+		},
+		body: 'request=getResultsUser'
+	}
+	fetch('main2.php', post).then(fstatus).then(json).then(displayResult).catch(ferror);
+	
 }
 
 function displayResult(dataset) {

@@ -29,21 +29,32 @@
 		}
 	
 	function getAssesment() {
-		echo json_encode(["question" => "What is your skill level on a scale from 1 - 10", "categories" => ['html','css','js', 'php', 'sql']]);
+		$con = connectToDatabase();
+		$q = mysqli_query($con, "SELECT * FROM assesments WHERE id =1");
+		while($r = mysqli_fetch_assoc($q)){
+			echo json_encode(["id" => $r['id'], "title" => $r['title'], "description" => $r['description'], "assesment" => $r['assesment']]);
+		}
 	}
 	
-	function storeAssesment($result) {
-		// $user = $_SESSION['blah'];
+	function getResultsUser (){
 		$con = connectToDatabase();
-		$result = json_encode($result);
-		//mysqli_query($con, "INSERT INTO users (username, password) VALUES('${result}','${result}');");
-		header('Location: profile.php');
+		$q = mysqli_query($con, "SELECT * FROM users WHERE id=3");
+		while($r = mysqli_fetch_assoc($q)){
+		$str = $r['password'];
+		echo json_encode(var_dump($str)); 
+		
+	}
+		
+		
+		
+		
 	}
 	
 	function addQuestion($q, $arr) {
 		$a = json_encode($arr);
 		$con = connectToDatabase();
 		mysqli_query($con, "INSERT INTO questions (question, answers) VALUES ('${q}','${a}');");
+		header('Location: add.php');
 	}
 	
 	function getQuestions() {
