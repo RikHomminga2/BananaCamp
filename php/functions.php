@@ -43,11 +43,7 @@
 		$str = $r['password'];
 		echo json_encode(var_dump($str)); 
 		
-	}
-		
-		
-		
-		
+		}
 	}
 	
 	function addQuestion($q, $arr) {
@@ -66,3 +62,16 @@
 		}
 		echo json_encode($stager);
 	}
+	
+	function createExam() {
+        $description = $_POST['description'];
+        $stager = [];
+        foreach ($_POST as $k => $v) {
+            if (!($k == 'description' || $k == 'request')) {
+                $stager[] = $v;
+            }   
+        }
+        $stager = json_encode($stager);
+        $con = connectToDatabase();
+        mysqli_query($con, "INSERT INTO exams (description, questions) VALUES ('${description}', '${stager}');");
+    }

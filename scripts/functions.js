@@ -38,27 +38,40 @@ function makeElement(type, attributes=[], innerText='') {
 	return el;
 }
 
-
 function createQuestionsForm(obj) {
 	let main = document.getElementById('getQuestions');
 	let frm = document.createElement('form');
 	frm.setAttribute('method', 'post');
 	frm.setAttribute('action', 'main.php');
 	main.appendChild(frm);
+	let inp = document.createElement('input');
+	inp.setAttribute('type', 'text');
+	inp.setAttribute('name', 'description');
+	inp.setAttribute('placeholder', 'Description of Exam')
+	let br = document.createElement('br');
+	frm.appendChild(inp);
+	frm.appendChild(br);
 	for(x of obj){
 		let ipt = document.createElement('input');
 		let lbl = document.createElement('label');
 		let br = document.createElement('br');
 		ipt.setAttribute('type', 'checkbox');
 		ipt.setAttribute('id', `question${x.id}`);
+		ipt.setAttribute('name', `question${x.id}`);
+		ipt.setAttribute('value', x.id);
 		lbl.setAttribute('for', `question${x.id}`);
 		lbl.innerText = x.question +'?';
 		frm.appendChild(ipt);
 		frm.appendChild(lbl);
 		frm.appendChild(br);
 	}
+	let hidden = document.createElement('input');
+	hidden.setAttribute('type', 'hidden');
+	hidden.setAttribute('name', 'request');
+	hidden.setAttribute('value', 'createExam');
+	frm.appendChild(hidden);
 	let ipt = document.createElement('input');
-	ipt.setAttribute('type', 'submit');
+	ipt.setAttribute('type', 'Submit');
 	frm.appendChild(ipt);
 }
 

@@ -37,6 +37,11 @@
 			getQuestions();
 		}
 		
+		if($request == 'createExam') {
+            createExam();
+            header('Location: exams.html');
+        }
+		
 	} else {
 		header('Location: index.php');
 	}

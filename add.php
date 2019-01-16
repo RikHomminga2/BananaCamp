@@ -16,14 +16,14 @@
 			<section id="addQuestion">
 				<h2>ADD A QUESTION</h2>
 				<!-- form for adding questions -->
-				<form method="post" action="main.php">
-					<input type="text" name="question">&nbsp;question<br/>
-					<input type="text" name="answer1">&nbsp;correct answer<br/>
-					<input type="text" name="answer2">&nbsp;wrong answer<br/>
-					<input type="text" name="answer3">&nbsp;wrong answer<br/>
-					<input type="text" name="answer4">&nbsp;wrong answer<br/><br/>
+				<form method="post" action="main2.php">
+					<input type="text" name="question" placeholder="Question"><br/>
+					<input type="text" name="answer1" placeholder="Fill in correct answer"><br/>
+					<input type="text" name="answer2" placeholder="Fill in wrong answer"><br/>
+					<input type="text" name="answer3" placeholder="Fill in wrong answer"><br/>
+					<input type="text" name="answer4" placeholder="Fill in wrong answer"><br/><br/>
 					<input type="hidden" name="request" value="addQuestion">
-					<input type="submit" value="save">
+					<input type="submit" value="Save">
 				</form>
 			</section>
 			<hr>
