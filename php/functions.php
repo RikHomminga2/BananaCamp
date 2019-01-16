@@ -1,14 +1,9 @@
 <?php
 	function connectToDatabase() {
-	include 'config.php';
-	return mysqli_connect($host, $username, $password, $dbname);
+		include 'config.php';
+		return mysqli_connect($host, $username, $password, $dbname);
 	}
-	
-	function doAssesment() {
-		//db functionality 'hasTakenAssesment'
-		header('Location: assesment.php');
-	}
-	
+
 	function register($email, $password) {
 		$con = connectToDatabase();
 		mysqli_query($con, "INSERT INTO users (email, password) VALUES('${email}','${password}');");
@@ -16,17 +11,15 @@
 	}
 
 	function login($email, $password) {
-			$con = connectToDatabase();
-			$res = mysqli_query($con, "SELECT COUNT(id) AS cnt FROM users WHERE email='${email}' and password='${password}';");
-			$row = mysqli_fetch_assoc($res);
-			
-			if($row['cnt'] == '1') {
-				$_SESSION['authenticated'] = true;
-				doAssesment();
-			} else { 
-				header('Location: index.php');
-			}
+		$con = connectToDatabase();
+		$res = mysqli_query($con, "SELECT COUNT(id) AS cnt FROM users WHERE email='${email}' and password='${password}';");
+		$row = mysqli_fetch_assoc($res);
+		if($row['cnt'] == '1') {
+			$_SESSION['authenticated'] = true;
+			return true;
 		}
+		return false;
+	}
 	
 	function getAssesment() {
 		$con = connectToDatabase();
@@ -42,15 +35,25 @@
 		while($r = mysqli_fetch_assoc($q)){
 		$str = $r['password'];
 		echo json_encode(var_dump($str)); 
-		
 		}
 	}
 	
-	function addQuestion($q, $arr) {
-		$a = json_encode($arr);
-		$con = connectToDatabase();
-		mysqli_query($con, "INSERT INTO questions (question, answers) VALUES ('${q}','${a}');");
-		header('Location: add.php');
+	function addQuestion() {
+		//$question, [$answer1, $answer2, $answer3, $answer4])
+		$question = (isset($_POST['question'])) ? $_POST['question'] : false;
+		$answer1 = (isset($_POST['answer1'])) ? $_POST['answer1'] : false;
+		$answer2 = (isset($_POST['answer2'])) ? $_POST['answer2'] : false;
+		$answer3 = (isset($_POST['answer3'])) ? $_POST['answer3'] : false;
+		$answer4 = (isset($_POST['answer4'])) ? $_POST['answer4'] : false;
+		$answers = [$answer1, $answer2, $answer3, $answer4];
+		//var_dump($a); var_dump($_POST); die;
+		if($answer1 && $answer2 && answer3 && answer4) {
+			$answers = json_encode($answers);
+			$con = connectToDatabase();
+			mysqli_query($con, "INSERT INTO questions (question, answers) VALUES ('${question}','${answers}');");
+			return true;
+		}
+		return false;
 	}
 	
 	function getQuestions() {
