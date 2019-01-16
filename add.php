@@ -16,7 +16,7 @@
 			<section id="addQuestion">
 				<h2>ADD A QUESTION</h2>
 				<!-- form for adding questions -->
-				<form method="post" action="main2.php">
+				<form method="post" action="main.php">
 					<input type="text" name="question" placeholder="Question"><br/>
 					<input type="text" name="answer1" placeholder="Fill in correct answer"><br/>
 					<input type="text" name="answer2" placeholder="Fill in wrong answer"><br/>
