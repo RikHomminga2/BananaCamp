@@ -1,0 +1,17 @@
+Waar staat HTTP voor, HyperText Transfer Protocol, HyperText Transport Protocol, HyperText Topological Position, How Tiny Tim Plays
+Waar staat HTML voor, HyperText Markup Language, HyperTyped Markup Language, HyperText Modification Language, There Is No Spoon
+Waar staat XML voor, Extensible Markup Language, Extreme Markup Language, Easy Modifiable Language, X Marks Longitude
+Waar staat URL voor, Uniform Resource Locater, Uniform Resource Language, Unicode Response Language, Un Real Life
+Waar staat CSS voor, Cascading Style Sheets, Comprehensive Style Sheets, Complex Style Sheets, Cool Simple Style
+Waar staat XSS voor, Cross Site Scripting, Xclusive Style Sheet, XML Style Sheet, XHTML Simple Syndication
+Waar staat CSRF voor, Cross Site Request Forgery, Cross Site Response Function, Crippled Single Request Factory, Cool Calm Collected
+Waar staat RSS voor, Real Simple Syndication, Really Simple Stuff, Request Source Sheet, Read Static Source
+Wie is Tim Berners-Lee, Uitvinder van het WWW, Uitvinder van TCP, Uitvinder van UNIX, Amerikaans Revolutionair
+Wie is Rasmus Leerdorf, Uitvinder van PHP, Uitvinder van Linux, Uitvinder van het Internet, Deze persoon bestaat niet
+Wie is Brandon Eich, Uitvinder van Javascript, Uitvinder van PHP, Uitvinder van PGP, Gitarist voor de Dead Kennedys
+Hoe definieer je een functie in PHP, function, fn, func, def
+Hoe definieer je een functie in Javascript, function, fn, func, def
+Hoe definieer je een functie in Python, def, function, fn, func
+Hoe definieer je een paragraaf in HTML, <p>, <pg>, <para>, <pre>
+Om welke uitspraak staat Bart Simpson bekend, Eat my shorts, cowabunga, Here is Conway Twitty, power rangers are go
+In welke band speelde Dave Grohl de drums, Nirvana, Stone Temple Pilots, Mudhoney, The Beatles
