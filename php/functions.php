@@ -38,6 +38,19 @@
 		}
 	}
 	
+	function addAssesment() {
+		$title = (isset($_POST['title'])) ? $_POST['title'] : false;
+		$description = (isset($_POST['description'])) ? $_POST['description'] : false;
+		$categories = (isset($_POST['categories'])) ? explode(',', $_POST['categories']) : false;
+		if($title && $description && $categories){
+			$categories = json_encode($categories);
+			$con = connectToDatabase();
+			mysqli_query($con, "INSERT INTO assesments (title, description, assesment) VALUES ('${title}', '${description}', '${categories}')");
+			return true;
+		}
+		return false;
+	}
+	
 	function addQuestion() {
 		//$question, [$answer1, $answer2, $answer3, $answer4])
 		$question = (isset($_POST['question'])) ? $_POST['question'] : false;

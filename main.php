@@ -12,7 +12,11 @@
 		if($request == 'register') {
 			($email && $password && register($email, $password)) ? header('Location: profile.php') : header('Location: index.php');
 		}
-	
+		
+		if($request == 'addAssesment') {
+			(addAssesment()) ? header('Location: add.php') : header('Location: error.php');
+		}
+			
 		if($request == 'getAssesment') {
 			getAssesment();
 		}

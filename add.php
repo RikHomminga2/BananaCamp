@@ -17,8 +17,9 @@
 				<h2>ADD Assesment</h2>
 				<!-- form for adding questions -->
 				<form method="post" action="main.php">
-					<input type="text" name="question" placeholder="Description"><br/>
-					<input type="text" name="category" placeholder="Fill in categories"><br/>
+					<input type="text" name="title" placeholder="Title"><br/>
+					<input type="text" name="description" placeholder="Description"><br/>
+					<input type="text" name="categories" placeholder="Fill in categories"><br/>
 					<input type="hidden" name="request" value="addAssesment">
 					<input type="submit" value="Save">
 				</form>
