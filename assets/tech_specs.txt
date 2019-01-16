@@ -4,22 +4,30 @@ site structuur:
 
 //php
 index.php 
-main.php
+Landingspagina
+
 profile.php
+Gebruikersprofielpagina
+
+assesment.php
+Pagina die assesments laat zien
+
+main.php
+Controller/Router
+
 php/functions.php
+Regelt alle achterliggende logica en database connectiviteit
+
 php/config.php
+config bestand (niet op git) voor het verbinden met de database
 
 //javascript
 scripts/functions.js
 
 //css
 styles/style.css
+hoofd stylingsbestand
 
 //html
 login.html
 register.html
-
-database structuur:
-dbname = bananacamp
-tables: users
-table users: id, username, password, role=student
