@@ -44,7 +44,6 @@
 		$a = json_encode($arr);
 		$con = connectToDatabase();
 		mysqli_query($con, "INSERT INTO questions (question, answers) VALUES ('${q}','${a}');");
-		header('Location: add.php');
 	}
 	
 	function getQuestions() {

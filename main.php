@@ -30,6 +30,7 @@
 			$answer3 = $_POST['answer3'];
 			$answer4 = $_POST['answer4'];
 			addQuestion($question, [$answer1, $answer2, $answer3, $answer4]);
+			header('Location: add.php');
 		}
 		
 		if($request == 'getQuestions') {
