@@ -24,21 +24,21 @@
 	function getAssesment() {
 		$con = connectToDatabase();
 		$res = mysqli_query($con, "SELECT * FROM assesments WHERE id=1");
-		while($row = mysqli_fetch_assoc($res)){
+		while($row = mysqli_fetch_assoc($res)) {
 			echo json_encode(["id" => $row['id'], "title" => $row['title'], "description" => $row['description'], "assesment" => $row['assesment']]);
 		}
 	}
 	
-	function getResultsUser (){
+	function getResultsUser() {
 		$con = connectToDatabase();
 		$q = mysqli_query($con, "SELECT * FROM users WHERE id=3");
-		while($r = mysqli_fetch_assoc($q)){
-		$str = $r['password'];
-		echo json_encode(var_dump($str)); 
+		while($r = mysqli_fetch_assoc($q)) {
+			$str = $r['password'];
+			echo json_encode(var_dump($str)); 
 		}
 	}
 	
-	function storeAssesmentResult($id, $result){
+	function storeAssesmentResult($id, $result) {
 		$con = connectToDatabase();
 		$userid = 1;
 		mysqli_query($con, "INSERT INTO assesment_results (assesment_id, user_id, results) VALUES('${id}','${userid}','${result}');");
@@ -48,7 +48,7 @@
 		$title = (isset($_POST['title'])) ? $_POST['title'] : false;
 		$description = (isset($_POST['description'])) ? $_POST['description'] : false;
 		$categories = (isset($_POST['categories'])) ? explode(',', $_POST['categories']) : false;
-		if($title && $description && $categories){
+		if($title && $description && $categories) {
 			$categories = json_encode($categories);
 			$con = connectToDatabase();
 			mysqli_query($con, "INSERT INTO assesments (title, description, assesment) VALUES ('${title}', '${description}', '${categories}')");
