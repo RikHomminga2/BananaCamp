@@ -26,6 +26,9 @@
 			$result = $_POST['result'];
 			storeAssesmentResult($id, $result);
 		}
+		if($request == 'getUserResultsAssesments'){
+			getUserResultsAssesments();
+		}
 		
 		if($request == 'addQuestion') {
 			(addQuestion()) ? header('Location: add.php') : header('Location: error.php');

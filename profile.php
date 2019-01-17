@@ -25,6 +25,9 @@
         </aside>
         <main class="col-6">
             <h4>Statistics</h4>
+			<script>
+			document.addEventListener("DOMContentLoaded", getUserResultsAssesments);
+		</script>
         </main>
         <aside class="col-3">
             <div class="top">

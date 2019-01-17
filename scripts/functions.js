@@ -130,7 +130,6 @@ function getResult(id, assesments) {
 }
 
 function storeAssesmentResult(id, res){
-	console.log(id, res);
 	let post = {
 		method: 'post',
 		headers: {
@@ -141,21 +140,28 @@ function storeAssesmentResult(id, res){
 	fetch('main.php', post).catch(ferror);	
 }
 
-function getResultsUser() {
+function getUserResultsAssesments() {
 	let post = {
 		method: 'post',
 		headers: {
 			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 		},
-		body: 'request=getResultsUser'
+		body: 'request=getUserResultsAssesments'
 	}
-	fetch('main2.php', post).then(fstatus).then(json).then(displayResult).catch(ferror);
+	fetch('main.php', post).then(fstatus).then(json).then(displayResult).catch(ferror);
 	
 }
 
-function displayResult(dataset) {
-	emptyMain();
-	const w = 500;
+function displayResult(obj) {
+	let res = obj;
+	console.log(res);
+	let dataset = JSON.parse(res.results);
+	//emptyMain();
+	let title = makeElement('h2', [], res.title);
+	let main = document.querySelector("main");
+	main.appendChild(title);
+	console.log(res.assesment);
+	const w = 100;
 	const h = 100;
 	const svg = d3.select("main")
 		.append("svg")
@@ -168,4 +174,8 @@ function displayResult(dataset) {
 		.attr("width", 25)
 		.attr("height", (d, i) => d * 100)
 		.attr("fill", (d => (d < 6) ? "red" : "green"));
+		
+
+	
+	
 }
