@@ -1,15 +1,19 @@
 const emptyMain = () => {
 	document.querySelector('main').innerText = '';
 }
+
 const fstatus = (response) => {
 	return (response.status == 200) ? Promise.resolve(response) : Promise.reject(new Error(response.statusText));
 }
+
 const json = (response) => {
 	return response.json(); 
 }
+
 const ferror = (error) => {
 	console.log('Request failed: ', error);
 }
+
 const fetchHTML = (url) => {
 	fetch(url).then(fstatus).then(function(response) {
 		return response.text();
@@ -47,11 +51,11 @@ function createQuestionsForm(obj) {
 	let inp = document.createElement('input');
 	inp.setAttribute('type', 'text');
 	inp.setAttribute('name', 'description');
-	inp.setAttribute('placeholder', 'Description of Exam')
+	inp.setAttribute('placeholder', 'Description of Exam');
 	let br = document.createElement('br');
 	frm.appendChild(inp);
 	frm.appendChild(br);
-	for(x of obj){
+	for(x of obj) {
 		let ipt = document.createElement('input');
 		let lbl = document.createElement('label');
 		let br = document.createElement('br');
@@ -81,23 +85,23 @@ function createAssesmentForm(obj) {
 	let main = document.querySelector('main');
 	let h1 = makeElement('h1', [], obj.title);
 	let p = makeElement('p', [], obj.description);
-	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'assesment']])
+	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'assesment']]);
 	let btn = makeElement('button', [['onclick', 'getResult('+obj.id+','+obj.assesment+')']], 'submit');
 	main.appendChild(h1);
 	main.appendChild(p);
-	main.appendChild(frm)
+	main.appendChild(frm);
 	for(let category of JSON.parse(obj.assesment)) {
 		let hr = makeElement('hr');
 		let h2 = makeElement('h2', [], category);
-		let fs = makeElement('fieldset', [['id', category]])
+		let fs = makeElement('fieldset', [['id', category]]);
 		frm.appendChild(hr);
 		frm.appendChild(h2);
-		frm.appendChild(fs)
+		frm.appendChild(fs);
 		for(let i = 0; i < 10; i++) {
 			let stager = [['type', 'radio'], ['id', `${category}${i}`], ['name', category], ['value', i+1]];
 			if(i == 0) { stager.push(['required', 'true']); }
 			let iradio = makeElement('input', stager);
-			fs.appendChild(iradio)
+			fs.appendChild(iradio);
 		}
 	}
 	main.appendChild(btn);
@@ -126,7 +130,7 @@ function getResult(id, assesments) {
 	console.log(id, res);
 }
 
-function storeAssesmentResult(id, res){
+function storeAssesmentResult(id, res) {
 	let post = {
 		method: 'post',
 		headers: {
@@ -138,7 +142,7 @@ function storeAssesmentResult(id, res){
 	fetch('main.php', post).catch(ferror);	
 }
 
-function getResultsUser (){
+function getResultsUser() {
 	let post = {
 		method: 'post',
 		headers: {
