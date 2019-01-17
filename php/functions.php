@@ -38,6 +38,12 @@
 		}
 	}
 	
+	function storeAssesmentResult($id, $result){
+		$con = connectToDatabase();
+		$userid = 1;
+		mysqli_query($con, "INSERT INTO assesment_results (assesment_id, user_id, results) VALUES('${id}','${userid}','${result}');");
+	}
+	
 	function addAssesment() {
 		$title = (isset($_POST['title'])) ? $_POST['title'] : false;
 		$description = (isset($_POST['description'])) ? $_POST['description'] : false;

@@ -21,9 +21,10 @@
 			getAssesment();
 		}
 		
-		if($request == 'storeAssesment') {
+		if($request == 'storeAssesmentResult') {
+			$id = $_POST['id'];
 			$result = $_POST['result'];
-			storeAssesment($result);
+			storeAssesmentResult($id, $result);
 		}
 		
 		if($request == 'addQuestion') {

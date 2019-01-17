@@ -127,16 +127,15 @@ function getResult(id, assesments) {
 	}
 	displayResult(res);
 	storeAssesmentResult(id, res);
-	console.log(id, res);
 }
 
-function storeAssesmentResult(id, res) {
+function storeAssesmentResult(id, res){
+	console.log(id, res);
 	let post = {
 		method: 'post',
 		headers: {
 			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 		},
-		//body: 'request=storeAssesmentResult&result='+JSON.stringify(res)+''
 		body: 'request=storeAssesmentResult&id='+id+'&result='+JSON.stringify(res)+''
 	}
 	fetch('main.php', post).catch(ferror);	
