@@ -5,7 +5,6 @@
 		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 		<script src="scripts/functions.js"></script>
 		<link rel="stylesheet" href="styles/style.css">
-		<!--<link rel="stylesheet" href="styles/experimental.css">-->
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 		<title>Bananacamp</title>
 	</head>
