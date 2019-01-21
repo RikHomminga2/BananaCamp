@@ -7,10 +7,10 @@
 		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
 
 		if($request == 'login') {
-			($email && $password && login($email, $password)) ? header('Location: profile.php') : header('Location: index.php');
+			($email && $password && login($email, $password)) ? header('Location: profile.html') : header('Location: index.php');
 		}
 		if($request == 'register') {
-			($email && $password && register($email, $password)) ? header('Location: profile.php') : header('Location: index.php');
+			($email && $password && register($email, $password)) ? header('Location: profile.html') : header('Location: index.php');
 		}
 		
 		if($request == 'addAssesment') {
@@ -25,6 +25,7 @@
 			$id = $_POST['id'];
 			$result = $_POST['result'];
 			storeAssesmentResult($id, $result);
+			header('Location: profile.php');
 		}
 		if($request == 'getUserResultsAssesments'){
 			getUserResultsAssesments();
@@ -41,6 +42,11 @@
 		if($request == 'createExam') {
             createExam();
             header('Location: exams.html');
+        }
+		
+		if($request == 'getUserData') {
+            getUserData();
+           
         }
 		
 	} else {
