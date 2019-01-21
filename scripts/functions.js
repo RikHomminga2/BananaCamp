@@ -125,7 +125,7 @@ function getResult(id, assesments) {
 		let val = document.querySelector(`input[name="${cat}"]:checked`).value; 
 		res.push((val == 'on') ? 0 : parseInt(val));
 	}
-	displayResult(res);
+	//displayResult(res);
 	storeAssesmentResult(id, res);
 }
 
@@ -154,14 +154,12 @@ function getUserResultsAssesments() {
 
 function displayResult(obj) {
 	let res = obj;
-	console.log(res);
 	let dataset = JSON.parse(res.results);
 	//emptyMain();
-	let title = makeElement('h2', [], res.title);
+	let title =makeElement('h2', [], res.title);
 	let main = document.querySelector("main");
 	main.appendChild(title);
-	console.log(res.assesment);
-	const w = 100;
+	const w = 500;
 	const h = 100;
 	const svg = d3.select("main")
 		.append("svg")
@@ -177,5 +175,35 @@ function displayResult(obj) {
 		
 
 	
+	
+}
+
+function fetchExam(){
+	let post = {
+		method: 'post',
+		headers: {
+			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+		},
+		body: 'request=getExam'
+	}
+	fetch('main.php', post).then(fstatus).then(json).then(displayExam).catch(ferror);	
+}
+
+function displayExam(obj){
+	/*if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
+	let main = document.querySelector('main');
+	let title = makeElement("h2",[], obj.description);
+	let frm = document.createElement('form');
+	frm.setAttribute('method', 'post');
+	frm.setAttribute('action', 'main.php');
+	main.appendChild(title);
+	main.appendChild(frm);
+*/
+	for(let i; i=obj.length; i++){
+		
+		console.log(obj[i]);
+	}
+	
+	console.log(obj);
 	
 }

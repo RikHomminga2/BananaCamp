@@ -44,9 +44,8 @@
             header('Location: exams.html');
         }
 		
-		if($request == 'getUserData') {
-            getUserData();
-           
+		if($request == 'getExam') {
+            getExam();
         }
 		
 	} else {

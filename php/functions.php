@@ -71,7 +71,7 @@
 		$answer4 = (isset($_POST['answer4'])) ? $_POST['answer4'] : false;
 		$answers = [$answer1, $answer2, $answer3, $answer4];
 		//var_dump($a); var_dump($_POST); die;
-		if($answer1 && $answer2 && answer3 && answer4) {
+		if($answer1 && $answer2 && $answer3 && $answer4) {
 			$answers = json_encode($answers);
 			$con = connectToDatabase();
 			mysqli_query($con, "INSERT INTO questions (question, answers) VALUES ('${question}','${answers}');");
@@ -102,3 +102,24 @@
         $con = connectToDatabase();
         mysqli_query($con, "INSERT INTO exams (description, questions) VALUES ('${description}', '${stager}');");
     }
+	
+	function getExam(){
+		$stager = [];
+		$con = connectToDatabase();
+		$res = mysqli_query($con, "SELECT * FROM exams ORDER BY id DESC");
+			
+		
+		while($row = mysqli_fetch_assoc($res)){
+			$stager1  = ['id' => $row['id'], 'description' => $row['description']];
+			$q = json_decode($row['questions']);
+			foreach ($q as $question){
+				$questions = (int)$question;
+				$res2 = mysqli_query($con,"SELECT * FROM questions WHERE id=".$questions."");
+				while($row2 = mysqli_fetch_assoc($res2)){
+					$stager2[] = ["q_id" => $row2['id'], "question" => $row2['question'], "anwsers" => json_decode($row2['answers'])]; 
+				}
+			}
+			array_push($stager1, $stager2);
+			echo json_encode($stager1);
+		}	
+	}
