@@ -13,13 +13,13 @@ Er is geen vaste rolverdeling.
 
 ### Waarom kiezen jullie voor dit project?
 
-We vinden het een waardevol idee dat ook goed te implementeren is en waarbij ook gebruik gemaakt wordt van de volledig stack.
+We vinden het een waardevol idee dat ook goed te implementeren is en waarbij ook gebruik gemaakt wordt van de volledige stack.
 
 ### Idee beschrijving
 
 Het idee is een webapplicatie te maken die het beheren/ managen van een bootcamp eenvoudiger maakt.
 
-Het *primaire* doel is een project ontwikkelen dat als showcase voor de vaardigheden van de teamleden kan dienen zodat eventuele werkgevers daar inzicht in kunnen krijgen.
+Het *primaire* doel is een project ontwikkelen dat als showcase kan dienen voor de vaardigheden van de teamleden zodat eventuele werkgevers daar inzicht in kunnen krijgen.
 
 Het *secundaire* doel is een project ontwikkelen dat productiegereed is en in de markt gezet kan worden.
 
@@ -66,11 +66,10 @@ Als developers willen we moderne code schrijven, zodoende hebben we gekozen voor
 
 * HTML5 + CSS3 + ES6 (javascript) voor de front-end eventueel aangevuld BOOTSTRAP en JQUERY;
 * PHP7 en MYSQL voor de back-end;
-* Voor het backend gedeelte proberen we gebruik te maken van classes, voornamelijk voor het groeperen van functionaliteit;
 * We kiezen er vooralsnog voor om geen back-end framework te gebruiken maar de principes van de Model View Controller zelf toe te passen;
 * We gebruiken GIT voor versiecontrole en houden daarmee rekening met het extreme programming principe NO BRANCHES. We streven ernaar om veel kleine commits te maken en de functionaliteit puur te houden;
-* De Front End communiceert met de back-end middels JSON (API);
-* We houden rekening met security (hashed passwords/salts, JWT).
+* De front-end communiceert met de back-end middels JSON en fetch (API);
+* We proberen rekening te houden met security (hashed passwords/salts, JWT).
 
 We proberen waar mogelijk gebruik te maken van beschikbare gereedschappen zoals linters en validators om te controleren of de code correct is. Waar mogelijk schrijven we ook tests bij de functionaliteit die we implementeren.
 
@@ -78,4 +77,6 @@ We proberen waar mogelijk gebruik te maken van beschikbare gereedschappen zoals 
 Week 1 - Initialisatiefase, inschatting maken van de haalbare scope, opzetten eerste minimum viable product.
 
 Week 2 - Evaluatie week 1, herziening haalbare scope, uitbouwen van minimum viable product.
+
+Week 3 - Evaluatie week 1, herziening haalbare scope, uitbouwen van minimum viable product.
 
