@@ -12,10 +12,11 @@
 
 	function login($email, $password) {
 		$con = connectToDatabase();
-		$res = mysqli_query($con, "SELECT COUNT(id) AS cnt FROM users WHERE email='${email}' and password='${password}';");
+		$res = mysqli_query($con, "SELECT * FROM users WHERE email='${email}' and password='${password}';");
 		$row = mysqli_fetch_assoc($res);
-		if($row['cnt'] == '1') {
+		if($row['id'] != '') {
 			$_SESSION['authenticated'] = true;
+			$_SESSION['users_id'] = $row['id'];
 			return true;
 		}
 		return false;

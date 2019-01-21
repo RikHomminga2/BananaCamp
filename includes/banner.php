@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,4 +11,5 @@
 	</head>
     <header>
 		<h4>Banner with logo, logout and edit button</h4>
+		<a href="signout.php">sign out</a>
     </header>
