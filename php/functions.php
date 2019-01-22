@@ -50,7 +50,7 @@
 		mysqli_query($con, "INSERT INTO assesment_results (assesment_id, user_id, results) VALUES('${id}','${userid}','${result}');");
 	}
 	
-		function getUserResultsAssesments(){
+	function getUserResultsAssesments(){
 		$con = connectToDatabase();
 		$res = mysqli_query($con, 	
 			"SELECT assesments.id, assesments.title, assesments.description, assesments.assesment, assesment_results.results
@@ -104,6 +104,16 @@
 		echo json_encode($stager);
 	}
 	
+	function getQuestions2() {
+		$stager = [];
+		$con = connectToDatabase();
+		$res = mysqli_query($con, "SELECT * FROM questions ORDER BY id DESC");
+		while($row = mysqli_fetch_assoc($res)) {
+			$stager [] = ["id" => $row['id'], "question" => $row['question'], "answers" => json_decode($row['answers'])];
+		}
+		return $stager;
+	}
+	
 	function createExam() {
         $description = $_POST['description'];
         $stager = [];
@@ -118,22 +128,11 @@
     }
 	
 	function getExam(){
-		$stager = [];
 		$con = connectToDatabase();
-		$res = mysqli_query($con, "SELECT * FROM exams ORDER BY id DESC");
-			
-		
+		$res = mysqli_query($con, "SELECT * FROM exams WHERE id=1");
 		while($row = mysqli_fetch_assoc($res)){
-			$stager1  = ['id' => $row['id'], 'description' => $row['description']];
-			$q = json_decode($row['questions']);
-			foreach ($q as $question){
-				$questions = (int)$question;
-				$res2 = mysqli_query($con,"SELECT * FROM questions WHERE id=".$questions."");
-				while($row2 = mysqli_fetch_assoc($res2)){
-					$stager2[] = ["q_id" => $row2['id'], "question" => $row2['question'], "anwsers" => json_decode($row2['answers'])]; 
-				}
-			}
-			array_push($stager1, $stager2);
-			echo json_encode($stager1);
+			$stager1 [] = ['id' => $row['id'], 'description' => $row['description'], 'q_id' => $row['questions']];
 		}	
+		array_push($stager1, getQuestions2());
+		echo json_encode($stager1);
 	}
