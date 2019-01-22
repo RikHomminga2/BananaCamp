@@ -7,10 +7,10 @@
 		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
 
 		if($request == 'login') {
-			($email && $password && login($email, $password)) ? header('Location: profile.html') : header('Location: index.php');
+			login() ? header('Location: profile.html') : header('Location: index.php');
 		}
 		if($request == 'register') {
-			($email && $password && register($email, $password)) ? header('Location: profile.html') : header('Location: index.php');
+			register() ? header('Location: profile.html') : header('Location: index.php');
 		}
 		
 		if($request == 'addAssesment') {
