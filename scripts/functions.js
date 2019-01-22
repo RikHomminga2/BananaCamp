@@ -2,6 +2,9 @@ const emptyMain = () => {
 	document.querySelector('main').innerText = '';
 }
 
+/**
+ * fetch helper functions
+ */
 const fstatus = (response) => {
 	return (response.status == 200) ? Promise.resolve(response) : Promise.reject(new Error(response.statusText));
 }
@@ -14,6 +17,11 @@ const ferror = (error) => {
 	console.log('Request failed: ', error);
 }
 
+/**
+ * generic wrapper to fetch html/text file
+ * @param {string} url
+ * @param {function} handle
+ */
 const fetchHTML = (url) => {
 	fetch(url).then(fstatus).then(function(response) {
 		return response.text();
@@ -22,15 +30,35 @@ const fetchHTML = (url) => {
 	}).catch(ferror);
 }
 
-function fetchQuestions() {
+/**
+ * generic wrapper to fetch json data using http post requests
+ * @param {string} body
+ * @param {function} handle
+ */
+const fetchPostRequest = (body, handle, url='main.php') => {
 	let post = {
 		method: 'post',
 		headers: {
 			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 		},
-		body: 'request=getQuestions'
+		body: body
 	}
-	fetch('main.php', post).then(fstatus).then(json).then(createQuestionsForm).catch(ferror);
+	fetch(url, post).then(fstatus).then(json).then(handle).catch(ferror);
+}
+
+const fetchQuestions = () => {
+	let body = 'request=getQuestions';
+	fetchPostRequest(body, createQuestionsForm);
+}
+
+const fetchAssesment = () => {
+	let body = 'request=getAssesment';
+	fetchPostRequest(body, createAssesmentForm);
+}
+
+const fetchAssesmentResultForUser = () => {
+	let body = 'request=getAssesmentResultForUser';
+	fetchPostRequest(body, displayResult);
 }
 
 function makeElement(type, attributes=[], innerText='') {
@@ -107,17 +135,6 @@ function createAssesmentForm(obj) {
 	main.appendChild(btn);
 }
 
-function fetchAssesment() {
-	let post = {
-		method: 'post',
-		headers: {
-			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-		},
-		body: 'request=getAssesment'
-	}
-	fetch('main.php', post).then(fstatus).then(json).then(createAssesmentForm).catch(ferror);
-}
-
 function getResult(id, assesments) {
 	let res = [];
 	let cats = assesments;
@@ -140,18 +157,6 @@ function storeAssesmentResult(id, res){
 	fetch('main.php', post).catch(ferror);	
 }
 
-function getUserResultsAssesments() {
-	let post = {
-		method: 'post',
-		headers: {
-			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-		},
-		body: 'request=getUserResultsAssesments'
-	}
-	fetch('main.php', post).then(fstatus).then(json).then(displayResult).catch(ferror);
-	
-}
-
 function displayResult(obj) {
 	let res = obj;
 	let dataset = JSON.parse(res.results);
@@ -172,10 +177,6 @@ function displayResult(obj) {
 		.attr("width", 25)
 		.attr("height", (d, i) => d * 100)
 		.attr("fill", (d => (d < 6) ? "red" : "green"));
-		
-
-	
-	
 }
 
 function fetchExam(){
@@ -209,14 +210,9 @@ function displayExam(obj){
 		console.log(obj[0][prop].q_id);
 		console.log(obj[0][prop].question);
 		
-			console.log(obj[0][prop].answers);
-			for(let i =0; i > obj[0][prop].answers.length; i++){
-			
-				console.log(obj[0][prop].answers[i]);
-			}
-			
+		console.log(obj[0][prop].answers);
+		for(let i =0; i > obj[0][prop].answers.length; i++){
+			console.log(obj[0][prop].answers[i]);
 		}
-	
-	
-	
+	}
 }
