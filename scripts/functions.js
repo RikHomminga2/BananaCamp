@@ -112,37 +112,42 @@ function createAssesmentForm(obj) {
 	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
 	let main = document.querySelector('main');
 	let h1 = makeElement('h1', [], obj.title);
-	let p = makeElement('p', [], obj.description);
-	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'assesment']]);
-	let btn = makeElement('button', [['onclick', 'getResult('+obj.id+','+obj.assesment+')']], 'submit');
+	let h2 = makeElement('h2', [], obj.description);
+	let datalist = makeElement('datalist', [['id', 'tickmarks'], ['style', 'display: visible']]);
+	let hide = makeElement('input', [['type', 'hidden'], ['value', `${obj.id}`], ['id', 'hidden']]);
+	let btn = makeElement('button', [['onclick', 'getResult()']], 'submit');
 	main.appendChild(h1);
-	main.appendChild(p);
-	main.appendChild(frm);
+	main.appendChild(h2);
+	main.appendChild(datalist);
+	main.appendChild(hide);
+	for(let i = 0; i < 101; i+=10) {
+		let opt = makeElement('option', [['value', `${i}`]]);
+		datalist.appendChild(opt);
+	}
 	for(let category of JSON.parse(obj.assesment)) {
-		let hr = makeElement('hr');
-		let h2 = makeElement('h2', [], category);
-		let fs = makeElement('fieldset', [['id', category]]);
-		frm.appendChild(hr);
-		frm.appendChild(h2);
-		frm.appendChild(fs);
-		for(let i = 0; i < 10; i++) {
-			let stager = [['type', 'radio'], ['id', `${category}${i}`], ['name', category], ['value', i+1]];
-			if(i == 0) { stager.push(['required', 'true']); }
-			let iradio = makeElement('input', stager);
-			fs.appendChild(iradio);
-		}
+		let span = makeElement('span');
+		let h3 = makeElement('h3', [], category);
+		main.appendChild(h3);
+		span.innerText = 'slecht';
+		main.appendChild(span);
+		ipt = makeElement('input', [['type', 'range'], ['list', 'tickmarks'], ['min', '0'], ['max', '100'], ['step', '10'], ['name', `${category}`]]);
+		span = makeElement('span');
+		span.innerText = 'uitstekend';
+		main.appendChild(ipt);
+		main.appendChild(span);
+		main.appendChild(makeElement('br'));
 	}
 	main.appendChild(btn);
 }
 
-function getResult(id, assesments) {
+function getResult() {
 	let res = [];
-	let cats = assesments;
-	for(let cat of cats) {
-		let val = document.querySelector(`input[name="${cat}"]:checked`).value; 
-		res.push((val == 'on') ? 0 : parseInt(val));
+	let id = false;
+	let ipts = document.querySelectorAll('input');
+	for(let ipt of ipts) {
+		if(ipt.id != 'hidden') { res.push(ipt.value); }
+		else { id = ipt.value; }
 	}
-	//displayResult(res);
 	storeAssesmentResult(id, res);
 }
 
