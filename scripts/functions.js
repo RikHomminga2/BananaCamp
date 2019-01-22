@@ -190,33 +190,32 @@ function fetchExam(){
 }
 
 function displayExam(obj){
-	/*if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
+	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
 	let main = document.querySelector('main');
-	let title = makeElement("h2",[], obj.description);
-	let frm = document.createElement('form');
-	frm.setAttribute('method', 'post');
-	frm.setAttribute('action', 'main.php');
+	let title = makeElement("h1",[], obj[0].description);
+	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'exam']]);
+	let btn = makeElement('button', [['onclick', 'getResultExam('+obj[0].id+','+obj[0].description+')']], 'submit');
 	main.appendChild(title);
 	main.appendChild(frm);
-*/
-	//console.log(obj.id);
-	//console.log(obj.description);
-	
-	console.log(obj);
-	document.write(obj);
-	
-	for (let prop in obj[0]) {
-		console.log(obj[0][prop].q_id);
-		console.log(obj[0][prop].question);
-		
-			console.log(obj[0][prop].answers);
-			for(let i =0; i > obj[0][prop].answers.length; i++){
-			
-				console.log(obj[0][prop].answers[i]);
+	for(let num of JSON.parse(obj[0].q_id)){
+		for (let q in obj[1]){
+			if(num == obj[1][q].id){
+				let h2 = makeElement('h2', [], obj[1][q].question);
+				let fs = makeElement('fieldset', [['id', obj[1][q].question]]);
+				let br = makeElement('br');
+				frm.appendChild(br);
+				frm.appendChild(h2);
+				frm.appendChild(fs);		
+				for(let i=0; i < obj[1][q].answers.length; i++ ){
+					let h4 = makeElement('span', [], obj[1][q].answers[i]);
+					let stager = [['type', 'radio'], ['id', `${obj[1][q].question}`], ['name', obj[1][q].question], ['value', i+1]];
+					if(i == 0) { stager.push(['required', 'true']); }
+					let iradio = makeElement('input', stager);
+					fs.appendChild(h4);
+					fs.appendChild(iradio);
+				}
 			}
-			
 		}
-	
-	
-	
+	}
+	main.appendChild(btn);
 }
