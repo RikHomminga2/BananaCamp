@@ -199,11 +199,24 @@ function displayExam(obj){
 	main.appendChild(title);
 	main.appendChild(frm);
 */
-	for(let i; i=obj.length; i++){
-		
-		console.log(obj[i]);
-	}
+	//console.log(obj.id);
+	//console.log(obj.description);
 	
 	console.log(obj);
+	document.write(obj);
+	
+	for (let prop in obj[0]) {
+		console.log(obj[0][prop].q_id);
+		console.log(obj[0][prop].question);
+		
+			console.log(obj[0][prop].answers);
+			for(let i =0; i > obj[0][prop].answers.length; i++){
+			
+				console.log(obj[0][prop].answers[i]);
+			}
+			
+		}
+	
+	
 	
 }
