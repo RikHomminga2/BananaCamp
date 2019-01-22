@@ -4,20 +4,34 @@
 		return mysqli_connect($host, $username, $password, $dbname);
 	}
 
-	function register($email, $password) {
+	function register() {
 		$con = connectToDatabase();
-		mysqli_query($con, "INSERT INTO users (email, password) VALUES('${email}','${password}');");
-		return true;
+		$email = isset($_POST['email']) ? $_POST['email'] : false;
+		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
+		$firstname = isset($_POST['firstname']) ? $_POST['firstname'] : false;
+		$lastname = isset($_POST['lastname']) ? $_POST['lastname'] : false;
+		if($email && $password && $firstname && $lastname) {
+			mysqli_query($con, "INSERT INTO users (email, password) VALUES('${email}', '${password}');");
+			login();
+			$users_id = $_SESSION['users_id'];
+			mysqli_query($con, "INSERT INTO profiles (users_id, firstname, lastname) VALUES ('${users_id}', '${firstname}', '${lastname}');");
+			return true;
+		}
+		return false;	
 	}
 
-	function login($email, $password) {
-		$con = connectToDatabase();
-		$res = mysqli_query($con, "SELECT * FROM users WHERE email='${email}' and password='${password}';");
-		$row = mysqli_fetch_assoc($res);
-		if($row['id'] != '') {
-			$_SESSION['authenticated'] = true;
-			$_SESSION['users_id'] = $row['id'];
-			return true;
+	function login() {
+		$email = isset($_POST['email']) ? $_POST['email'] : false;
+		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
+		if($email && $password) {
+			$con = connectToDatabase();
+			$res = mysqli_query($con, "SELECT * FROM users WHERE email='${email}' and password='${password}';");
+			$row = mysqli_fetch_assoc($res);
+			if($row['id'] != '') {
+				$_SESSION['authenticated'] = true;
+				$_SESSION['users_id'] = $row['id'];
+				return true;
+			}
 		}
 		return false;
 	}
