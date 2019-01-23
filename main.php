@@ -45,6 +45,10 @@
             getExam();
         }
 		
+		if($request == 'getUserInfo') {
+			getUserInfo();
+		}
+
 	} else {
 		header('Location: index.php');
 	}

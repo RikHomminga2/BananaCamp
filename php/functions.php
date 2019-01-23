@@ -1,7 +1,11 @@
 <?php
 	function openDatabaseConnection() {
 		include 'config.php';
-		return mysqli_connect($host, $username, $password, $dbname);
+		$con = mysqli_connect($host, $username, $password, $dbname);
+		if(mysqli_connect_errno()) {
+			die('failed to open connection to database: ' . mysqli_connect_error());
+		}
+		return $con;
 	}
 	
 	function closeDatabaseConnection($con) {
@@ -40,6 +44,15 @@
 			}
 		}
 		return false;
+	}
+	
+	function getUserInfo() {
+		$id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
+		if(!$id) { header('Location: index.php'); }
+		$con = openDatabaseConnection();
+		$res = mysqli_query($con, "SELECT * FROM profiles WHERE users_id=${id}");
+		$row = mysqli_fetch_assoc($res);
+		echo json_encode($row);
 	}
 	
 	function getAssesment() {

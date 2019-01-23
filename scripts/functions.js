@@ -66,6 +66,11 @@ const storeAssesmentResult = (id, res) => {
 	fetchPostRequest(body, redirect);
 }
 
+const fetchUserInfo = () => {
+	let body = 'request=getUserInfo';
+	fetchPostRequest(body, populateUserInfo);
+}
+
 const redirect = (obj) => {
 	location.href = obj.result ? 'profile.php' : 'error.php';
 }
@@ -77,6 +82,25 @@ function makeElement(type, attributes=[], innerText='') {
 	}
 	el.innerText = innerText;
 	return el;
+}
+
+function populateProfile() {
+	fetchAssesmentResultForUser();
+	fetchUserInfo();
+}
+
+function populateUserInfo(obj) {
+	console.log(obj);
+	let section = document.querySelector('#main-top-left');
+	let h2 = makeElement('h2', [], `${obj.firstname} ${obj.lastname}`);
+	section.appendChild(h2);
+	section = document.querySelector('#main-content-left');
+	let bio = makeElement('p', [], `bio: ${obj.bio}`);
+	let github = makeElement('a', [['href', obj.github]]);
+	let linkedin = makeElement('a', [['href', obj.linkedin]]);
+	section.appendChild(bio);
+	section.appendChild(github); github.appendChild(makeElement('span', [['class', 'fab fa-github']]));
+	section.appendChild(linkedin); linkedin.appendChild(makeElement('span', [['class', 'fab fa-linkedin-in']]));
 }
 
 function createQuestionsForm(obj) {

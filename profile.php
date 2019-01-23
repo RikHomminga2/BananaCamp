@@ -1,5 +1,5 @@
 <?php include 'includes/banner.php'; ?>
-<script>document.addEventListener("DOMContentLoaded", fetchAssesmentResultForUser);</script>
+<script>document.addEventListener("DOMContentLoaded", populateProfile);</script>
 	<main class="main-profile">
 		<section id="main-top">
 			<section id="main-top-left" class="block">
