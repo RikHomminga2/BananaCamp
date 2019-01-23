@@ -1,15 +1,8 @@
-<?php session_start(); if(!$_SESSION['authenticated']){ header('Location: index.php'); }?>
-<html>
-	<head>
-		<title>Self assesment</title>
-		<script src="scripts/functions.js"></script>
-		<script src="https://d3js.org/d3.v5.min.js"></script>
-		<script>
-			document.addEventListener("DOMContentLoaded", fetchAssesment);
-		</script>
-	</head>
-	<body>
-		<main>
+<?php include 'includes/banner.php'; ?>
+<script>
+	document.addEventListener("DOMContentLoaded", fetchAssesment);
+</script>
+	<body class="body-assesment">
+		<main class="main-assesment">
 		</main>
-	</body>
-</html>
+<?php include 'includes/footer.php'; ?>
