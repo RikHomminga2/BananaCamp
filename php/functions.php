@@ -98,11 +98,12 @@
 		$answer2 = (isset($_POST['answer2'])) ? $_POST['answer2'] : false;
 		$answer3 = (isset($_POST['answer3'])) ? $_POST['answer3'] : false;
 		$answer4 = (isset($_POST['answer4'])) ? $_POST['answer4'] : false;
+		$category = (isset($_POST['category'])) ? $_POST['category'] : 'default';
 		$answers = [$answer1, $answer2, $answer3, $answer4];
 		if($answer1 && $answer2 && $answer3 && $answer4) {
 			$answers = json_encode($answers);
 			$con = openDatabaseConnection();
-			mysqli_query($con, "INSERT INTO questions (question, answers) VALUES ('${question}','${answers}');");
+			mysqli_query($con, "INSERT INTO questions (question, answers, category) VALUES ('${question}','${answers}', '${category}');");
 			closeDatabaseConnection($con);
 			return true;
 		}

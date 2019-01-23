@@ -1,17 +1,23 @@
-Waar staat HTTP voor, HyperText Transfer Protocol, HyperText Transport Protocol, HyperText Topological Position, How Tiny Tim Plays
-Waar staat HTML voor, HyperText Markup Language, HyperTyped Markup Language, HyperText Modification Language, There Is No Spoon
-Waar staat XML voor, Extensible Markup Language, Extreme Markup Language, Easy Modifiable Language, X Marks Longitude
-Waar staat URL voor, Uniform Resource Locater, Uniform Resource Language, Unicode Response Language, Un Real Life
-Waar staat CSS voor, Cascading Style Sheets, Comprehensive Style Sheets, Complex Style Sheets, Cool Simple Style
-Waar staat XSS voor, Cross Site Scripting, Xclusive Style Sheet, XML Style Sheet, XHTML Simple Syndication
-Waar staat CSRF voor, Cross Site Request Forgery, Cross Site Response Function, Crippled Single Request Factory, Cool Calm Collected
-Waar staat RSS voor, Real Simple Syndication, Really Simple Stuff, Request Source Sheet, Read Static Source
-Wie is Tim Berners-Lee, Uitvinder van het WWW, Uitvinder van TCP, Uitvinder van UNIX, Amerikaans Revolutionair
-Wie is Rasmus Leerdorf, Uitvinder van PHP, Uitvinder van Linux, Uitvinder van het Internet, Deze persoon bestaat niet
-Wie is Brandon Eich, Uitvinder van Javascript, Uitvinder van PHP, Uitvinder van PGP, Gitarist voor de Dead Kennedys
-Hoe definieer je een functie in PHP, function, fn, func, def
-Hoe definieer je een functie in Javascript, function, fn, func, def
-Hoe definieer je een functie in Python, def, function, fn, func
-Hoe definieer je een paragraaf in HTML, <p>, <pg>, <para>, <pre>
-Om welke uitspraak staat Bart Simpson bekend, Eat my shorts, cowabunga, Here is Conway Twitty, power rangers are go
-In welke band speelde Dave Grohl de drums, Nirvana, Stone Temple Pilots, Mudhoney, The Beatles
+Waar staat HTTP voor, HyperText Transfer Protocol, HyperText Transport Protocol, HyperText Topological Position, How Tiny Tim Plays, HTML
+Waar staat HTML voor, HyperText Markup Language, HyperTyped Markup Language, HyperText Modification Language, There Is No Spoon, HTML
+Waar staat XML voor, Extensible Markup Language, Extreme Markup Language, Easy Modifiable Language, X Marks Longitude, HTML
+Waar staat URL voor, Uniform Resource Locater, Uniform Resource Language, Unicode Response Language, Un Real Life, HTML
+Waar staat CSS voor, Cascading Style Sheets, Comprehensive Style Sheets, Complex Style Sheets, Cool Simple Style. CSS
+Waar staat XSS voor, Cross Site Scripting, Xclusive Style Sheet, XML Style Sheet, XHTML Simple Syndication, SECURITY
+Waar staat CSRF voor, Cross Site Request Forgery, Cross Site Response Function, Crippled Single Request Factory, Cool Calm Collected, SECURITY
+Waar staat RSS voor, Real Simple Syndication, Really Simple Stuff, Request Source Sheet, Read Static Source, HTML
+Wie is Tim Berners-Lee, Uitvinder van het WWW, Uitvinder van TCP, Uitvinder van UNIX, Amerikaans Revolutionair, HTML
+Wie is Rasmus Leerdorf, Uitvinder van PHP, Uitvinder van Linux, Uitvinder van het Internet, Deze persoon bestaat niet, PHP
+Wie is Brandon Eich, Uitvinder van Javascript, Uitvinder van PHP, Uitvinder van PGP, Gitarist voor de Dead Kennedys, JAVASCRIPT
+Hoe definieer je een functie in PHP, function, fn, func, def, PHP
+Hoe definieer je een functie in Javascript, function, fn, func, def, JAVASCRIPT
+Hoe definieer je een functie in Python, def, function, fn, func, PYTHON
+Hoe definieer je een paragraaf in HTML, <p>, <pg>, <para>, <pre>, HTML
+Waar in je HTML document horen meta tags, <head>, <main>, <div>, <body>, HTML
+Waar in je HTML staat het voor de eindgebruiker zichtbare gedeelte van je pagina, <body>, <meta>, <head>, <tail>, HTML
+Waar in je HTML staat de <title>, <head>, <tail>, <header>, <footer>, HTML
+Hoe stel je met CSS een achtergrondkleur in, background-color, bg-color, color, background, CSS
+Wat betekent in de context van CSS 'vh', hoogte van de viewport, breedte van de viewport, virtual horizon, oppervlakte van de viewport, CSS
+Hoe stel je een horizontale regel in in HTML, <hr>, <br>, <vr>, <div>, HTML
+Wat betekent <br> in HTML, linebreak, basic rule, horizontal rule, bold red, HTML
+Wat is jquery, javascript library, php functie, html tag, css selector
