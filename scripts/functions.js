@@ -164,25 +164,57 @@ function getResult() {
 }
 
 function displayResult(obj) {
-	let res = obj;
-	let dataset = JSON.parse(res.results);
-	//emptyMain();
-	let title =makeElement('h2', [], res.title);
-	let main = document.querySelector("main");
+	let title =makeElement('h2', [], obj.title);
+	let main = document.getElementById("main-content-center");
 	main.appendChild(title);
-	const w = 500;
-	const h = 100;
-	const svg = d3.select("main")
-		.append("svg")
-		.attr("width", w)
-		.attr("height", h);
-	svg.selectAll("rect").data(dataset).enter()
-		.append("rect")
-		.attr("x", (d, i) => i * 30)
-		.attr("y", (d, i) => h - 10 * d)
-		.attr("width", 25)
-		.attr("height", (d, i) => d * 100)
-		.attr("fill", (d => (d < 6) ? "red" : "green"));
+	const dataset =  obj.results.map(x => parseInt(x));
+	const w = 600;
+    const h = 150;
+	const barPadding = 5;
+	const svg = d3.select("#main-content-center")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h + 35)
+				.attr("viewBox", "0 0 " + w + " " + h )
+				.attr("preserveAspectRatio", "xMidYMid")
+				.attr("id", "chart");			
+	// create bars
+    svg.selectAll("rect")
+       .data(dataset)
+       .enter()
+       .append("rect")
+       .attr("x", (d, i) => i * w / dataset.length)
+       .attr("y", (d, i) => h - d)
+       .attr("width", w / dataset.length - barPadding)
+	   .attr("height", (d, i) => d)
+       .attr("fill", (d => (d < 60) ? "red" : "green"))
+       .attr("class", "bar")
+		// create tooltip
+       .append("title")
+	   .attr("class", "tooltip")
+       .text((d, i) => (obj.assesment,obj.assesment[i]));  
+	// add text
+	svg.selectAll("text")
+       .data(dataset)
+       .enter()
+       .append("text")
+	   .attr("font-family", "Roboto Condensed", "sans-serif")
+	   .attr("font-size", "16px")
+	   .attr("font-weight", "bold")
+	   .attr("fill", "#000")
+	   .attr("text-anchor", "middle")
+       .text((d) => d)
+       .attr("x", (d, i) => i * (w / dataset.length) + (w / dataset.length - barPadding) / 2)
+       .attr("y", (d, i) => h - (d  + 4) );
+	// resize
+	let chart = $("#chart");
+	let aspect = chart.width() / chart.height();
+	let container = chart.parent();	
+	$(window).on("resize", function(){
+		let targetWidth = container.width();
+		chart.attr("width", targetWidth);
+		chart.attr("height", Math.round(targetWidth / aspect));
+	}).trigger("resize");    
 }
 
 function fetchExam(){
