@@ -34,6 +34,7 @@
 					<input type="text" name="answer2" placeholder="Fill in wrong answer"><br/>
 					<input type="text" name="answer3" placeholder="Fill in wrong answer"><br/>
 					<input type="text" name="answer4" placeholder="Fill in wrong answer"><br/><br/>
+					<input type="text" name="category" placeholder="category"><br/><br/>
 					<input type="hidden" name="request" value="addQuestion">
 					<input type="submit" value="Save">
 				</form>
