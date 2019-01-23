@@ -44,20 +44,27 @@
 		}
 	}
 	
-	function storeAssesmentResult($id, $result) {
-		$con = connectToDatabase();
-		$userid = 1;
-		mysqli_query($con, "INSERT INTO assesment_results (assesment_id, user_id, results) VALUES('${id}','${userid}','${result}');");
+	function storeAssesmentResult() {
+		$id = isset($_POST['id']) ? $_POST['id'] : false;
+		$result = isset($_POST['result']) ? $_POST['result'] : false;
+		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
+		if($id && $result && $users_id) {
+			$con = connectToDatabase();
+			mysqli_query($con, "INSERT INTO assesment_results (assesment_id, user_id, results) VALUES('${id}','${users_id}','${result}');");
+			echo json_encode(["result" => true]);
+		} else {
+			echo json_encode(["result" => false]);
+		}
 	}
 	
-	function getUserResultsAssesments(){
+	function getAssesmentResultForUser(){
 		$con = connectToDatabase();
 		$res = mysqli_query($con, 	
 			"SELECT assesments.id, assesments.title, assesments.description, assesments.assesment, assesment_results.results
 			FROM assesments 
 			INNER JOIN assesment_results
 			ON assesments.id = assesment_results.assesment_id
-			WHERE user_id=9");
+			WHERE user_id=16");
 		while($row = mysqli_fetch_assoc($res)){
 			echo json_encode(["id" => $row['id'], "title" => $row['title'], "assesment" => $row['assesment'], "results" => $row['results']]);
 		}

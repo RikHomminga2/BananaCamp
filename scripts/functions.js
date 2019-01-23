@@ -61,6 +61,15 @@ const fetchAssesmentResultForUser = () => {
 	fetchPostRequest(body, displayResult);
 }
 
+const storeAssesmentResult = (id, res) => {
+	let body = 'request=storeAssesmentResult&id='+id+'&result='+JSON.stringify(res)+'';
+	fetchPostRequest(body, redirect);
+}
+
+const redirect = (obj) => {
+	location.href = obj.result ? 'profile.php' : 'error.php';
+}
+
 function makeElement(type, attributes=[], innerText='') {
 	let el = document.createElement(type);
 	for(let attribute of attributes) {
@@ -149,17 +158,6 @@ function getResult() {
 		else { id = ipt.value; }
 	}
 	storeAssesmentResult(id, res);
-}
-
-function storeAssesmentResult(id, res){
-	let post = {
-		method: 'post',
-		headers: {
-			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-		},
-		body: 'request=storeAssesmentResult&id='+id+'&result='+JSON.stringify(res)+''
-	}
-	fetch('main.php', post).catch(ferror);	
 }
 
 function displayResult(obj) {

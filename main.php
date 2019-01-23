@@ -22,13 +22,10 @@
 		}
 		
 		if($request == 'storeAssesmentResult') {
-			$id = $_POST['id'];
-			$result = $_POST['result'];
-			storeAssesmentResult($id, $result);
-			header('Location: profile.php');
+			storeAssesmentResult();
 		}
-		if($request == 'getUserResultsAssesments'){
-			getUserResultsAssesments();
+		if($request == 'getAssesmentResultForUser'){
+			getAssesmentResultForUser();
 		}
 		
 		if($request == 'addQuestion') {
