@@ -1,11 +1,15 @@
 <?php
-	function connectToDatabase() {
+	function openDatabaseConnection() {
 		include 'config.php';
 		return mysqli_connect($host, $username, $password, $dbname);
 	}
-
+	
+	function closeDatabaseConnection($con) {
+		return mysqli_close($con);
+	}
+	
 	function register() {
-		$con = connectToDatabase();
+		$con = openDatabaseConnection();
 		$email = isset($_POST['email']) ? $_POST['email'] : false;
 		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
 		$firstname = isset($_POST['firstname']) ? $_POST['firstname'] : false;
@@ -15,6 +19,7 @@
 			login();
 			$users_id = $_SESSION['users_id'];
 			mysqli_query($con, "INSERT INTO profiles (users_id, firstname, lastname) VALUES ('${users_id}', '${firstname}', '${lastname}');");
+			closeDatabaseConnection($con);
 			return true;
 		}
 		return false;	
@@ -24,12 +29,13 @@
 		$email = isset($_POST['email']) ? $_POST['email'] : false;
 		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
 		if($email && $password) {
-			$con = connectToDatabase();
+			$con = openDatabaseConnection();
 			$res = mysqli_query($con, "SELECT * FROM users WHERE email='${email}' and password='${password}';");
 			$row = mysqli_fetch_assoc($res);
 			if($row['id'] != '') {
 				$_SESSION['authenticated'] = true;
 				$_SESSION['users_id'] = $row['id'];
+				closeDatabaseConnection($con);
 				return true;
 			}
 		}
@@ -37,7 +43,7 @@
 	}
 	
 	function getAssesment() {
-		$con = connectToDatabase();
+		$con = openDatabaseConnection();
 		$res = mysqli_query($con, "SELECT * FROM assesments WHERE id=1");
 		while($row = mysqli_fetch_assoc($res)) {
 			echo json_encode(["id" => $row['id'], "title" => $row['title'], "description" => $row['description'], "assesment" => $row['assesment']]);
@@ -49,8 +55,9 @@
 		$result = isset($_POST['result']) ? $_POST['result'] : false;
 		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
 		if($id && $result && $users_id) {
-			$con = connectToDatabase();
-			mysqli_query($con, "INSERT INTO assesment_results (assesment_id, user_id, results) VALUES('${id}','${users_id}','${result}');");
+			$con = openDatabaseConnection();
+			mysqli_query($con, "INSERT INTO assesment_results (assesments_id, users_id, results) VALUES('${id}','${users_id}','${result}');");
+			closeDatabaseConnection($con);
 			echo json_encode(["result" => true]);
 		} else {
 			echo json_encode(["result" => false]);
@@ -58,15 +65,16 @@
 	}
 	
 	function getAssesmentResultForUser(){
-		$con = connectToDatabase();
+		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
+		$con = openDatabaseConnection();
 		$res = mysqli_query($con, 	
 			"SELECT assesments.id, assesments.title, assesments.description, assesments.assesment, assesment_results.results
 			FROM assesments 
 			INNER JOIN assesment_results
-			ON assesments.id = assesment_results.assesment_id
-			WHERE user_id=16");
+			ON assesments.id = assesment_results.assesments_id
+			WHERE users_id=${users_id}");
 		while($row = mysqli_fetch_assoc($res)){
-			echo json_encode(["id" => $row['id'], "title" => $row['title'], "assesment" => $row['assesment'], "results" => $row['results']]);
+			echo json_encode(["id" => $row['id'], "title" => $row['title'], "assesment" => json_decode($row['assesment']), "results" => json_decode($row['results'])]);
 		}
 	}
 	
@@ -76,26 +84,26 @@
 		$categories = (isset($_POST['categories'])) ? explode(',', $_POST['categories']) : false;
 		if($title && $description && $categories) {
 			$categories = json_encode($categories);
-			$con = connectToDatabase();
+			$con = openDatabaseConnection();
 			mysqli_query($con, "INSERT INTO assesments (title, description, assesment) VALUES ('${title}', '${description}', '${categories}')");
+			closeDatabaseConnection($con);
 			return true;
 		}
 		return false;
 	}
 	
 	function addQuestion() {
-		//$question, [$answer1, $answer2, $answer3, $answer4])
 		$question = (isset($_POST['question'])) ? $_POST['question'] : false;
 		$answer1 = (isset($_POST['answer1'])) ? $_POST['answer1'] : false;
 		$answer2 = (isset($_POST['answer2'])) ? $_POST['answer2'] : false;
 		$answer3 = (isset($_POST['answer3'])) ? $_POST['answer3'] : false;
 		$answer4 = (isset($_POST['answer4'])) ? $_POST['answer4'] : false;
 		$answers = [$answer1, $answer2, $answer3, $answer4];
-		//var_dump($a); var_dump($_POST); die;
 		if($answer1 && $answer2 && $answer3 && $answer4) {
 			$answers = json_encode($answers);
-			$con = connectToDatabase();
+			$con = openDatabaseConnection();
 			mysqli_query($con, "INSERT INTO questions (question, answers) VALUES ('${question}','${answers}');");
+			closeDatabaseConnection($con);
 			return true;
 		}
 		return false;
@@ -103,7 +111,7 @@
 	
 	function getQuestions() {
 		$stager = [];
-		$con = connectToDatabase();
+		$con = openDatabaseConnection();
 		$res = mysqli_query($con, "SELECT * FROM questions ORDER BY id DESC");
 		while($row = mysqli_fetch_assoc($res)) {
 			$stager[] = ["id" => $row['id'], "question" => $row['question'], "answers" => json_decode($row['answers'])];
@@ -113,11 +121,12 @@
 	
 	function getQuestions2() {
 		$stager = [];
-		$con = connectToDatabase();
+		$con = openDatabaseConnection();
 		$res = mysqli_query($con, "SELECT * FROM questions ORDER BY id DESC");
 		while($row = mysqli_fetch_assoc($res)) {
 			$stager [] = ["id" => $row['id'], "question" => $row['question'], "answers" => json_decode($row['answers'])];
 		}
+		closeDatabaseConnection($con);
 		return $stager;
 	}
 	
@@ -130,12 +139,13 @@
             }   
         }
         $stager = json_encode($stager);
-        $con = connectToDatabase();
+        $con = openDatabaseConnection();
         mysqli_query($con, "INSERT INTO exams (description, questions) VALUES ('${description}', '${stager}');");
+		closeDatabaseConnection($con);
     }
 	
 	function getExam(){
-		$con = connectToDatabase();
+		$con = openDatabaseConnection();
 		$res = mysqli_query($con, "SELECT * FROM exams WHERE id=1");
 		while($row = mysqli_fetch_assoc($res)){
 			$stager1 [] = ['id' => $row['id'], 'description' => $row['description'], 'q_id' => $row['questions']];
