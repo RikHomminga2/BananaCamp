@@ -20,8 +20,6 @@ p, code {
 nav {
   border-width: 1px 0;
 	list-style: none;
-	margin: 0;
-	padding: 0;
 	text-align: center;
 }
 
@@ -142,8 +140,8 @@ article {
 /*PROFILE PAGE*/
 .body-profile {
 	padding: 0;
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 7%;
+	margin-right: 7%;
 	display: grid;
 	grid-template-rows: 12% 84% 4%;
 }
@@ -169,6 +167,7 @@ section.block {
 	box-shadow: 0 0 5px #202020;
   border-radius: 2px;
   padding: 15px;
+  overflow: hidden;
 }
 
 section#main-top {
@@ -178,11 +177,35 @@ section#main-top {
   padding: 10px
 }
 
+section#main-top-left {
+  background: url('https://i.imgur.com/zPRa1gB.jpg') no-repeat;
+  background-size: contain;
+  border: 10px solid #fffafa;
+  text-align: center;
+}
+
+section#main-top-right {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+}
+
 section#main-content {
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr;
 	grid-gap: 10px;
   padding: 10px;
+}
+
+.fab {
+  font-size: 25px;
+  color: #202020;
+}
+
+figure {
+    display: block;
+    margin-inline-start: 1px;
+    margin-inline-end: 5px;
 }
   
 /*ASSESSMENT PAGE*/
