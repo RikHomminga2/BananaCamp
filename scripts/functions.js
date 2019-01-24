@@ -66,6 +66,11 @@ const storeAssesmentResult = (id, res) => {
 	fetchPostRequest(body, redirect);
 }
 
+const storeExamResult = (id, res) => {
+	let body = 'request=storeExamResult&id='+id+'&result='+res+'';
+	fetchPostRequest(body, redirect);
+}
+
 const fetchUserInfo = () => {
 	let body = 'request=getUserInfo';
 	fetchPostRequest(body, populateUserInfo);
@@ -257,9 +262,13 @@ function displayExam(obj){
 	let main = document.querySelector('main');
 	let title = makeElement("h1",[], obj[0].description);
 	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'exam']]);
-	let btn = makeElement('button', [['onclick', 'getResultExam('+obj[0].id+','+obj[0].description+')']], 'submit');
+	let hide1 = makeElement('input', [['type', 'hidden'], ['value', `${obj[0].id}`], ['id', 'hidden1']]);
+	let hide2 = makeElement('input', [['type', 'hidden'], ['value', `${obj[0].q_id}`], ['id', 'hidden2']]);
+	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'btn']], 'Submit');
 	main.appendChild(title);
 	main.appendChild(frm);
+	main.appendChild(hide1);
+	main.appendChild(hide2);
 	for(let num of JSON.parse(obj[0].q_id)){
 		for (let q in obj[1]){
 			if(num == obj[1][q].id){
@@ -271,7 +280,7 @@ function displayExam(obj){
 				frm.appendChild(fs);		
 				for(let i=0; i < obj[1][q].answers.length; i++ ){
 					let h4 = makeElement('span', [], obj[1][q].answers[i]);
-					let stager = [['type', 'radio'], ['id', `${obj[1][q].question}`], ['name', obj[1][q].question], ['value', i+1]];
+					let stager = [['type', 'radio'], ['id', `${obj[1][q].question}`], ['name', obj[1][q].id], ['value', i+1]];
 					if(i == 0) { stager.push(['required', 'true']); }
 					let iradio = makeElement('input', stager);
 					fs.appendChild(h4);
@@ -281,4 +290,17 @@ function displayExam(obj){
 		}
 	}
 	main.appendChild(btn);
+}
+
+function getResultExam(obj) {
+	let id = document.querySelector('input#hidden1').value;
+	let q_id = document.querySelector('input#hidden2').value;
+	let q_ids = JSON.parse(q_id);
+	let res = [];
+	for(let i=0; i < q_ids.length; i++){
+		let val = document.querySelector(`input[name="${q_ids[i]}"]:checked`).value; 
+		res.push(val);
+	}
+	console.log(id, res);
+	//storeExamResult(exam, res);
 }
