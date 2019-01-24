@@ -109,6 +109,25 @@ function populateUserInfo(obj) {
 }
 
 function createQuestionsForm(obj) {
+	let elem = document.getElementById('getQuestions')
+	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php']]);
+	let ipt = makeElement('input', [['type', 'text'], ['name', 'description'], ['placeholder', 'Description of Exam']]);
+	let br = makeElement('br');
+	elem.appendChild(frm);
+	frm.appendChild(ipt); frm.appendChild(br);
+	for(let q of obj) {
+		let checkbx = makeElement('input', [['type', 'checkbox'], ['id', `question${q.id}`], ['name', `question${q.id}`], ['value', q.id]]);
+		let lbl = makeElement('label', [['for', `question${q.id}`]], `${q.question}?`);
+		let br = makeElement('br');
+		frm.appendChild(checkbx); frm.appendChild(lbl); frm.appendChild(br);
+	}
+	let hide = makeElement('input', [['type', 'hidden'], ['name', 'request'], ['value', 'createExam']]);
+	let subm = makeElement('input', [['type', 'submit']]);
+	frm.appendChild(hide); frm.appendChild(subm);
+}
+
+/*
+function createQuestionsForm(obj) {
 	let main = document.getElementById('getQuestions');
 	let frm = document.createElement('form');
 	frm.setAttribute('method', 'post');
@@ -144,7 +163,7 @@ function createQuestionsForm(obj) {
 	ipt.setAttribute('type', 'Submit');
 	frm.appendChild(ipt);
 }
-
+*/
 function createAssesmentForm(obj) {
 	emptyMain();
 	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }	
