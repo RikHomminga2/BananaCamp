@@ -19,5 +19,5 @@ if (!isset($_SESSION['users_id'])) {
 		<title>Profile</title>
 	</head>
 	<body class="body-profile">
-		<header class="header-profile"><button onclick="fetchSignOut()">sign out</button>
+		<header class="header-profile"><button class="btn" onclick="fetchSignOut()">Sign out</button>
 		</header>

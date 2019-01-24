@@ -166,7 +166,7 @@ function createAssesmentForm(obj) {
 		section.appendChild(makeElement('br'));
 	}
 	main.appendChild(section);
-	main.appendChild(btn);
+	section.appendChild(btn);
 }
 
 function getResult() {
@@ -261,7 +261,7 @@ function displayExam(obj){
 		for (let q in obj[1]){
 			if(num == obj[1][q].id){
 				let h2 = makeElement('h2', [], obj[1][q].question);
-				let fs = makeElement('fieldset', [['id', obj[1][q].question]]);
+				let fs = makeElement('fieldset', [['id', obj[1][q].question], ['class', 'fieldset']]);
 				let br = makeElement('br');
 				frm.appendChild(br);
 				frm.appendChild(h2);
@@ -271,13 +271,15 @@ function displayExam(obj){
 					let stager = [['type', 'radio'], ['id', `${obj[1][q].question}`], ['name', obj[1][q].id], ['value', i+1]];
 					if(i == 0) { stager.push(['required', 'true']); }
 					let iradio = makeElement('input', stager);
-					fs.appendChild(h4);
+					let bk = makeElement('br');
 					fs.appendChild(iradio);
+					fs.appendChild(h4);
+					fs.appendChild(bk);
 				}
 			}
 		}
 	}
-	main.appendChild(btn);
+	frm.appendChild(btn);
 }
 
 function getResultExam(obj) {

@@ -16,6 +16,23 @@ p, code {
   padding: 5px;
 }
 
+/* LINKS */
+a:link {
+  color: #202020;
+}
+
+a:visited {
+  color: #202020;
+}
+
+a:hover {
+  color: #feea37;
+}
+
+a:active {
+  color: #7ad1ef;
+}
+
 /*NAVIGATION + BUTTONS*/
 nav {
   border-width: 1px 0;
@@ -37,7 +54,7 @@ button {
 }
 
 button:hover {
-  background-color: #FFEF15;
+  background-color: #feea37;
 }
 
 /*INDEX PAGE*/
@@ -69,7 +86,7 @@ form {
   outline: none;
   color: #202020;
   padding: 14px 16px;
-  background-color: #FFEF15;
+  background-color: #feea37;
   font-family: inherit;
   margin: 5px;
   cursor: pointer;
@@ -106,7 +123,7 @@ article {
 }
 
 .article-section {
-  background-color: #ffef15;
+  background-color: #feea37;
   position: relative;
   width: auto;
   text-align: left;
@@ -130,7 +147,7 @@ article {
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color: #ffef15;
+  background-color: #feea37;
 }
 
 .article-section:hover .overlay {
@@ -143,7 +160,7 @@ article {
 	margin-left: 7%;
 	margin-right: 7%;
 	display: grid;
-	grid-template-rows: 12% 84% 4%;
+	grid-template-rows: 12vh 84vh 4vh;
 }
 
 .header-profile {
@@ -203,9 +220,14 @@ section#main-content {
 }
 
 figure {
-    display: block;
-    margin-inline-start: 1px;
-    margin-inline-end: 5px;
+  display: block;
+  margin-inline-start: 1px;
+  margin-inline-end: 5px;
+}
+
+.edit {
+  float: right;
+  font-size: 20px;
 }
   
 /*ASSESSMENT PAGE*/
@@ -259,6 +281,23 @@ input[type=range]:focus {
 
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #b7ebf7;
+}
+
+/*EXAM PAGE*/
+.main-exam {
+  display: grid;
+	grid-template-rows: 1fr;
+  background-color: #fffafa;
+  border-radius: 2px;
+  box-shadow: 0 0 15px #202020;
+  text-align: center;
+  padding: 10px;
+  overflow: auto;
+}
+
+.fieldset {
+  border: none;
+  width: 25%;
 }
 
 /*FOOTER*/

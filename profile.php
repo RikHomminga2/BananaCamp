@@ -3,7 +3,6 @@
 	<main class="main-profile">
 		<section id="main-top">
 			<section id="main-top-left" class="block">
-				<!--<img src="https://i.imgur.com/zPRa1gB.jpg" alt="" class="profile-img">-->
 			</section>
 			<section id="main-top-right" class="block">
 				<figure>
@@ -50,7 +49,7 @@
 		</section>
 		<section id="main-content">
 			<section id="main-content-left" class="block">
-				Personalia
+				<a href="#" class="edit"><i class="far fa-edit"></i></a>
 			</section>
 			<section id="main-content-center" class="block">
 				<nav>
