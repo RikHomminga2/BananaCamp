@@ -76,8 +76,13 @@ const fetchUserInfo = () => {
 	fetchPostRequest(body, populateUserInfo);
 }
 
+const fetchSignOut = () => {
+	let body = 'request=logout';
+	fetchPostRequest(body, redirect);
+}
+
 const redirect = (obj) => {
-	location.href = obj.result ? 'profile.php' : 'error.php';
+	location.href = obj.result ? obj.page : 'error.php';
 }
 
 function makeElement(type, attributes=[], innerText='') {

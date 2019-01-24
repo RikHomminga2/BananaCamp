@@ -9,6 +9,11 @@
 		if($request == 'login') {
 			login() ? header('Location: profile.php') : header('Location: index.php');
 		}
+		
+		if($request == 'logout') {
+			logout();
+		}
+		
 		if($request == 'register') {
 			register() ? header('Location: profile.php') : header('Location: index.php');
 		}

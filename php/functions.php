@@ -46,6 +46,11 @@
 		return false;
 	}
 	
+	function logout() {
+		session_destroy();
+		echo json_encode(["result" => true, "page" => "index.php"]);
+	}
+	
 	function getUserInfo() {
 		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
 		if(!$users_id) { header('Location: index.php'); }
@@ -87,7 +92,7 @@
 			$con = openDatabaseConnection();
 			mysqli_query($con, "INSERT INTO assesment_results (assesments_id, users_id, results) VALUES('${id}','${users_id}','${result}');");
 			closeDatabaseConnection($con);
-			echo json_encode(["result" => true]);
+			echo json_encode(["result" => true, "page" => "profile.php"]);
 		} else {
 			echo json_encode(["result" => false]);
 		}
@@ -101,7 +106,7 @@
 			FROM assesments 
 			INNER JOIN assesment_results
 			ON assesments.id = assesment_results.assesments_id
-			WHERE users_id=${users_id}");
+			WHERE users_id=${users_id} LIMIT 1");
 		while($row = mysqli_fetch_assoc($res)){
 			echo json_encode(["id" => $row['id'], "title" => $row['title'], "assesment" => json_decode($row['assesment']), "results" => json_decode($row['results'])]);
 		}
