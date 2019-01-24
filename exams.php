@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Exams</title>
-		<script src="scripts/functions2.js"></script>
+		<script src="scripts/functions.js"></script>
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 		<script>
 			document.addEventListener("DOMContentLoaded", fetchExam);
