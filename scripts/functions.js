@@ -81,6 +81,11 @@ const fetchSignOut = () => {
 	fetchPostRequest(body, redirect);
 }
 
+function fetchExam(){
+	let body = 'request=getExam'
+	fetchPostRequest(body, displayExam);
+}
+
 const redirect = (obj) => {
 	location.href = obj.result ? obj.page : 'error.php';
 }
@@ -232,17 +237,6 @@ function displayResult(obj) {
 		chart.attr("width", targetWidth);
 		chart.attr("height", Math.round(targetWidth / aspect));
 	}).trigger("resize");    
-}
-
-function fetchExam(){
-	let post = {
-		method: 'post',
-		headers: {
-			"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-		},
-		body: 'request=getExam'
-	}
-	fetch('main.php', post).then(fstatus).then(json).then(displayExam).catch(ferror);	
 }
 
 function displayExam(obj){
