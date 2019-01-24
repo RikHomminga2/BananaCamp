@@ -38,7 +38,7 @@
 		
 		if($request == 'createExam') {
             createExam();
-            header('Location: exams.html');
+            header('Location: exams.php');
         }
 		
 		if($request == 'getExam') {
