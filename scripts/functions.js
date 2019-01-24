@@ -109,8 +109,8 @@ function populateUserInfo(obj) {
 	let section = document.querySelector('#main-top-left');
 	let h2 = makeElement('h2', [], `${obj.firstname} ${obj.lastname}`);
 	let hr = makeElement('hr', [['width', '50%'], ['color', '#202020']]);
-	let github = makeElement('a', [['href', obj.github]]);
-	let linkedin = makeElement('a', [['href', obj.linkedin]]);
+	let github = makeElement('a', [['href', obj.github], ['target', '_blank']]);
+	let linkedin = makeElement('a', [['href', obj.linkedin], ['target', '_blank']]);
 	section.appendChild(h2);
 	section.appendChild(hr);
 	section.appendChild(github); github.appendChild(makeElement('span', [['class', 'fab fa-github']]));
