@@ -45,6 +45,10 @@
             getExam();
         }
 		
+		if($request == 'storeExamResult'){
+			storeExamResult();	
+		}
+		
 		if($request == 'getUserInfo') {
 			getUserInfo();
 		}

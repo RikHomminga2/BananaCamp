@@ -67,7 +67,7 @@ const storeAssesmentResult = (id, res) => {
 }
 
 const storeExamResult = (id, res) => {
-	let body = 'request=storeExamResult&id='+id+'&result='+res+'';
+	let body = 'request=storeExamResult&id='+id+'&result='+JSON.stringify(res)+'';
 	fetchPostRequest(body, redirect);
 }
 
@@ -282,6 +282,5 @@ function getResultExam(obj) {
 		let val = document.querySelector(`input[name="${q_ids[i]}"]:checked`).value; 
 		res.push(val);
 	}
-	console.log(id, res);
-	//storeExamResult(exam, res);
+	storeExamResult(id, res);
 }

@@ -167,3 +167,18 @@
 		array_push($stager1, getQuestions2());
 		echo json_encode($stager1);
 	}
+	
+	function storeExamResult(){
+		$id = isset($_POST['id']) ? $_POST['id'] : false;
+		$result = isset($_POST['result']) ? $_POST['result'] : false;
+		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
+		if($id && $result && $users_id) {
+			$con = openDatabaseConnection();
+			mysqli_query($con, "INSERT INTO exam_results (exams_id, users_id, results) VALUES('${id}','${users_id}','${result}');");
+			closeDatabaseConnection($con);
+			echo json_encode(["result" => true]);
+		} else {
+			echo json_encode(["result" => false]);
+		}
+		
+	}
