@@ -49,6 +49,10 @@
 			storeExamResult();	
 		}
 		
+		if($request == 'updateUserInfo') {
+			(updateUserInfo()) ? header('Location: profile.php' : header('Location: error.php');
+		}
+	
 		if($request == 'getUserInfo') {
 			getUserInfo();
 		}

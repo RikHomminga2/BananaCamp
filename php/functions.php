@@ -47,12 +47,28 @@
 	}
 	
 	function getUserInfo() {
-		$id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
-		if(!$id) { header('Location: index.php'); }
+		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
+		if(!$users_id) { header('Location: index.php'); }
 		$con = openDatabaseConnection();
-		$res = mysqli_query($con, "SELECT * FROM profiles WHERE users_id=${id}");
+		$res = mysqli_query($con, "SELECT * FROM profiles WHERE users_id=${users_id}");
 		$row = mysqli_fetch_assoc($res);
 		echo json_encode($row);
+	}
+	
+	function updateUserInfo() {
+		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
+		$firstname = isset($_POST['firstname']) ? $_POST['firstname'] : false;
+		$lastname = isset($_POST['lastname']) ? $_POST['lastname'] : false;
+		$bio = isset($_POST['bio']) ? $_POST['bio'] : false;
+		$github = isset($_POST['github']) ? $_POST['github'] : false;
+		$linkedin = isset($_POST['linkedin']) ? $_POST['linkedin']: false;
+		if($users_id && $firstname && $lastname && $bio && $github && $linkedin) {
+			$con = openDatabaseConnection();
+			$sql = "UPDATE profiles SET firstname='${firstname}', lastname='${lastname}', bio='${bio}', linkedin='${linkedin}', github='${github}' WHERE users_id=${users_id}";
+			mysqli_query($con, $sql);
+			return true;
+		}
+		return false;
 	}
 	
 	function getAssesment() {
