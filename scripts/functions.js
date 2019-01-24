@@ -98,14 +98,16 @@ function populateUserInfo(obj) {
 	console.log(obj);
 	let section = document.querySelector('#main-top-left');
 	let h2 = makeElement('h2', [], `${obj.firstname} ${obj.lastname}`);
-	section.appendChild(h2);
-	section = document.querySelector('#main-content-left');
-	let bio = makeElement('p', [], `bio: ${obj.bio}`);
+	let hr = makeElement('hr', [['width', '50%'], ['color', '#202020']]);
 	let github = makeElement('a', [['href', obj.github]]);
 	let linkedin = makeElement('a', [['href', obj.linkedin]]);
-	section.appendChild(bio);
+	section.appendChild(h2);
+	section.appendChild(hr);
 	section.appendChild(github); github.appendChild(makeElement('span', [['class', 'fab fa-github']]));
-	section.appendChild(linkedin); linkedin.appendChild(makeElement('span', [['class', 'fab fa-linkedin-in']]));
+	section.appendChild(linkedin); linkedin.appendChild(makeElement('span', [['class', 'fab fa-linkedin-in']]));	
+	section = document.querySelector('#main-content-left');
+	let bio = makeElement('p', [], `bio: ${obj.bio}`);
+	section.appendChild(bio);
 }
 
 function createQuestionsForm(obj) {
