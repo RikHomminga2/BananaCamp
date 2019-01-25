@@ -181,9 +181,9 @@
 	
 	function getExam(){
 		$con = openDatabaseConnection();
-		$res = mysqli_query($con, "SELECT * FROM exams WHERE id=1");
+		$res = mysqli_query($con, "SELECT * FROM exams WHERE id=3");
 		while($row = mysqli_fetch_assoc($res)){
-			$stager1 [] = ['id' => $row['id'], 'description' => $row['description'], 'q_id' => $row['questions']];
+			$stager1 [] = ['id' => $row['id'], 'description' => $row['description'], 'question_ids' => json_decode($row['questions'])];
 		}	
 		array_push($stager1, getQuestions2());
 		echo json_encode($stager1);

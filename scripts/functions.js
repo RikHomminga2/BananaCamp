@@ -239,41 +239,40 @@ function displayResult(obj) {
 	}).trigger("resize");    
 }
 
-function displayExam(obj){
+function createQuestionElementsArray(question) {
+	let stager = [];
+	let h2 = makeElement('h2', [], question.question);
+	let fs = makeElement('fieldset', [['id', question.id], ['class', 'fieldset']]);
+	for(let i = 0; i < question.answers.length; i++) {
+		let iradio = makeElement('input', [['type', 'radio'], ['value', `${question.id}_${i}`], ['name', `${question.id}`], ['id', `${question.id}_${i}`]]);
+		let lbl = makeElement('label', [['for', `${question.id}_${i}`]], question.answers[i]);		
+		fs.appendChild(iradio); fs.appendChild(lbl);
+	}
+	return[h2, fs];
+}
+
+function displayExam(obj) {
 	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
+	let exam = obj[0];
+	let questions = obj[1];
 	let main = document.querySelector('main');
-	let title = makeElement("h1",[], obj[0].description);
-	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'exam']]);
-	let hide1 = makeElement('input', [['type', 'hidden'], ['value', `${obj[0].id}`], ['id', 'hidden1']]);
-	let hide2 = makeElement('input', [['type', 'hidden'], ['value', `${obj[0].q_id}`], ['id', 'hidden2']]);
-	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'btn']], 'Submit');
-	main.appendChild(title);
-	main.appendChild(frm);
-	main.appendChild(hide1);
-	main.appendChild(hide2);
-	for(let num of JSON.parse(obj[0].q_id)){
-		for (let q in obj[1]){
-			if(num == obj[1][q].id){
-				let h2 = makeElement('h2', [], obj[1][q].question);
-				let fs = makeElement('fieldset', [['id', obj[1][q].question], ['class', 'fieldset']]);
-				let br = makeElement('br');
-				frm.appendChild(br);
-				frm.appendChild(h2);
-				frm.appendChild(fs);		
-				for(let i=0; i < obj[1][q].answers.length; i++ ){
-					let h4 = makeElement('span', [], obj[1][q].answers[i]);
-					let stager = [['type', 'radio'], ['id', `${obj[1][q].question}`], ['name', obj[1][q].id], ['value', i+1]];
-					if(i == 0) { stager.push(['required', 'true']); }
-					let iradio = makeElement('input', stager);
-					let bk = makeElement('br');
-					fs.appendChild(iradio);
-					fs.appendChild(h4);
-					fs.appendChild(bk);
+	let section = makeElement('section', [['id', 'exam']])
+	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'btn']], 'Submit')
+	let hide = makeElement('input', [['type', 'hidden'], ['value', `${exam.id}`], ['id', 'exams_id']]);
+	main.appendChild(section);
+	section.appendChild(hide);
+	
+	let question_ids = exam.question_ids;
+	for(let i = 0; i < question_ids.length; i++) {
+		for(let question of questions) {
+			if(question.id == question_ids[i]) {
+				for(let elem of createQuestionElementsArray(question)) { 
+					section.appendChild(elem); 
 				}
 			}
 		}
 	}
-	frm.appendChild(btn);
+	section.appendChild(btn);
 }
 
 function getResultExam(obj) {
