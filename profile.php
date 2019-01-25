@@ -5,46 +5,7 @@
 			<section id="main-top-left" class="block">
 			</section>
 			<section id="main-top-right" class="block">
-				<figure>
-					<img src="https://i.imgur.com/on2dxR0.png" alt="">
-					<figcaption>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-					</figcaption>
-				</figure>
-				<figure>
-					<img src="https://i.imgur.com/EOpWsok.png" alt="">
-					<figcaption>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-					</figcaption>
-				</figure>
-				<figure>
-					<img src="https://i.imgur.com/hRhGkUH.png" alt="">
-					<figcaption>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-					</figcaption>
-				</figure>
-				<figure>
-					<img src="https://i.imgur.com/OH1mR5y.png" alt="">
-					<figcaption>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-					</figcaption>
-				</figure>
-				<figure>
-					<img src="https://i.imgur.com/eHDzKet.png" alt="">
-					<figcaption>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-					</figcaption>
-				</figure>
+				
 			</section>
 		</section>
 		<section id="main-content">
