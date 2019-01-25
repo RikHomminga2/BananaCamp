@@ -197,9 +197,8 @@
 			$con = openDatabaseConnection();
 			mysqli_query($con, "INSERT INTO exam_results (exams_id, users_id, results) VALUES('${id}','${users_id}','${result}');");
 			closeDatabaseConnection($con);
-			echo json_encode(["result" => true]);
+			echo json_encode(["result" => true, "page" => "profile.php"]);
 		} else {
-			echo json_encode(["result" => false]);
-		}
-		
+			echo json_encode(["result" => false, "page" => "error.php"]);
+		}	
 	}

@@ -105,7 +105,6 @@ function populateProfile() {
 }
 
 function populateUserInfo(obj) {
-	console.log(obj);
 	let section = document.querySelector('#main-top-left');
 	let h2 = makeElement('h2', [], `${obj.firstname} ${obj.lastname}`);
 	let hr = makeElement('hr', [['width', '50%'], ['color', '#202020']]);
@@ -258,8 +257,8 @@ function displayExam(obj) {
 	let exam = obj[0];
 	let questions = obj[1];
 	let main = document.querySelector('main');
-	let section = makeElement('section', [['id', 'exam']]);
-	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'btn']], 'Submit');
+	let section = makeElement('section', [['id', 'exam']])
+	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'btn']], 'Submit')
 	let hide = makeElement('input', [['type', 'hidden'], ['value', `${exam.id}`], ['id', 'exams_id']]);
 	main.appendChild(section);
 	section.appendChild(hide);
@@ -277,14 +276,12 @@ function displayExam(obj) {
 	section.appendChild(btn);
 }
 
-function getResultExam(obj) {
-	let id = document.querySelector('input#hidden1').value;
-	let q_id = document.querySelector('input#hidden2').value;
-	let q_ids = JSON.parse(q_id);
+function getResultExam() {
+	let id = document.getElementById('exams_id').value;
 	let res = [];
-	for(let i=0; i < q_ids.length; i++){
-		let val = document.querySelector(`input[name="${q_ids[i]}"]:checked`).value; 
-		res.push(val);
+	for(let fs of document.querySelectorAll('fieldset')) {
+		let elem = document.getElementById(fs.id + '_0');
+		res.push(elem.checked);
 	}
 	storeExamResult(id, res);
 }
