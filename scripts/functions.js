@@ -82,7 +82,7 @@ const fetchSignOut = () => {
 }
 
 function fetchExam(){
-	let body = 'request=getExam'
+	let body = 'request=getExam';
 	fetchPostRequest(body, displayExam);
 }
 
@@ -121,7 +121,7 @@ function populateUserInfo(obj) {
 }
 
 function createQuestionsForm(obj) {
-	let elem = document.getElementById('getQuestions')
+	let elem = document.getElementById('getQuestions');
 	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php']]);
 	let ipt = makeElement('input', [['type', 'text'], ['name', 'description'], ['placeholder', 'Description of Exam']]);
 	let br = makeElement('br');
@@ -243,12 +243,14 @@ function createQuestionElementsArray(question) {
 	let stager = [];
 	let h2 = makeElement('h2', [], question.question);
 	let fs = makeElement('fieldset', [['id', question.id], ['class', 'fieldset']]);
+	fs.appendChild(h2);
 	for(let i = 0; i < question.answers.length; i++) {
 		let iradio = makeElement('input', [['type', 'radio'], ['value', `${question.id}_${i}`], ['name', `${question.id}`], ['id', `${question.id}_${i}`]]);
-		let lbl = makeElement('label', [['for', `${question.id}_${i}`]], question.answers[i]);		
-		fs.appendChild(iradio); fs.appendChild(lbl);
+		let lbl = makeElement('label', [['class', 'label'], ['for', `${question.id}_${i}`]], question.answers[i]);
+		let spn = makeElement('span', [['class', 'checkmark']]);
+		lbl.appendChild(iradio); lbl.appendChild(spn); fs.appendChild(lbl);
 	}
-	return[h2, fs];
+	return[fs];
 }
 
 function displayExam(obj) {
@@ -256,8 +258,8 @@ function displayExam(obj) {
 	let exam = obj[0];
 	let questions = obj[1];
 	let main = document.querySelector('main');
-	let section = makeElement('section', [['id', 'exam']])
-	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'btn']], 'Submit')
+	let section = makeElement('section', [['id', 'exam']]);
+	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'btn']], 'Submit');
 	let hide = makeElement('input', [['type', 'hidden'], ['value', `${exam.id}`], ['id', 'exams_id']]);
 	main.appendChild(section);
 	section.appendChild(hide);
