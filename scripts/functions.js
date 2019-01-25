@@ -102,45 +102,31 @@ function makeElement(type, attributes=[], innerText='') {
 function populateProfile() {
 	fetchAssesmentResultForUser();
 	fetchUserInfo();
-	populateUserBadge();
+	populateUserBadges();
 }
 
-function populateUserBadge(obj) {
+function populateUserBadges(obj) {
 	let section = document.querySelector('#main-top-right');
-	let figone = makeElement('figure',[['class', 'one']]);
-	let figtwo = makeElement('figure', [['class', 'two']]);
-	let figthree = makeElement('figure', [['class', 'three']]);
-	let figfour = makeElement('figure', [['class', 'four']]);
-	let figfive = makeElement('figure', [['class', 'five']]);
-	let img = makeElement('img', [['src', 'https://i.imgur.com/on2dxR0.png'], ['alt', '']]);
-	let img2 = makeElement('img', [['src', 'https://i.imgur.com/EOpWsok.png'], ['alt', '']]);
-	let img3 = makeElement('img', [['src', 'https://i.imgur.com/hRhGkUH.png'], ['alt', '']]);
-	let img4 = makeElement('img', [['src', 'https://i.imgur.com/OH1mR5y.png'], ['alt', '']]);
-	let img5 = makeElement('img', [['src', 'https://i.imgur.com/eHDzKet.png'], ['alt', '']]);
-	section.appendChild(figone);
-	section.appendChild(figtwo);
-	section.appendChild(figthree);
-	section.appendChild(figfour);
-	section.appendChild(figfive);
-	figone.appendChild(img);
-	figtwo.appendChild(img2);
-	figthree.appendChild(img3);
-	figfour.appendChild(img4);
-	figfive.appendChild(img5);
-	section = document.querySelector('#main-top-right');
-	let figcaptionone = makeElement('figcaption',[['class', 'one']]);
-	let figcaptiontwo = makeElement('figcaption',[['class', 'two']]);
-	let figcaptionthree = makeElement('figcaption',[['class', 'three']]);
-	let figcaptionfour = makeElement('figcaption',[['class', 'four']]);
-	let figcaptionfive = makeElement('figcaption',[['class', 'five']]);
-	let star = makeElement('i', [['class', 'far fa-star']]);
-	section.appendChild(figcaptionone);
-	section.appendChild(figcaptiontwo);
-	section.appendChild(figcaptionthree);
-	section.appendChild(figcaptionfour);
-	section.appendChild(figcaptionfive);
-	figcaptionone.appendChild(star);
-
+	let figs = [];
+	let img_urls = ['https://i.imgur.com/on2dxR0.png', 'https://i.imgur.com/EOpWsok.png', 'https://i.imgur.com/hRhGkUH.png', 'https://i.imgur.com/OH1mR5y.png', 'https://i.imgur.com/eHDzKet.png'];
+	let imgs = [];
+	for(let i = 0; i < 5; i++) {
+		figs.push(makeElement('figure'));
+	}
+	for(img_url of img_urls) {
+		imgs.push(makeElement('img', [['src', img_url], ['alt', '']]));
+	}
+	for(let i = 0; i < 5; i++) {
+		section.append(figs[i]);
+		figs[i].append(imgs[i]);
+	}
+	for(let i = 0; i < 5; i++) {
+		let figcaption = makeElement('figcaption');
+		for(let j = 0; j < 3; j++) {
+			figcaption.appendChild(makeElement('i', [['class', 'far fa-star']]));
+		}
+		section.appendChild(figcaption);
+	}
 }
 
 function populateUserInfo(obj) {
