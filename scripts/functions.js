@@ -104,6 +104,15 @@ function makeElement(type, attributes=[], innerText='') {
 	return el;
 }
 
+$("#bio").ready(function() {
+  $("#hide").click(function() {
+    $("#bio").hide();
+  });
+  $("#show").click(function() {
+    $("#bio").show();
+  });
+});
+
 function populateProfile() {
 	fetchAssesmentResultForUser();
 	fetchUserInfo();
