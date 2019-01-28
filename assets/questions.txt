@@ -2,7 +2,7 @@ Waar staat HTTP voor, HyperText Transfer Protocol, HyperText Transport Protocol,
 Waar staat HTML voor, HyperText Markup Language, HyperTyped Markup Language, HyperText Modification Language, There Is No Spoon, HTML
 Waar staat XML voor, Extensible Markup Language, Extreme Markup Language, Easy Modifiable Language, X Marks Longitude, HTML
 Waar staat URL voor, Uniform Resource Locater, Uniform Resource Language, Unicode Response Language, Un Real Life, HTML
-Waar staat CSS voor, Cascading Style Sheets, Comprehensive Style Sheets, Complex Style Sheets, Cool Simple Style. CSS
+Waar staat CSS voor, Cascading Style Sheets, Comprehensive Style Sheets, Complex Style Sheets, Cool Simple Style, CSS
 Waar staat XSS voor, Cross Site Scripting, Xclusive Style Sheet, XML Style Sheet, XHTML Simple Syndication, SECURITY
 Waar staat CSRF voor, Cross Site Request Forgery, Cross Site Response Function, Crippled Single Request Factory, Cool Calm Collected, SECURITY
 Waar staat RSS voor, Real Simple Syndication, Really Simple Stuff, Request Source Sheet, Read Static Source, HTML

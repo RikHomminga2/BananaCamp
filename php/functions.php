@@ -139,13 +139,13 @@
 	}
 	
 	function addQuestion() {
-		$question = isset($_POST['question']) ? $_POST['question'] : false;
-		$answer1 = isset($_POST['answer1']) ? $_POST['answer1'] : false;
-		$answer2 = isset($_POST['answer2']) ? $_POST['answer2'] : false;
-		$answer3 = isset($_POST['answer3']) ? $_POST['answer3'] : false;
-		$answer4 = isset($_POST['answer4']) ? $_POST['answer4'] : false;
-		$category = isset($_POST['category']) ? $_POST['category'] : 'default';
-		$level = isset($_POST['level']) ? $_POST['level'] : 'easy';
+		$question = isset($_POST['question']) ? trim($_POST['question']) : false;
+		$answer1 = isset($_POST['answer1']) ? trim($_POST['answer1']) : false;
+		$answer2 = isset($_POST['answer2']) ? trim($_POST['answer2']) : false;
+		$answer3 = isset($_POST['answer3']) ? trim($_POST['answer3']) : false;
+		$answer4 = isset($_POST['answer4']) ? trim($_POST['answer4']) : false;
+		$category = isset($_POST['category']) ? trim($_POST['category']) : 'default';
+		$level = isset($_POST['level']) ? trim($_POST['level']) : 'easy';
 		$answers = [$answer1, $answer2, $answer3, $answer4];
 		if($answer1 && $answer2 && $answer3 && $answer4) {
 			$answers = json_encode($answers);
@@ -194,7 +194,7 @@
 	
 	function getExam(){
 		$con = openDatabaseConnection();
-		$res = mysqli_query($con, "SELECT * FROM exams WHERE id=3");
+		$res = mysqli_query($con, "SELECT * FROM exams WHERE id=1");
 		while($row = mysqli_fetch_assoc($res)){
 			$stager1 [] = ['id' => $row['id'], 'description' => $row['description'], 'question_ids' => json_decode($row['questions'])];
 		}	
