@@ -1,4 +1,4 @@
-Waar staat HTTP voor, HyperText Transfer Protocol, HyperText Transport Protocol, HyperText Topological Position, How Tiny Tim Plays, HTML
+Waar staat HTTP voor, HyperText Transfer Protocol, HyperText Transport Protocol, HyperText Topological Position, How Tiny Tim Plays, HTTP
 Waar staat HTML voor, HyperText Markup Language, HyperTyped Markup Language, HyperText Modification Language, There Is No Spoon, HTML
 Waar staat XML voor, Extensible Markup Language, Extreme Markup Language, Easy Modifiable Language, X Marks Longitude, HTML
 Waar staat URL voor, Uniform Resource Locater, Uniform Resource Language, Unicode Response Language, Un Real Life, HTML
@@ -6,6 +6,14 @@ Waar staat CSS voor, Cascading Style Sheets, Comprehensive Style Sheets, Complex
 Waar staat XSS voor, Cross Site Scripting, Xclusive Style Sheet, XML Style Sheet, XHTML Simple Syndication, SECURITY
 Waar staat CSRF voor, Cross Site Request Forgery, Cross Site Response Function, Crippled Single Request Factory, Cool Calm Collected, SECURITY
 Waar staat RSS voor, Real Simple Syndication, Really Simple Stuff, Request Source Sheet, Read Static Source, HTML
+Waar staat SQL voor, Structured Query Language, Simple Query Language, Structured Queue Language, Simple Queue Language, SQL
+Waar staat ECMA voor, European Computers Manufacturers Association, English Computers Manufacturers Association, European Code Makers Association, European Computer Makers Alliance, JAVASCRIPT
+Waar staat SOAP voor, Simple Object Access Protocol, Antwoord 2, Antwoord 3, Antwoord 4, HTTP
+Waar staat REST voor, Representational State Transfer, Antwoord 2, Antwoord 3, Antwoord 4, HTTP
+Waar staat API voor, Application Programming Interface, Antwoord 2, Antwoord 3, Antwoord 4, HTTP
+Waar staat TDD voor, Test Driven Development, Test Driven Design, Transformational Driven Design, Transactional Developement and Delivery, AGILE
+Waar staat TFD voor, Test First Development, Transactional and Financial Design, Track Faulty Drivers, Tests For Developers, AGILE
+Waar staat OOP voor, Object Oriented Programming, Oracle Object Programming, On Off Programming, things you don't want to hear a developer say, DEVELOPMENT
 Wie is Tim Berners-Lee, Uitvinder van het WWW, Uitvinder van TCP, Uitvinder van UNIX, Amerikaans Revolutionair, HTML
 Wie is Rasmus Leerdorf, Uitvinder van PHP, Uitvinder van Linux, Uitvinder van het Internet, Deze persoon bestaat niet, PHP
 Wie is Brandon Eich, Uitvinder van Javascript, Uitvinder van PHP, Uitvinder van PGP, Gitarist voor de Dead Kennedys, JAVASCRIPT
@@ -20,4 +28,10 @@ Hoe stel je met CSS een achtergrondkleur in, background-color, bg-color, color, 
 Wat betekent in de context van CSS 'vh', hoogte van de viewport, breedte van de viewport, virtual horizon, oppervlakte van de viewport, CSS
 Hoe stel je een horizontale regel in in HTML, <hr>, <br>, <vr>, <div>, HTML
 Wat betekent <br> in HTML, linebreak, basic rule, horizontal rule, bold red, HTML
-Wat is jquery, javascript library, php functie, html tag, css selector
+Wat is jquery, javascript library, php functie, html tag, css selector, JAVASCRIPT
+Wat is laravel, php framework, javascript framework, php library, javascript library, PHP
+Wat is django, python framework, php framework, javascript framework, php library, PYTHON
+Wat hoort niet bij AGILE, waterfall, scrum, crystal, extreme programming, AGILE
+Wat is pandas, python library, php library, javascript library, css library, PYTHON
+Welke range HTTP response codes geeft aan dat een request succesvol was, 200-299, 300-399, 100-199, 400-499, HTTP
+Welke range HTTP response codes geeft aan dat een request geleid heeft tot een fout op de server, 500-599, 200-299, 100-199, 300-399, HTTP

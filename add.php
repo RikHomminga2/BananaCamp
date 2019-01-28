@@ -28,13 +28,18 @@
 			<section id="addQuestion">
 				<h2>ADD A QUESTION</h2>
 				<!-- form for adding questions -->
-				<form method="post" action="main.php">
+				<form method="post" action="main.php" id="add-question">
 					<input type="text" name="question" placeholder="Question"><br/>
 					<input type="text" name="answer1" placeholder="Fill in correct answer"><br/>
 					<input type="text" name="answer2" placeholder="Fill in wrong answer"><br/>
 					<input type="text" name="answer3" placeholder="Fill in wrong answer"><br/>
-					<input type="text" name="answer4" placeholder="Fill in wrong answer"><br/><br/>
-					<input type="text" name="category" placeholder="category"><br/><br/>
+					<input type="text" name="answer4" placeholder="Fill in wrong answer"><br/>
+					<input type="text" name="category" placeholder="category"><br/>
+					<select form="add-question">
+						<option value="easy" selected>Easy</option>
+						<option value="moderate">Moderate</option>
+						<option value="hard">Hard</option>
+					</select>
 					<input type="hidden" name="request" value="addQuestion">
 					<input type="submit" value="Save">
 				</form>
