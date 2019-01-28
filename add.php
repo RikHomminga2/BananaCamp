@@ -35,7 +35,7 @@
 					<input type="text" name="answer3" placeholder="Fill in wrong answer"><br/>
 					<input type="text" name="answer4" placeholder="Fill in wrong answer"><br/>
 					<input type="text" name="category" placeholder="category"><br/>
-					<select form="add-question">
+					<select form="add-question" name="level">
 						<option value="easy" selected>Easy</option>
 						<option value="moderate">Moderate</option>
 						<option value="hard">Hard</option>
