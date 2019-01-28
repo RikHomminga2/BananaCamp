@@ -160,7 +160,7 @@ function populateUserInfo(obj) {
 
 function createQuestionsForm(obj) {
 	let elem = document.getElementById('getQuestions');
-	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php']]);
+	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'create-exam']]);
 	let ipt = makeElement('input', [['type', 'text'], ['name', 'description'], ['placeholder', 'Description of Exam']]);
 	let br = makeElement('br');
 	elem.appendChild(frm);
@@ -171,9 +171,14 @@ function createQuestionsForm(obj) {
 		let br = makeElement('br');
 		frm.appendChild(checkbx); frm.appendChild(lbl); frm.appendChild(br);
 	}
+	let slct = makeElement('select', [['form', 'create-exam'], ['name', 'level']]);
+	for(let lvl of ['easy', 'moderate', 'hard']) {
+		opti = makeElement('option', [['value', lvl]], lvl);
+		slct.appendChild(opti);
+	}
 	let hide = makeElement('input', [['type', 'hidden'], ['name', 'request'], ['value', 'createExam']]);
 	let subm = makeElement('input', [['type', 'submit']]);
-	frm.appendChild(hide); frm.appendChild(subm);
+	frm.appendChild(slct); frm.appendChild(hide); frm.appendChild(subm);
 }
 
 function createAssesmentForm(obj) {
