@@ -85,6 +85,17 @@
 		}
 	}
 	
+	function getAllAssesments() {
+		$con = openDatabaseConnection();
+		$stager = [];
+		$res = mysqli_query($con, "SELECT * FROM assesments");
+		closeDatabaseConnection($con);
+		while($row = mysqli_fetch_assoc($res)) {
+			$stager[] = $row;
+		}
+		echo json_encode($stager);
+	}
+	
 	function storeAssesmentResult() {
 		$id = isset($_POST['id']) ? $_POST['id'] : false;
 		$result = isset($_POST['result']) ? $_POST['result'] : false;

@@ -18,6 +18,10 @@
 			register() ? header('Location: profile.php') : header('Location: index.php');
 		}
 		
+		if($request == 'getAllAssesments'){
+			getAllAssesments();
+		}
+		
 		if($request == 'addAssesment') {
 			(addAssesment()) ? header('Location: add.php') : header('Location: error.php');
 		}

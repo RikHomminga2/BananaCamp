@@ -56,6 +56,11 @@ const fetchAssesment = () => {
 	fetchPostRequest(body, createAssesmentForm);
 }
 
+const fetchAllAssesments = () => {
+	let body = 'request=getAllAssesments';
+	fetchPostRequest(body, createAssesmentForm2);	
+}
+
 const fetchAssesmentResultForUser = () => {
 	let body = 'request=getAssesmentResultForUser';
 	fetchPostRequest(body, displayResult);
@@ -196,6 +201,43 @@ function createAssesmentForm(obj) {
 	}
 	main.appendChild(section);
 	section.appendChild(btn);
+}
+
+function createAssesmentForm2(obj){
+	emptyMain();
+	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }	
+	let main = document.querySelector('main');
+	let h1 = makeElement('h1', [], obj[0].title);
+	let h2 = makeElement('h2', [], obj[0].description);
+	let section = document.createElement('section');
+	section.setAttribute('class', 'sliders');
+	let datalist = makeElement('datalist', [['id', 'tickmarks'], ['style', 'display: visible']]);
+	let hide = makeElement('input', [['type', 'hidden'], ['value', `${obj[0].id}`], ['id', 'hidden']]);
+	let btn = makeElement('button', [['onclick', 'getResult()'], ['class', 'btn']], 'Submit');
+	main.appendChild(h1);
+	main.appendChild(h2);
+	section.appendChild(datalist);
+	section.appendChild(hide);
+	for(let i = 0; i < 101; i+=10) {
+		let opt = makeElement('option', [['value', `${i}`]]);
+		datalist.appendChild(opt);
+	}
+	for(let category of JSON.parse(obj[0].assesment)) {
+		let span = makeElement('span');
+		let h3 = makeElement('h3', [], category);
+		section.appendChild(h3);
+		span.innerText = 'bad';
+		section.appendChild(span);
+		ipt = makeElement('input', [['type', 'range'], ['list', 'tickmarks'], ['min', '0'], ['max', '100'], ['step', '10'], ['name', `${category}`]]);
+		span = makeElement('span');
+		span.innerText = 'excellent';
+		section.appendChild(ipt);
+		section.appendChild(span);
+		section.appendChild(makeElement('br'));
+	}
+	main.appendChild(section);
+	section.appendChild(btn);
+
 }
 
 function getResult() {
