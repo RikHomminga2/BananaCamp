@@ -108,13 +108,13 @@ function populateProfile() {
 function populateUserBadges(obj) {
 	let section = document.querySelector('#main-top-right');
 	let figs = [];
-	let img_urls = ['https://i.imgur.com/on2dxR0.png', 'https://i.imgur.com/EOpWsok.png', 'https://i.imgur.com/hRhGkUH.png', 'https://i.imgur.com/OH1mR5y.png', 'https://i.imgur.com/eHDzKet.png'];
+	let img_urls = [['https://i.imgur.com/on2dxR0.png', 'HTML'], ['https://i.imgur.com/EOpWsok.png', 'CSS'], ['https://i.imgur.com/hRhGkUH.png', 'SQL'], ['https://i.imgur.com/OH1mR5y.png', 'PHP'], ['https://i.imgur.com/eHDzKet.png', 'Javascript']];
 	let imgs = [];
 	for(let i = 0; i < 5; i++) {
 		figs.push(makeElement('figure'));
 	}
 	for(img_url of img_urls) {
-		imgs.push(makeElement('img', [['src', img_url], ['alt', '']]));
+		imgs.push(makeElement('img', [['src', img_url[0]], ['alt', `${img_url[1]} Badge`]]));
 	}
 	for(let i = 0; i < 5; i++) {
 		section.append(figs[i]);
