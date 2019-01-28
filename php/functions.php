@@ -79,10 +79,8 @@
 	
 	function getAssesment() {
 		$con = openDatabaseConnection();
-		$res = mysqli_query($con, "SELECT * FROM assesments WHERE id=1");
-		while($row = mysqli_fetch_assoc($res)) {
-			echo json_encode(["id" => $row['id'], "title" => $row['title'], "description" => $row['description'], "assesment" => $row['assesment']]);
-		}
+		$res = mysqli_query($con, "SELECT * FROM assesments LIMIT 1");
+		echo json_encode(mysqli_fetch_assoc($res));
 	}
 	
 	function getAllAssesments() {
