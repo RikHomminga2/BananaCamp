@@ -39,6 +39,7 @@
 			if($row['id'] != '') {
 				$_SESSION['authenticated'] = true;
 				$_SESSION['users_id'] = $row['id'];
+				$_SESSION['role'] = $row['role'];
 				closeDatabaseConnection($con);
 				return true;
 			}
