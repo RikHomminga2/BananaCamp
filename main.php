@@ -23,7 +23,7 @@
 		}
 		
 		if($request == 'addAssesment') {
-			(addAssesment()) ? header('Location: add.php') : header('Location: error.php');
+			(addAssesment()) ? header('Location: trainer.php') : header('Location: error.php');
 		}
 			
 		if($request == 'getAssesment') {
@@ -38,7 +38,7 @@
 		}
 		
 		if($request == 'addQuestion') {
-			(addQuestion()) ? header('Location: add.php') : header('Location: error.php');
+			(addQuestion()) ? header('Location: trainer.php') : header('Location: error.php');
 		}
 		
 		if($request == 'getQuestions') {
