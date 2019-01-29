@@ -272,7 +272,7 @@ section.block {
     box-shadow: 0 0 0.5vh #202020;
     border-radius: 0.25vh;
     padding: 1.5vh;
-    overflow: hidden;
+/*    overflow: hidden;*/
 }
 
 section#main-top {
@@ -300,6 +300,12 @@ section#main-content {
     grid-template-columns: 1fr 3fr 1fr;
     grid-gap: 1vh;
     padding: 1vh;
+/*    overflow: scroll;*/
+}
+
+section#main-content-right {
+    max-height: 55vh;
+    overflow: scroll;
 }
 
 figure {
