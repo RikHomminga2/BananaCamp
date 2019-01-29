@@ -194,7 +194,7 @@
 	
 	function getExam(){
 		$con = openDatabaseConnection();
-		$res = mysqli_query($con, "SELECT * FROM exams WHERE id=1");
+		$res = mysqli_query($con, "SELECT * FROM exams LIMIT 1");
 		while($row = mysqli_fetch_assoc($res)){
 			$stager1 [] = ['id' => $row['id'], 'description' => $row['description'], 'question_ids' => json_decode($row['questions'])];
 		}	
