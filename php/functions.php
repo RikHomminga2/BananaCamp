@@ -192,9 +192,9 @@
 		closeDatabaseConnection($con);
     }
 	
-	function getExam(){
+	function getExam($exam_id){
 		$con = openDatabaseConnection();
-		$res = mysqli_query($con, "SELECT * FROM exams LIMIT 1");
+		$res = mysqli_query($con, "SELECT * FROM exams WHERE id=".$exam_id."");
 		while($row = mysqli_fetch_assoc($res)){
 			$stager1 [] = ['id' => $row['id'], 'description' => $row['description'], 'question_ids' => json_decode($row['questions'])];
 		}	
@@ -202,11 +202,51 @@
 		echo json_encode($stager1);
 	}
 	
-	function getAllExams(){
+	function getHtmlExams(){
 		$con = openDatabaseConnection();
-		$res = mysqli_query($con,"SELECT * FROM exams");
+		$res = mysqli_query($con,"SELECT * FROM exams WHERE category='html'");
 		while($row = mysqli_fetch_assoc($res)){
-			$stager [] = ['id' => $row['id'], 'description' => $row['description'], 'questions' => json_decode($row['questions']), 'level' => $row['level']];
+			$stager [] = ['id' => $row['id'], 'description' => $row['description'], 'questions' => json_decode($row['questions']), 'level' => $row['level'], 'category' => $row['category']];
+		}
+		closeDatabaseConnection($con);
+		echo json_encode($stager);
+	}
+	
+	function getCssExams(){
+		$con = openDatabaseConnection();
+		$res = mysqli_query($con,"SELECT * FROM exams WHERE category='css'");
+		while($row = mysqli_fetch_assoc($res)){
+			$stager [] = ['id' => $row['id'], 'description' => $row['description'], 'questions' => json_decode($row['questions']), 'level' => $row['level'], 'category' => $row['category']];
+		}
+		closeDatabaseConnection($con);
+		echo json_encode($stager);	
+	}
+	
+	function getJavascriptExams(){
+		$con = openDatabaseConnection();
+		$res = mysqli_query($con,"SELECT * FROM exams WHERE category='javascript'");
+		while($row = mysqli_fetch_assoc($res)){
+			$stager [] = ['id' => $row['id'], 'description' => $row['description'], 'questions' => json_decode($row['questions']), 'level' => $row['level'], 'category' => $row['category']];
+		}
+		closeDatabaseConnection($con);
+		echo json_encode($stager);
+	}
+	
+	function getPhpExams(){
+		$con = openDatabaseConnection();
+		$res = mysqli_query($con,"SELECT * FROM exams WHERE category='php'");
+		while($row = mysqli_fetch_assoc($res)){
+			$stager [] = ['id' => $row['id'], 'description' => $row['description'], 'questions' => json_decode($row['questions']), 'level' => $row['level'], 'category' => $row['category']];
+		}
+		closeDatabaseConnection($con);
+		echo json_encode($stager);
+	}
+	
+	function getSqlExams(){
+		$con = openDatabaseConnection();
+		$res = mysqli_query($con,"SELECT * FROM exams WHERE category='sql'");
+		while($row = mysqli_fetch_assoc($res)){
+			$stager [] = ['id' => $row['id'], 'description' => $row['description'], 'questions' => json_decode($row['questions']), 'level' => $row['level'], 'category' => $row['category']];
 		}
 		closeDatabaseConnection($con);
 		echo json_encode($stager);

@@ -29,7 +29,6 @@
 				<br>
 			</section>
 			<section id="main-content-right" class="block">
-				Exams
 			</section>
 		</section>
 	</main>

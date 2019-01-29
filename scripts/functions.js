@@ -86,14 +86,34 @@ const fetchSignOut = () => {
 	fetchPostRequest(body, redirect);
 }
 
-function fetchExam(){
-	let body = 'request=getExam';
+function fetchExam(id){
+	let body = 'request=getExam&id='+id+'';
 	fetchPostRequest(body, displayExam);
 }
 
-function fetchAllExams (){
-	let body = 'request=getAllExams';
-	fetchPostRequest(body, populateExamsSection);	
+function fetchHtmlExams (){
+	let body = 'request=getHtmlExams';
+	fetchPostRequest(body, populateExamsSectionHtml);	
+}
+
+function fetchCssExams (){
+	let body = 'request=getCssExams';
+	fetchPostRequest(body, populateExamsSectionCss);	
+}
+
+function fetchJavascriptExams (){
+	let body = 'request=getJavascriptExams';
+	fetchPostRequest(body, populateExamsSectionJavascript);	
+}
+
+function fetchPhpExams (){
+	let body = 'request=getPhpExams';
+	fetchPostRequest(body, populateExamsSectionPhp);	
+}
+
+function fetchSqlExams (){
+	let body = 'request=getSqlExams';
+	fetchPostRequest(body, populateExamsSectionSql);	
 }
 
 const redirect = (obj) => {
@@ -113,19 +133,63 @@ function populateProfile() {
 	fetchAssesmentResultForUser();
 	fetchUserInfo();
 	populateUserBadges();
-	fetchAllExams();
+	fetchHtmlExams();
+	fetchCssExams();
+	fetchJavascriptExams();
+	fetchPhpExams();
+	fetchSqlExams();
+	
 }
 
-function populateExamsSection(obj){
-	console.log(obj);
-	
-	/*let section = document.querySelector('#main-content-right');
-	let btns = [['fetchHtmlExams()', 'html'],['fetchCssExams()', 'css']];
-	for(let i = 0; i < btns.length; i++){
-		let btn = makeElement('button',[['onclick', btns[i][0]]], btns[i][1]);
-		section.appendChild(btn);		
-	}-*/
+function populateExamsSectionHtml(obj){
+	let section = document.querySelector('#main-content-right');
+	let h2 = makeElement('h2',[], 'Exams Html');
+	section.appendChild(h2);
+	for(let i = 0; i < obj.length; i++){
+		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		section.appendChild(btns);
+	}
 }
+	
+function populateExamsSectionCss(obj){
+	let section = document.querySelector('#main-content-right');
+	let h2 = makeElement('h2',[], 'Exams Css');
+	section.appendChild(h2);
+	for(let i = 0; i < obj.length; i++){
+		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		section.appendChild(btns);
+	}
+}
+
+function populateExamsSectionJavascript(obj){
+	let section = document.querySelector('#main-content-right');
+	let h2 = makeElement('h2',[], 'Exams Javascript');
+	section.appendChild(h2);
+	for(let i = 0; i < obj.length; i++){
+		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		section.appendChild(btns);
+	}
+}
+
+function populateExamsSectionPhp(obj){
+	let section = document.querySelector('#main-content-right');
+	let h2 = makeElement('h2',[], 'Exams Php');
+	section.appendChild(h2);
+	for(let i = 0; i < obj.length; i++){
+		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		section.appendChild(btns);
+	}
+}	
+
+function populateExamsSectionSql(obj){
+	let section = document.querySelector('#main-content-right');
+	let h2 = makeElement('h2',[], 'Exams Sql');
+	section.appendChild(h2);
+	for(let i = 0; i < obj.length; i++){
+		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		section.appendChild(btns);
+	}
+}		
 
 function populateUserBadges(obj) {
 	let section = document.querySelector('#main-top-right');
@@ -359,6 +423,7 @@ function createQuestionElementsArray(question) {
 }
 
 function displayExam(obj) {
+	emptyMain();
 	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
 	let exam = obj[0];
 	let questions = obj[1];

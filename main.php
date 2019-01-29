@@ -51,11 +51,28 @@
         }
 		
 		if($request == 'getExam') {
-            getExam();
+			$exam_id = $_POST['id'];
+            getExam($exam_id);
         }
 		
-		if($request == 'getAllExams'){
-			getAllExams();
+		if($request == 'getHtmlExams'){
+			getHtmlExams();
+		}
+		
+		if($request == 'getCssExams'){
+			getCssExams();
+		}
+		
+		if($request == 'getJavascriptExams'){
+			getJavascriptExams();
+		}
+		
+		if($request == 'getPhpExams'){
+			getPhpExams();
+		}
+		
+		if($request == 'getSqlExams'){
+			getSqlExams();
 		}
 		
 		if($request == 'storeExamResult'){
