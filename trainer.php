@@ -1,8 +1,7 @@
 <?php
-	session_start();
 	require_once 'includes/banner.php';
 ?>	
-		<main>
+		<main class="main-trainer">
 			<h1>TRAINER INTERFACE</h1>
 			<nav>
 				<button class="navbtn" onclick="toggle('view-students')">View students</button>
@@ -10,7 +9,9 @@
 				<button class="navbtn" onclick="toggle('add-question')">Add a question</button>
 				<button class="navbtn" onclick="toggle('getQuestions')">Add an exam</button>
 			</nav>
-			<section class="hidden" id="view-students">View students</section>
+			<section class="hidden" id="view-students">
+				<h2>Student list</h2>
+			</section>
 			<section class="hidden" id="add-assesment">
 				<h2>Add an assesment</h2>
 				<form method="post" action="main.php">
@@ -34,7 +35,7 @@
 						<option value="easy" selected>Easy</option>
 						<option value="moderate">Moderate</option>
 						<option value="hard">Hard</option>
-					</select>
+					</select><br>
 					<input type="hidden" name="request" value="addQuestion">
 					<input type="submit" class="formbtn" value="Save">
 				</form>

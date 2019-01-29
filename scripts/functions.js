@@ -251,12 +251,12 @@ function createQuestionsForm(obj) {
 		let br = makeElement('br');
 		frm.appendChild(checkbx); frm.appendChild(lbl); frm.appendChild(br);
 	}
-	let selectLevel = makeElement('select', [['form', 'create-exam'], ['name', 'level'], ['class', 'iptfield']]);
+	let selectLevel = makeElement('select', [['form', 'create-exam'], ['name', 'level'], ['class', 'formbtn']]);
 	for(let lvl of ['easy', 'moderate', 'hard']) {
 		opti = makeElement('option', [['value', lvl]], lvl);
 		selectLevel.appendChild(opti);
 	}
-	let selectCategory = makeElement('select', [['form', 'create-exam'], ['name', 'category'], ['class', 'iptfield']]);
+	let selectCategory = makeElement('select', [['form', 'create-exam'], ['name', 'category'], ['class', 'formbtn']]);
 	for(let cat of ['html', 'css', 'javascript', 'php', 'sql']) {
 		opti = makeElement('option', [['value', cat]], cat);
 		selectCategory.appendChild(opti);
@@ -324,7 +324,7 @@ function createAssesmentForm2(obj){
 		datalist.appendChild(opt);
 	}
 	for(let category of JSON.parse(obj[0].assesment)) {
-		let span = makeElement('span');
+		let span = makeElement('span', [['class', 'skill']]);
 		let h3 = makeElement('h3', [], category);
 		section.appendChild(h3);
 		span.innerText = 'bad';
@@ -338,7 +338,6 @@ function createAssesmentForm2(obj){
 	}
 	main.appendChild(section);
 	section.appendChild(btn);
-
 }
 
 function getResult() {
@@ -408,14 +407,12 @@ function displayResult(obj) {
 
 function createQuestionElementsArray(question) {
 	let stager = [];
-	//let h2 = makeElement('h2', [], question.question);
 	let fs = makeElement('fieldset', [['id', question.id], ['class', 'fieldset']]);
 	let legend = makeElement('legend', [], `${question.question}?`);
-	//fs.appendChild(h2);
 	fs.appendChild(legend);
 	for(let i = 0; i < question.answers.length; i++) {
 		let iradio = makeElement('input', [['type', 'radio'], ['value', `${question.id}_${i}`], ['name', `${question.id}`], ['id', `${question.id}_${i}`]]);
-		let lbl = makeElement('label', [['class', 'label'], ['for', `${question.id}_${i}`]], question.answers[i]);
+		let lbl = makeElement('label', [['class', ''], ['for', `${question.id}_${i}`]], question.answers[i]);
 		let spn = makeElement('span', [['class', 'checkmark']]);
 		lbl.appendChild(iradio); lbl.appendChild(spn); fs.appendChild(lbl);
 	}
@@ -428,6 +425,7 @@ function displayExam(obj) {
 	let exam = obj[0];
 	let questions = obj[1];
 	let main = document.querySelector('main');
+	main.setAttribute('class', 'main-exam');
 	let section = makeElement('section', [['id', 'exam']])
 	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'formbtn']], 'Submit');
 	let hide = makeElement('input', [['type', 'hidden'], ['value', `${exam.id}`], ['id', 'exams_id']]);

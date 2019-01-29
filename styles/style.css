@@ -314,7 +314,7 @@ figure {
     margin: 1vh;
 }
 
-.fas, .far {
+.fas, #show {
     float: right;
     cursor: pointer;
 }
@@ -335,6 +335,24 @@ figure {
     box-shadow: 0 0 1.5vh #202020;
 }
 
+/*TRAINER PAGE*/
+.main-trainer {
+    display: block;
+    grid-template-rows: 1fr 1fr;
+    background-color: #fffafa;
+    border-radius: 0.25vh;
+    box-shadow: 0 0 1.5vh #202020;
+    text-align: center;
+    padding: 1vh;
+    overflow: scroll;
+}
+
+#create-exam {
+    text-align: left;
+    width: 40vw;
+    margin: auto;
+}
+
 /*ASSESSMENT PAGE*/
 .main-assesment {
     display: grid;
@@ -345,6 +363,11 @@ figure {
     text-align: center;
     padding: 1vh;
     overflow: scroll;
+}
+
+.skill {
+    padding: 1vh;
+    margin: 1vh;
 }
 
 /*SLIDERS*/
