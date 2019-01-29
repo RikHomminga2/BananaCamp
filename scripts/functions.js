@@ -109,15 +109,6 @@ function makeElement(type, attributes=[], innerText='') {
 	return el;
 }
 
-$("#bio").ready(function() {
-  $("#hide").click(function() {
-    $("#bio").hide();
-  });
-  $("#show").click(function() {
-    $("#bio").show();
-  });
-});
-
 function populateProfile() {
 	fetchAssesmentResultForUser();
 	fetchUserInfo();
@@ -214,7 +205,7 @@ function createAssesmentForm(obj) {
 	section.setAttribute('class', 'sliders');
 	let datalist = makeElement('datalist', [['id', 'tickmarks'], ['style', 'display: visible']]);
 	let hide = makeElement('input', [['type', 'hidden'], ['value', `${obj.id}`], ['id', 'hidden']]);
-	let btn = makeElement('button', [['onclick', 'getResult()'], ['class', 'btn']], 'Submit');
+	let btn = makeElement('button', [['onclick', 'getResult()'], ['class', 'formbtn']], 'Submit');
 	main.appendChild(h1);
 	main.appendChild(h2);
 	section.appendChild(datalist);
@@ -250,7 +241,7 @@ function createAssesmentForm2(obj){
 	section.setAttribute('class', 'sliders');
 	let datalist = makeElement('datalist', [['id', 'tickmarks'], ['style', 'display: visible']]);
 	let hide = makeElement('input', [['type', 'hidden'], ['value', `${obj[0].id}`], ['id', 'hidden']]);
-	let btn = makeElement('button', [['onclick', 'getResult()'], ['class', 'btn']], 'Submit');
+	let btn = makeElement('button', [['onclick', 'getResult()'], ['class', 'formbtn']], 'Submit');
 	main.appendChild(h1);
 	main.appendChild(h2);
 	section.appendChild(datalist);
@@ -362,7 +353,7 @@ function displayExam(obj) {
 	let questions = obj[1];
 	let main = document.querySelector('main');
 	let section = makeElement('section', [['id', 'exam']])
-	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'btn']], 'Submit')
+	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'formbtn']], 'Submit')
 	let hide = makeElement('input', [['type', 'hidden'], ['value', `${exam.id}`], ['id', 'exams_id']]);
 	main.appendChild(section);
 	section.appendChild(hide);

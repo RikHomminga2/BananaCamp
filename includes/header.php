@@ -11,10 +11,10 @@
 	<body>
 		<header>
 			<nav>
-				<button><a href="index.php">BananaCamp</a></button>
-				<button onclick="fetchHTML('html/register.html')">Register</button>
-				<button onclick="fetchHTML('html/login.html')">Login</button>
+				<button class="navbtn"><a href="index.php">BananaCamp</a></button>
+				<button class="navbtn" onclick="fetchHTML('html/register.html')">Register</button>
+				<button class="navbtn" onclick="fetchHTML('html/login.html')">Login</button>
 				<!-- <button><a href="">Contact</a></button> -->
-				<button onclick="fetchHTML('html/about.html')">About</a></button>
+				<button class="navbtn" onclick="fetchHTML('html/about.html')">About</a></button>
 			</nav>
 		</header>
