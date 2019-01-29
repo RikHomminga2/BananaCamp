@@ -177,8 +177,9 @@
 	}
 	
 	function createExam() {
-        $description = $_POST['description'];
+        $description = isset($_POST['description']) ? trim($_POST['description']) : 'no description';
 		$level = isset($_POST['level']) ? trim($_POST['level']) : 'easy';
+		$category = isset($_POST['category']) ? trim($_POST['category']) : 'uncategorized';
         $stager = [];
         foreach ($_POST as $k => $v) {
             if (!($k == 'description' || $k == 'request')) {
@@ -187,7 +188,7 @@
         }
         $stager = json_encode($stager);
         $con = openDatabaseConnection();
-        mysqli_query($con, "INSERT INTO exams (description, questions, level) VALUES ('${description}', '${stager}', '${level}');");
+        mysqli_query($con, "INSERT INTO exams (description, questions, level, category) VALUES ('${description}', '${stager}', '${level}', '${category}');");
 		closeDatabaseConnection($con);
     }
 	

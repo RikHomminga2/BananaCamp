@@ -188,14 +188,20 @@ function createQuestionsForm(obj) {
 		let br = makeElement('br');
 		frm.appendChild(checkbx); frm.appendChild(lbl); frm.appendChild(br);
 	}
-	let slct = makeElement('select', [['form', 'create-exam'], ['name', 'level']]);
+	let selectLevel = makeElement('select', [['form', 'create-exam'], ['name', 'level']]);
 	for(let lvl of ['easy', 'moderate', 'hard']) {
 		opti = makeElement('option', [['value', lvl]], lvl);
-		slct.appendChild(opti);
+		selectLevel.appendChild(opti);
+	}
+	let selectCategory = makeElement('select', [['form', 'create-exam'], ['name', 'category']])
+	for(let cat of ['html', 'css', 'javascript', 'php', 'sql']) {
+		opti = makeElement('option', [['value', cat]], cat);
+		selectCategory.appendChild(opti);
 	}
 	let hide = makeElement('input', [['type', 'hidden'], ['name', 'request'], ['value', 'createExam']]);
 	let subm = makeElement('input', [['type', 'submit']]);
-	frm.appendChild(slct); frm.appendChild(hide); frm.appendChild(subm);
+	frm.appendChild(selectCategory); frm.appendChild(selectLevel); 
+	frm.appendChild(hide); frm.appendChild(subm);
 }
 
 function createAssesmentForm(obj) {
