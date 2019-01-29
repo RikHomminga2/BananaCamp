@@ -177,7 +177,7 @@
 	}
 	
 	function createExam() {
-        $description = isset($_POST['description']) ? trim($_POST['description']) : 'no description';
+        $description = isset($_POST['description']) && !empty($_POST['description']) ? trim($_POST['description']) : 'no description';
 		$level = isset($_POST['level']) ? trim($_POST['level']) : 'easy';
 		$category = isset($_POST['category']) ? trim($_POST['category']) : 'uncategorized';
         $stager = [];

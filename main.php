@@ -47,7 +47,7 @@
 		
 		if($request == 'createExam') {
             createExam();
-            header('Location: exams.php');
+            header('Location: trainer.php');
         }
 		
 		if($request == 'getExam') {
