@@ -169,7 +169,7 @@ function populateUserInfo(obj) {
 function createQuestionsForm(obj) {
 	let elem = document.getElementById('getQuestions');
 	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'create-exam']]);
-	let ipt = makeElement('input', [['type', 'text'], ['name', 'description'], ['placeholder', 'Description of Exam']]);
+	let ipt = makeElement('input', [['type', 'text'], ['name', 'description'], ['class', 'iptfield'], ['placeholder', 'Description of Exam']]);
 	let br = makeElement('br');
 	elem.appendChild(frm);
 	frm.appendChild(ipt); frm.appendChild(br);
@@ -179,19 +179,20 @@ function createQuestionsForm(obj) {
 		let br = makeElement('br');
 		frm.appendChild(checkbx); frm.appendChild(lbl); frm.appendChild(br);
 	}
-	let selectLevel = makeElement('select', [['form', 'create-exam'], ['name', 'level']]);
+	let selectLevel = makeElement('select', [['form', 'create-exam'], ['name', 'level'], ['class', 'iptfield']]);
 	for(let lvl of ['easy', 'moderate', 'hard']) {
 		opti = makeElement('option', [['value', lvl]], lvl);
 		selectLevel.appendChild(opti);
 	}
-	let selectCategory = makeElement('select', [['form', 'create-exam'], ['name', 'category']])
+	let selectCategory = makeElement('select', [['form', 'create-exam'], ['name', 'category'], ['class', 'iptfield']]);
 	for(let cat of ['html', 'css', 'javascript', 'php', 'sql']) {
 		opti = makeElement('option', [['value', cat]], cat);
 		selectCategory.appendChild(opti);
 	}
+	let brk = makeElement ('br');
 	let hide = makeElement('input', [['type', 'hidden'], ['name', 'request'], ['value', 'createExam']]);
-	let subm = makeElement('input', [['type', 'submit']]);
-	frm.appendChild(selectCategory); frm.appendChild(selectLevel); 
+	let subm = makeElement('input', [['type', 'submit'], ['class', 'formbtn']]);
+	frm.appendChild(selectCategory); frm.appendChild(selectLevel); frm.appendChild(brk);
 	frm.appendChild(hide); frm.appendChild(subm);
 }
 
