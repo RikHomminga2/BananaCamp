@@ -247,10 +247,11 @@ function createQuestionsForm(obj) {
 	frm.appendChild(ipt); frm.appendChild(br);
 	for(let q of obj) {
 		let checkbx = makeElement('input', [['type', 'checkbox'], ['id', `question${q.id}`], ['name', `question${q.id}`], ['value', q.id]]);
-		let lbl = makeElement('label', [['for', `question${q.id}`]], `${q.question}?`);
+		let lbl = makeElement('label', [['class', 'lbl'], ['for', `question${q.id}`]], `${q.question}?`);
+		let spn = makeElement('span', [['class', 'checkbox']]);
 		let br = makeElement('br');
-		frm.appendChild(checkbx); frm.appendChild(lbl); frm.appendChild(br);
-	}
+		lbl.appendChild(checkbx); frm.appendChild(lbl); lbl.appendChild(spn); lbl.appendChild(br);
+	}	
 	let selectLevel = makeElement('select', [['form', 'create-exam'], ['name', 'level'], ['class', 'formbtn']]);
 	let optgroupLevel = makeElement('optgroup', [['label', 'level']]);
 	selectLevel.appendChild(optgroupLevel);

@@ -185,6 +185,67 @@ a:active {
     background: #fffafa;
 }
 
+/*CHECKBOXES*/
+.lbl {
+display: block;
+position: relative;
+padding-left: 2.5vw;
+margin-bottom: 1.2vh;
+cursor: pointer;
+font-size: 22px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+.lbl input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+
+.checkbox {
+position: absolute;
+top: 0;
+left: 0;
+height: 3vh;
+width: 1.5vw;
+background-color: #7ad1ef;
+}
+
+.lbl:hover input ~ .checkbox {
+background-color: #ccc;
+}
+
+.lbl input:checked ~ .checkbox {
+background-color: #feea37;
+}
+
+.checkbox:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+.lbl input:checked ~ .checkbox:after {
+display: block;
+}
+
+.lbl .checkbox:after {
+left: 0.5vw;
+top: 0.5vh;
+width: 0.5vw;
+height: 1vh;
+border: solid white;
+border-width: 0 0.2vw 0.2vw 0;
+-webkit-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+
 /*INDEX PAGE*/
 .index {
     text-align: center;
@@ -272,7 +333,6 @@ section.block {
     box-shadow: 0 0 0.5vh #202020;
     border-radius: 0.25vh;
     padding: 1.5vh;
-/*    overflow: hidden;*/
 }
 
 section#main-top {
@@ -300,7 +360,6 @@ section#main-content {
     grid-template-columns: 1fr 3fr 1fr;
     grid-gap: 1vh;
     padding: 1vh;
-/*    overflow: scroll;*/
 }
 
 section#main-content-right {
