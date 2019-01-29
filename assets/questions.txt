@@ -35,3 +35,11 @@ Wat hoort niet bij AGILE, waterfall, scrum, crystal, extreme programming, AGILE
 Wat is pandas, python library, php library, javascript library, css library, PYTHON
 Welke range HTTP response codes geeft aan dat een request succesvol was, 200-299, 300-399, 100-199, 400-499, HTTP
 Welke range HTTP response codes geeft aan dat een request geleid heeft tot een fout op de server, 500-599, 200-299, 100-199, 300-399, HTTP
+Wat is HTTP, Het protocol achter het WWW, Het protocol achter e-mail, het protocol achter internet chat, een site op het internet, HTTP
+Op welke TCP poort luistert een webserver standaard, 80, 90, 23, 25, HTTP
+Wat is geen soort HTTP request, TAIL, POST, GET, HEAD, HTTP
+Wat is de status code voor een succesvolle HTTP request, 200, 80, 404, 503
+Wat betekent een status code van 401 als reactie op een HTTP request, Unauthorized, Payment Required, Forbidden, Not Found, HTTP
+Wat is angular, javascript framework, php framework, python framework, c framework, JAVASCRIPT
+Wat is react, javascript library, php library, python library, css library, JAVASCRIPT
+Wat is vue, javascript framework, python framwork, php framework, css framework, JAVASCRIPT
