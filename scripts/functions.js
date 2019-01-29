@@ -146,7 +146,7 @@ function populateExamsSectionHtml(obj){
 	let h2 = makeElement('h2',[], 'Exams Html');
 	section.appendChild(h2);
 	for(let i = 0; i < obj.length; i++){
-		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		let btns = makeElement('button', [['class', 'navbtn'], ['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
 		section.appendChild(btns);
 	}
 }
@@ -156,7 +156,7 @@ function populateExamsSectionCss(obj){
 	let h2 = makeElement('h2',[], 'Exams Css');
 	section.appendChild(h2);
 	for(let i = 0; i < obj.length; i++){
-		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		let btns = makeElement('button', [['class', 'navbtn'], ['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
 		section.appendChild(btns);
 	}
 }
@@ -166,7 +166,7 @@ function populateExamsSectionJavascript(obj){
 	let h2 = makeElement('h2',[], 'Exams Javascript');
 	section.appendChild(h2);
 	for(let i = 0; i < obj.length; i++){
-		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		let btns = makeElement('button', [['class', 'navbtn'], ['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
 		section.appendChild(btns);
 	}
 }
@@ -176,7 +176,7 @@ function populateExamsSectionPhp(obj){
 	let h2 = makeElement('h2',[], 'Exams Php');
 	section.appendChild(h2);
 	for(let i = 0; i < obj.length; i++){
-		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		let btns = makeElement('button', [['class', 'navbtn'], ['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
 		section.appendChild(btns);
 	}
 }	
@@ -186,7 +186,7 @@ function populateExamsSectionSql(obj){
 	let h2 = makeElement('h2',[], 'Exams Sql');
 	section.appendChild(h2);
 	for(let i = 0; i < obj.length; i++){
-		let btns = makeElement('button', [['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
+		let btns = makeElement('button', [['class', 'navbtn'], ['onclick', 'fetchExam('+obj[i].id+')']], obj[i].description);
 		section.appendChild(btns);
 	}
 }		
@@ -412,7 +412,7 @@ function createQuestionElementsArray(question) {
 	fs.appendChild(legend);
 	for(let i = 0; i < question.answers.length; i++) {
 		let iradio = makeElement('input', [['type', 'radio'], ['value', `${question.id}_${i}`], ['name', `${question.id}`], ['id', `${question.id}_${i}`]]);
-		let lbl = makeElement('label', [['class', ''], ['for', `${question.id}_${i}`]], question.answers[i]);
+		let lbl = makeElement('label', [['class', 'label'], ['for', `${question.id}_${i}`]], question.answers[i]);
 		let spn = makeElement('span', [['class', 'checkmark']]);
 		lbl.appendChild(iradio); lbl.appendChild(spn); fs.appendChild(lbl);
 	}
