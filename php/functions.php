@@ -201,6 +201,16 @@
 		echo json_encode($stager1);
 	}
 	
+	function getAllExams(){
+		$con = openDatabaseConnection();
+		$res = mysqli_query($con,"SELECT * FROM exams");
+		while($row = mysqli_fetch_assoc($res)){
+			$stager [] = ['id' => $row['id'], 'description' => $row['description'], 'questions' => json_decode($row['questions']), 'level' => $row['level']];
+		}
+		closeDatabaseConnection($con);
+		echo json_encode($stager);
+	}
+	
 	function storeExamResult(){
 		$id = isset($_POST['id']) ? $_POST['id'] : false;
 		$result = isset($_POST['result']) ? $_POST['result'] : false;

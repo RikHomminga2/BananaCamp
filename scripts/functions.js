@@ -91,6 +91,11 @@ function fetchExam(){
 	fetchPostRequest(body, displayExam);
 }
 
+function fetchAllExams (){
+	let body = 'request=getAllExams';
+	fetchPostRequest(body, populateExamsSection);	
+}
+
 const redirect = (obj) => {
 	location.href = obj.result ? obj.page : 'error.php';
 }
@@ -117,6 +122,18 @@ function populateProfile() {
 	fetchAssesmentResultForUser();
 	fetchUserInfo();
 	populateUserBadges();
+	fetchAllExams();
+}
+
+function populateExamsSection(obj){
+	console.log(obj);
+	
+	/*let section = document.querySelector('#main-content-right');
+	let btns = [['fetchHtmlExams()', 'html'],['fetchCssExams()', 'css']];
+	for(let i = 0; i < btns.length; i++){
+		let btn = makeElement('button',[['onclick', btns[i][0]]], btns[i][1]);
+		section.appendChild(btn);		
+	}-*/
 }
 
 function populateUserBadges(obj) {

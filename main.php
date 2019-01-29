@@ -54,6 +54,10 @@
             getExam();
         }
 		
+		if($request == 'getAllExams'){
+			getAllExams();
+		}
+		
 		if($request == 'storeExamResult'){
 			storeExamResult();	
 		}
