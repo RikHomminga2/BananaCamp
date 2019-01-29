@@ -151,6 +151,14 @@ function populateUserBadges(obj) {
 	}
 }
 
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
 function populateUserInfo(obj) {
 	let section = document.querySelector('#main-top-left');
 	let h2 = makeElement('h2', [], `${obj.firstname} ${obj.lastname}`);
@@ -336,9 +344,11 @@ function displayResult(obj) {
 
 function createQuestionElementsArray(question) {
 	let stager = [];
-	let h2 = makeElement('h2', [], question.question);
+	//let h2 = makeElement('h2', [], question.question);
 	let fs = makeElement('fieldset', [['id', question.id], ['class', 'fieldset']]);
-	fs.appendChild(h2);
+	let legend = makeElement('legend', [], `${question.question}?`);
+	//fs.appendChild(h2);
+	fs.appendChild(legend);
 	for(let i = 0; i < question.answers.length; i++) {
 		let iradio = makeElement('input', [['type', 'radio'], ['value', `${question.id}_${i}`], ['name', `${question.id}`], ['id', `${question.id}_${i}`]]);
 		let lbl = makeElement('label', [['class', 'label'], ['for', `${question.id}_${i}`]], question.answers[i]);
@@ -354,7 +364,7 @@ function displayExam(obj) {
 	let questions = obj[1];
 	let main = document.querySelector('main');
 	let section = makeElement('section', [['id', 'exam']])
-	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'formbtn']], 'Submit')
+	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'formbtn']], 'Submit');
 	let hide = makeElement('input', [['type', 'hidden'], ['value', `${exam.id}`], ['id', 'exams_id']]);
 	main.appendChild(section);
 	section.appendChild(hide);

@@ -311,10 +311,28 @@ figure {
 .fab {
     font-size: 25px;
     color: #202020;
+    margin: 1vh;
 }
 
-#show {
+.fas, .far {
     float: right;
+    cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 30vw;
+    height: 50vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #7ad1ef;
+    z-index: 2;
+    text-align: center;
+    border-radius: 0.25vh;
+    box-shadow: 0 0 1.5vh #202020;
 }
 
 /*ASSESSMENT PAGE*/
@@ -387,6 +405,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     width: 60vw;
     text-align: left;
     border: none;
+}
+
+legend {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 /*FOOTER*/
