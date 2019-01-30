@@ -15,9 +15,9 @@
 			<form id="overlay" method="POST">
 				<i class="fas fa-times" onclick="off()"></i><br>
 				<h1>Edit bio</h1>
-				<textarea rows="10" cols="2" class="iptfield" name="bio" id="bio" placeholder="Edit bio"></textarea><br>
-				<input type="text" class="iptfield" name="github" id="github" placeholder="Add link to Github"><br>
-				<input type="text" class="iptfield" name="linkedin" id="linkedin" placeholder="Add link to LinkedIn"><br>
+				<textarea rows="10" cols="2" class="iptfield" name="bio" id="bio">short description</textarea><br>
+				<input type="text" class="iptfield" name="github" id="github" pattern="https?://.+" placeholder="Add GitHub URL"><br>
+				<input type="text" class="iptfield" name="linkedin" id="linkedin" pattern="https?://.+" placeholder="Add LinkedIn URL"><br>
 				<input type="submit" value="Save" class="formbtn" onclick="updateUserInfo()">
 			</form>
 			<section id="main-content-center" class="block">

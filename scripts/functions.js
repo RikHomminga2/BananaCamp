@@ -234,7 +234,7 @@ function populateUserInfo(obj) {
 	section.appendChild(github); github.appendChild(makeElement('span', [['class', 'fab fa-github']]));
 	section.appendChild(linkedin); linkedin.appendChild(makeElement('span', [['class', 'fab fa-linkedin-in']]));	
 	section = document.querySelector('#main-content-left');
-	let bio = makeElement('p', [], `bio: ${obj.bio}`);
+	let bio = makeElement('p', [], `About me: ${obj.bio}`);
 	section.appendChild(bio);
 }
 
