@@ -161,20 +161,87 @@ function fetchDisplayResults(){
 }
 
 function showExamsResults(){
+	document.querySelector('#main-content-center').innerText = '';
+	fetchDisplayResults();
 	fetchExamResultForUser();	
 }
 function showAssesmentsResults(){
+	document.querySelector('#main-content-center').innerText = '';
+	fetchDisplayResults();
 	fetchAssesmentResultForUser();	
 }
 
 function displayResultExam(obj){
-	console.log(obj);
-	/*let section = document.querySelector('#main-content-center');
+	let section = document.querySelector('#main-content-center');
 	for(let i = 0; i < obj.length; i++){
-			console.log(obj[i]);
-			let title = makeElement('h2',[], obj[i].title);
-			section.appendChild(title);	
-	}*/
+		let title = makeElement('h2',[], obj[i].description);
+		let cat = makeElement('h4',[], obj[i].category);
+		let lvl = makeElement('h4',[], obj[i].level);
+		let res = makeElement('h4',[], obj[i].results);
+		let amount = makeElement('h4',[], obj[i].results.length+' questions');
+		let data = obj[i].results;
+		section.appendChild(title);	
+		section.appendChild(cat);
+		section.appendChild(lvl);
+		section.appendChild(amount);
+		section.appendChild(res);
+		let doughnut = displayExamDoughnut(data);
+	}
+}
+
+function displayExamDoughnut(data){
+	let resFull = 1 / data.length * 100;// hard coded
+	let total = 100 / resFull;
+	let res = Math.round(resFull);
+	const width = 600;
+    const height = 200;
+	let svg = d3.select("#main-content-center")
+				.append("svg")
+				.attr("width", width)
+                .attr("height", height)
+				.attr("viewBox", "0 0 " + width + " " + height )
+				.attr("preserveAspectRatio", "xMidYMid")
+				.attr("id", "circle");
+		svg.append("circle")
+				.attr("cx", 100)
+				.attr("cy", 100)
+				.attr("r",  50)
+				.attr("fill", "#FFEF15");
+		svg.append("circle")
+				.attr("cx", 100)
+				.attr("cy", 100)
+				.attr("r", 50)
+				.attr("fill", "transparent")
+				.attr("stroke-width", 30)
+				.attr("stroke", "red");				
+		svg.append("circle")
+				.attr("cx", 100)
+				.attr("cy", 100)
+				.attr("r", 50)
+				.attr("fill", "transparent")
+				.attr("stroke-width", 30)
+				.attr("stroke", "green")
+				.attr("stroke-dasharray", ((2 * 50 * Math.PI) / total))
+				.attr("stroke-dashoffset", 0);			
+		svg.append("text")         
+				.style("fill", "#7ad1ef")  
+				.attr("font-family", "Roboto Condensed", "sans-serif")
+				.attr("font-size", "16px")
+				.attr("font-weight", "bold")
+				.attr("x", 102)          
+				.attr("y", 105)          
+				.attr("text-anchor", "middle") 
+				.text(res + "%"); 
+				
+	// resize
+	let chart = $("#circle");
+	let aspect = chart.width() / chart.height();
+	let container = chart.parent();
+	$(window).on("resize", function(){
+		let targetWidth = container.width();
+		chart.attr("width", targetWidth);
+		chart.attr("height", Math.round(targetWidth / aspect));	
+	}).trigger("resize");
 }
 
 function populateExamsSectionHtml(obj){
