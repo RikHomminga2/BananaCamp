@@ -10,7 +10,7 @@ if($_SESSION['role'] != 'trainer'){
 				<button class="navbtn" onclick="toggle('view-students')">View students</button>
 				<button class="navbtn" onclick="toggle('add-assesment')">Add an assesment</button>
 				<button class="navbtn" onclick="toggle('add-question')">Add a question</button>
-				<button class="navbtn" onclick="toggle('getQuestions')">Add an exam</button>
+				<button class="navbtn" onclick="toggle('get-questions')">Add an exam</button>
 			</nav>
 			<section class="hidden" id="view-students">
 				<h2>Student list</h2>
@@ -43,7 +43,7 @@ if($_SESSION['role'] != 'trainer'){
 					<input type="submit" class="formbtn" value="Save">
 				</form>
 			</section>
-			<section class="hidden" id="getQuestions">
+			<section class="hidden" id="get-questions">
 				<h2>Add an exam</h2>
 			</section>
 		</main>

@@ -12,5 +12,5 @@ function toggle(id) {
 			section.style.display = 'none';
 		}
 	}
-	if(id == 'getQuestions') { document.getElementById(id).innerText = ''; fetchQuestions(); }
+	if(id == 'get-questions') { document.getElementById(id).innerText = ''; fetchQuestions(); }
 }

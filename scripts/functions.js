@@ -247,9 +247,9 @@ function updateUserInfo() {
 }
 
 function createQuestionsForm(obj) {
-	let elem = document.getElementById('getQuestions');
+	let elem = document.getElementById('get-questions');
 	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'create-exam']]);
-	let ipt = makeElement('input', [['type', 'text'], ['name', 'description'], ['class', 'iptfield'], ['placeholder', 'Description of Exam']]);
+	let ipt = makeElement('input', [['type', 'text'], ['name', 'description'], ['class', 'iptfield'], ['placeholder', 'Description of Exam'], ['required', true]]);
 	let br = makeElement('br');
 	elem.appendChild(frm);
 	frm.appendChild(ipt); frm.appendChild(br);
