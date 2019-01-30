@@ -66,6 +66,11 @@ const fetchAssesmentResultForUser = () => {
 	fetchPostRequest(body, displayResult);
 }
 
+const fetchExamResultForUser = () => {
+	let body = 'request=getExamResultForUser';
+	fetchPostRequest(body, displayResultExam);
+}
+
 const storeAssesmentResult = (id, res) => {
 	let body = 'request=storeAssesmentResult&id='+id+'&result='+JSON.stringify(res)+'';
 	fetchPostRequest(body, redirect);
@@ -130,7 +135,6 @@ function makeElement(type, attributes=[], innerText='') {
 }
 
 function populateProfile() {
-	fetchAssesmentResultForUser();
 	fetchUserInfo();
 	populateUserBadges();
 	fetchHtmlExams();
@@ -138,7 +142,35 @@ function populateProfile() {
 	fetchJavascriptExams();
 	fetchPhpExams();
 	fetchSqlExams();
+	fetchDisplayResults();
 	
+}
+
+function fetchDisplayResults(){
+	let section = document.querySelector('#main-content-center');
+	let nav = makeElement('nav');
+	let btn_exams = makeElement('button',[['class', 'navbtn'], ['onclick', 'showExamsResults()']], 'Exam results');
+	let btn_asses = makeElement('button',[['class', 'navbtn'],['onclick', 'showAssesmentsResults()']], 'Assesment results');
+	section.appendChild(nav);
+	nav.appendChild(btn_exams);
+	nav.appendChild(btn_asses);
+}
+
+function showExamsResults(){
+	fetchExamResultForUser();	
+}
+function showAssesmentsResults(){
+	fetchAssesmentResultForUser();	
+}
+
+function displayResultExam(obj){
+	console.log(obj);
+	/*let section = document.querySelector('#main-content-center');
+	for(let i = 0; i < obj.length; i++){
+			console.log(obj[i]);
+			let title = makeElement('h2',[], obj[i].title);
+			section.appendChild(title);	
+	}*/
 }
 
 function populateExamsSectionHtml(obj){
