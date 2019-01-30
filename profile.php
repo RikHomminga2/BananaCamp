@@ -21,12 +21,6 @@
 				<input type="submit" value="Save" class="formbtn" onclick="updateUserInfo()">
 			</form>
 			<section id="main-content-center" class="block">
-				<nav>
-					<button class="navbtn">Assesment 1</button>
-					<button class="navbtn">Exam 1</button>
-					<button class="navbtn">Complete Progress</button>
-				</nav>
-				<br>
 			</section>
 			<section id="main-content-right" class="block">
 			</section>

@@ -120,6 +120,22 @@
 		}
 	}
 	
+	function getExamResultForUser(){
+		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
+		$stager = [];
+		$con = openDatabaseConnection();
+		$res = mysqli_query($con, 	
+			"SELECT exams.id, exams.description, exams.level, exams.category, exam_results.results
+			FROM exams 
+			INNER JOIN exam_results
+			ON exams.id = exam_results.exams_id
+			WHERE users_id=${users_id}");
+		while($row = mysqli_fetch_assoc($res)){
+			$stager[] = ["id" => $row['id'], "description" => $row['description'], "category" => $row['category'], "level" => $row['level'], "results" => json_decode($row['results'])];
+		}
+		echo json_encode($stager);
+	}
+	
 	function addAssesment() {
 		$title = (isset($_POST['title'])) ? $_POST['title'] : false;
 		$description = (isset($_POST['description'])) ? $_POST['description'] : false;

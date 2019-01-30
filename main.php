@@ -45,6 +45,11 @@
 			getAssesmentResultForUser();
 		}
 		
+		
+		if($request == 'getExamResultForUser'){
+			getExamResultForUser();
+		}
+		
 		if($request == 'addQuestion') {
 			(addQuestion()) ? header('Location: trainer.php') : header('Location: error.php');
 		}
