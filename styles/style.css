@@ -16,7 +16,13 @@ html {
     color: #202020;
 }
 
-h1, h2, h3, p, code {
+h1, h2, h3, code {
+    margin: 1vh;
+    padding: 1vh;
+    text-align: center;
+}
+
+p {
     margin: 1vh;
     padding: 1vh;
 }
@@ -187,63 +193,63 @@ a:active {
 
 /*CHECKBOXES*/
 .lbl {
-display: block;
-position: relative;
-padding-left: 2.5vw;
-margin-bottom: 1.2vh;
-cursor: pointer;
-font-size: 22px;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+    display: block;
+    position: relative;
+    padding-left: 2.5vw;
+    margin-bottom: 1.2vh;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .lbl input {
-position: absolute;
-opacity: 0;
-cursor: pointer;
-height: 0;
-width: 0;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
 
 .checkbox {
-position: absolute;
-top: 0;
-left: 0;
-height: 3vh;
-width: 1.5vw;
-background-color: #7ad1ef;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3vh;
+    width: 1.5vw;
+    background-color: #7ad1ef;
 }
 
 .lbl:hover input ~ .checkbox {
-background-color: #ccc;
+    background-color: #ccc;
 }
 
 .lbl input:checked ~ .checkbox {
-background-color: #feea37;
+    background-color: #feea37;
 }
 
 .checkbox:after {
-content: "";
-position: absolute;
-display: none;
+    content: "";
+    position: absolute;
+    display: none;
 }
 
 .lbl input:checked ~ .checkbox:after {
-display: block;
+    display: block;
 }
 
 .lbl .checkbox:after {
-left: 0.5vw;
-top: 0.5vh;
-width: 0.5vw;
-height: 1vh;
-border: solid white;
-border-width: 0 0.2vw 0.2vw 0;
--webkit-transform: rotate(45deg);
--ms-transform: rotate(45deg);
-transform: rotate(45deg);
+    left: 0.5vw;
+    top: 0.5vh;
+    width: 0.5vw;
+    height: 1vh;
+    border: solid white;
+    border-width: 0 0.2vw 0.2vw 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 /*INDEX PAGE*/
@@ -362,7 +368,7 @@ section#main-content {
     padding: 1vh;
 }
 
-section#main-content-right {
+section#main-content-right, #main-content-middle {
     max-height: 55vh;
     overflow: scroll;
 }
@@ -504,4 +510,73 @@ legend {
 footer {
     padding: 1vh;
     text-align: center;
+}
+
+/*RESPONSIVE 10"*/
+@media (min-width: 1024px) and (max-width: 1680px) and (orientation: landscape) {
+    .formbtn {
+        width: 8vw;
+    }
+    
+    .logoindex {
+        padding: 10vh;
+        margin: 5vh;
+        height: 93px;
+        width: 502px;
+    }
+
+    .info {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .article-section, .overlay {
+        width: 17vw;
+        height: 36.5vh;
+        overflow: hidden;
+    }
+    
+    .image {
+        width: 16vw;
+        height: 34vh;
+    }
+    
+    .lbl {
+        font-size: 18px;
+    }
+    
+    .label {
+        font-size: 18px;
+    }
+    
+    .grid {
+        margin-left: 7vw;
+        margin-right: 7vw;
+        display: grid;
+        grid-template-rows: 12vh 100vh 4vh;
+    }
+    
+    #main-content-right {
+        min-height: 60vh;
+        max-height: 100%;
+        overflow: scroll;
+    }
+    
+    #main-content-middle {
+        max-height: 100%;
+        overflow: scroll;
+    }
+    
+    #main-content-left {
+        max-height: 100%;
+        overflow: scroll;
+    }
+    #main-top-left, .fab, hr {
+        font-size: 14px;
+        color: #7ad1ef;
+        text-align: right;
+    }
+    
+    #overlay {
+        height: 65vh;
+    }
 }

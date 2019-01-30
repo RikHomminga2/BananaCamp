@@ -15,7 +15,7 @@ if (!isset($_SESSION['users_id'])) {
 		<script src="scripts/trainer.js"></script>
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 		<link rel="stylesheet" href="styles/style.css">
-		<link rel="stylesheet" href="styles/trainer.css">
+        <link rel="stylesheet" href="styles/trainer.css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 		<title>Profile</title>
