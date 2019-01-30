@@ -242,10 +242,8 @@ function updateUserInfo() {
 	let bio = document.getElementById("bio").value;
 	let github = document.getElementById("github").value;
 	let linkedin = document.getElementById("linkedin").value;
-	console.log(bio, github, linkedin);
-	let body = "request=updateUserInfo&bio='" + bio + "'&linkedin='" + linkedin + "'&github='" + github +"'";
-	console.log(body);
-	fetchPostRequest(body, populateProfile);
+	let body = `request=updateUserInfo&bio=${bio}&linkedin=${linkedin}&github=${github}`;
+	fetchPostRequest(body, redirect);
 }
 
 function createQuestionsForm(obj) {

@@ -12,7 +12,7 @@
 			<section id="main-content-left" class="block">
 				<i id="show" class="far fa-edit" onclick="on()"></i><br>
 			</section>
-<!--			<form id="overlay">-->
+			<form id="overlay">
 				<i class="fas fa-times" onclick="off()"></i><br>
 				<h1>Edit bio</h1>
 				<textarea rows="10" cols="2" class="iptfield" name="bio" id="bio" placeholder="Edit bio"></textarea><br>
@@ -20,7 +20,7 @@
 				<input type="text" class="iptfield" name="linkedin" id="linkedin" placeholder="Add link to LinkedIn"><br>
 <!--				<input type="hidden" name="request" value="updateUserInfo">-->
 				<input type="submit" value="Save" class="formbtn" onclick="updateUserInfo()">
-<!--			</form>-->
+			</form>
 			<section id="main-content-center" class="block">
 				<nav>
 					<button class="navbtn">Assesment 1</button>

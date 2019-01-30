@@ -70,9 +70,9 @@
 			$con = openDatabaseConnection();
 			$sql = "UPDATE profiles SET bio='${bio}', linkedin='${linkedin}', github='${github}' WHERE users_id=${users_id}";
 			mysqli_query($con, $sql);
-			return true;
+			echo json_encode(["result" => true, "page" => "profile.php"]);
 		}
-		return false;
+		echo json_encode(["result" => false, "page" => "error.php"]);
 	}
 	
 	function getAssesment() {
