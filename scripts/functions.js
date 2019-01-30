@@ -238,6 +238,16 @@ function populateUserInfo(obj) {
 	section.appendChild(bio);
 }
 
+function updateUserInfo() {
+	let bio = document.getElementById("bio").value;
+	let github = document.getElementById("github").value;
+	let linkedin = document.getElementById("linkedin").value;
+	console.log(bio, github, linkedin);
+	let body = "request=updateUserInfo&bio='" + bio + "'&linkedin='" + linkedin + "'&github='" + github +"'";
+	console.log(body);
+	fetchPostRequest(body, populateProfile);
+}
+
 function createQuestionsForm(obj) {
 	let elem = document.getElementById('getQuestions');
 	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'create-exam']]);

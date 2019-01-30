@@ -63,14 +63,12 @@
 	
 	function updateUserInfo() {
 		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
-		$firstname = isset($_POST['firstname']) ? $_POST['firstname'] : false;
-		$lastname = isset($_POST['lastname']) ? $_POST['lastname'] : false;
 		$bio = isset($_POST['bio']) ? $_POST['bio'] : false;
 		$github = isset($_POST['github']) ? $_POST['github'] : false;
 		$linkedin = isset($_POST['linkedin']) ? $_POST['linkedin']: false;
-		if($users_id && $firstname && $lastname && $bio && $github && $linkedin) {
+		if($users_id && $bio && $github && $linkedin) {
 			$con = openDatabaseConnection();
-			$sql = "UPDATE profiles SET firstname='${firstname}', lastname='${lastname}', bio='${bio}', linkedin='${linkedin}', github='${github}' WHERE users_id=${users_id}";
+			$sql = "UPDATE profiles SET bio='${bio}', linkedin='${linkedin}', github='${github}' WHERE users_id=${users_id}";
 			mysqli_query($con, $sql);
 			return true;
 		}
