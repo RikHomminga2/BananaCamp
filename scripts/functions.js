@@ -2,6 +2,10 @@ const emptyMain = () => {
 	document.querySelector('main').innerText = '';
 }
 
+const getRandomInt = (max=1000) => {
+	return Math.floor(Math.random() * max) + 1;
+}
+
 /**
  * fetch helper functions
  */
@@ -460,7 +464,8 @@ function createQuestionElementsArray(question) {
 		let iradio = makeElement('input', [['type', 'radio'], ['value', `${question.id}_${i}`], ['name', `${question.id}`], ['id', `${question.id}_${i}`]]);
 		let lbl = makeElement('label', [['class', 'label'], ['for', `${question.id}_${i}`]], question.answers[i]);
 		let spn = makeElement('span', [['class', 'checkmark']]);
-		lbl.appendChild(iradio); lbl.appendChild(spn); fs.appendChild(lbl);
+		lbl.appendChild(iradio); lbl.appendChild(spn); 
+		getRandomInt(2) === 1 ? fs.appendChild(lbl) : fs.prepend(lbl);
 	}
 	return[fs];
 }
