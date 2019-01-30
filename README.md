@@ -29,9 +29,9 @@ Bij het werken maken we gebruik van verschillende methodieken die uit de Agile f
 
 * Scrum voor dagelijkse en wekelijks planning
 * Pair-Programming (XP)
-* Continious Delivery
-* Vanuit Agile/ Crystal omarmen we het idee van *personal safety* waarbij de teamleden volledige vrijheid hebben om hun ideeen te uiten en daartoe ook aangemoedigd worden zodat we onderling vertrouwen creeren
-* Vanuit Extreme Programming omarmen we het concept *humanity*. We houden in het oog dat software wordt ontwikkeld door mensen en dat mensen behoefte hebben aan en recht hebben op *veilheid, voldoening, groei en verbondenheid*
+* Continuous Delivery
+* Vanuit Agile/ Crystal omarmen we het idee van *personal safety* waarbij de teamleden volledige vrijheid hebben om hun ideeën te uiten en daartoe ook aangemoedigd worden zodat we onderling vertrouwen creeren
+* Vanuit Extreme Programming omarmen we het concept *humanity*. We houden in het oog dat software wordt ontwikkeld door mensen en dat mensen behoefte hebben aan en recht hebben op *veiligheid, voldoening, groei en verbondenheid*
 * We houden de onderlinge consistentie van de code in de gaten en houden bestaande codeconventies daarbij aan als richtlijn
 * Omdat het grotere idee nogal wat complexiteit met zich mee kan brengen is ervoor gekozen om het project modulair op te zetten, dat betekent dat we de wekelijkse scrum meetings ook gebruiken als pivot meetings en gaandeweg kijken welke functionaliteit prioriteit heeft en haalbaar is. We zoeken hierbij actief naar feedback van de uiteindelijke gebruikers. Zodoende zullen ook zowel de userstories als dit document (scope) met regelmaat herzien worden. We werken agile en proberen te voorkomen dat we in de valkuil van 'the big upfront' stappen.
 * Door het modulair op te zetten wordt het risico van een te grote danwel te kleine scope geminimaliseerd, ook onverhoopte gebeurtenissen zullen hiermee grootendeels af te vangen zijn.
@@ -64,7 +64,7 @@ Voor de userstories wordt tevens gebruikt gemaakt van een 'super' persona te wet
 
 Als developers willen we moderne code schrijven, zodoende hebben we gekozen voor de volgende technology stack:
 
-* HTML5 + CSS3 + ES6 (javascript) voor de front-end eventueel aangevuld BOOTSTRAP en JQUERY;
+* HTML5 + CSS3 + ES6 (javascript) voor de front-end eventueel aangevuld BOOTSTRAP en JQUERY en D3.JS;
 * PHP7 en MYSQL voor de back-end;
 * We kiezen er vooralsnog voor om geen back-end framework te gebruiken maar de principes van de Model View Controller zelf toe te passen;
 * We gebruiken GIT voor versiecontrole en houden daarmee rekening met het extreme programming principe NO BRANCHES. We streven ernaar om veel kleine commits te maken en de functionaliteit puur te houden;
@@ -78,5 +78,7 @@ Week 1 - Initialisatiefase, inschatting maken van de haalbare scope, opzetten ee
 
 Week 2 - Evaluatie week 1, herziening haalbare scope, uitbouwen van minimum viable product.
 
-Week 3 - Evaluatie week 1, herziening haalbare scope, uitbouwen van minimum viable product.
+Week 3 - Evaluatie week 2, herziening haalbare scope, uitbouwen van minimum viable product.
+
+Week 4 - Evaluatie week 3, herziening haalbare scope, uitbouwen van minimum viable product. Product pitch
 
