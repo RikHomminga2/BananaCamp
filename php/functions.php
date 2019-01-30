@@ -64,8 +64,8 @@
 	function updateUserInfo() {
 		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
 		$bio = isset($_POST['bio']) ? $_POST['bio'] : false;
-		$github = isset($_POST['github']) ? $_POST['github'] : false;
-		$linkedin = isset($_POST['linkedin']) ? $_POST['linkedin']: false;
+		$github = isset($_POST['github']) ? $_POST['github'] : 'https://www.github.com';
+		$linkedin = isset($_POST['linkedin']) ? $_POST['linkedin']: 'https://www.linkedin.com';
 		if($users_id && $bio && $github && $linkedin) {
 			$con = openDatabaseConnection();
 			$sql = "UPDATE profiles SET bio='${bio}', linkedin='${linkedin}', github='${github}' WHERE users_id=${users_id}";

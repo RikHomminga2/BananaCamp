@@ -266,14 +266,15 @@ function populateUserInfo(obj) {
 	section.appendChild(github); github.appendChild(makeElement('span', [['class', 'fab fa-github']]));
 	section.appendChild(linkedin); linkedin.appendChild(makeElement('span', [['class', 'fab fa-linkedin-in']]));	
 	section = document.querySelector('#main-content-left');
+	obj.bio = obj.bio == null ? '' : obj.bio;
 	let bio = makeElement('p', [], `About me: ${obj.bio}`);
 	section.appendChild(bio);
 }
 
 function updateUserInfo() {
 	let bio = document.getElementById("bio").value;
-	let github = document.getElementById("github").value;
-	let linkedin = document.getElementById("linkedin").value;
+	let github = document.getElementById("github").value; if(!github.startsWith('https://')) { github = `https://${github}`; }
+	let linkedin = document.getElementById("linkedin").value; if(!linkedin.startsWith('https://')) { linkedin = `https://${github}`; }
 	let body = `request=updateUserInfo&bio=${bio}&linkedin=${linkedin}&github=${github}`;
 	fetchPostRequest(body, redirect);
 }
