@@ -1,5 +1,8 @@
 <?php
-	require_once 'includes/banner.php';
+require_once 'includes/banner.php';
+if($_SESSION['role'] != 'trainer'){
+	header ('Location: profile.php');
+}
 ?>	
 		<main class="main-trainer">
 			<h1>TRAINER INTERFACE</h1>

@@ -7,7 +7,15 @@
 		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
 
 		if($request == 'login') {
-			login() ? header('Location: profile.php') : header('Location: index.php');
+			if(login()){
+				if($_SESSION['role'] == 'trainer'){
+					header('Location: trainer.php');
+				}else{
+					header('Location: profile.php');	
+				}	
+			}else{
+				header('Location: index.php');
+			}
 		}
 		
 		if($request == 'logout') {
