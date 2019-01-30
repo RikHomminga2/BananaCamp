@@ -147,7 +147,7 @@ function populateProfile() {
 	fetchPhpExams();
 	fetchSqlExams();
 	fetchDisplayResults();
-	
+	displayOverlay();
 }
 
 function fetchDisplayResults(){
@@ -316,6 +316,36 @@ function populateUserBadges(obj) {
 		}
 		section.appendChild(figcaption);
 	}
+}
+
+function displayOverlay() {
+		let section = document.querySelector('#main-content-left');
+		let edit = makeElement('i', [['class', 'far fa-edit'], ['id', 'show'] , ['onclick', 'on()']]);
+		let br = makeElement('br');
+		section.appendChild(edit);
+		section.appendChild(br);
+		let frm = makeElement('form', [['id', 'overlay'], ['method', 'post']]);
+		let cross = makeElement('i', [['class', 'fas fa-times'], ['onclick', 'off()']]);
+		let brk = makeElement('br');
+		let h1 = makeElement('h1', [], 'Edit Bio');
+		let txtarea = makeElement('textarea', [['rows', '10'], ['cols', '2'], ['class', 'iptfield'], ['name', 'bio'], ['id', 'bio']], 'Short description');
+		let bk = makeElement('br');
+		let github = makeElement('input', [['type', 'text'], ['class', 'iptfield'], ['name', 'github'], ['id', 'github'], ['pattern', 'https?://.+'], ['placeholder', 'Add GitHub URL']]);
+		let linebr = makeElement('br');
+		let linkedin = makeElement('input', [['type', 'text'], ['class', 'iptfield'], ['name', 'linkedin'], ['id', 'linkedin'], ['pattern', 'https?://.+'], ['placeholder', 'Add LinkedIn URL']]);
+		let linebk = makeElement('br');
+		let ipt = makeElement('input', [['type', 'submit'], ['value', 'Save'], ['class', 'formbtn'], ['onclick', 'updateUserInfo()']]);
+		frm.appendChild(cross);
+		frm.appendChild(brk);
+		frm.appendChild(h1);
+		frm.appendChild(txtarea);
+		frm.appendChild(bk);
+		frm.appendChild(github);
+		frm.appendChild(linebr);
+		frm.appendChild(linkedin);
+		frm.appendChild(linebk);
+		frm.appendChild(ipt);
+		section.appendChild(frm);
 }
 
 function on() {
