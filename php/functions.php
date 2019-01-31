@@ -58,22 +58,24 @@
 		if(!$users_id) { header('Location: index.php'); }
 		$con = openDatabaseConnection();
 		$res = mysqli_query($con, "SELECT * FROM profiles WHERE users_id=${users_id}");
-		$row = mysqli_fetch_assoc($res);
-		echo json_encode($row);
+		echo mysqli_num_rows($res) == 1 ? json_encode(mysqli_fetch_assoc($res)) : json_encode([]);
 	}
 	
 	function updateUserInfo() {
+		$res = 0;
 		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
-		$bio = isset($_POST['bio']) ? $_POST['bio'] : false;
-		$github = isset($_POST['github']) ? $_POST['github'] : 'https://www.github.com';
-		$linkedin = isset($_POST['linkedin']) ? $_POST['linkedin']: 'https://www.linkedin.com';
+		$bio = isset($_POST['bio']) && !empty($_POST['bio']) ? $_POST['bio'] : false;
+		$github = isset($_POST['github']) && !empty($_POST['github']) && !($_POST['github'] == 'https://') ? $_POST['github'] : 'https://www.github.com';
+		$github = parse_url($github)['scheme'] == 'https' ? $github : "https://${github}";
+		$linkedin = isset($_POST['linkedin']) && !empty($_POST['linkedin']) && !($_POST['linkedin'] == 'https://') ? $_POST['linkedin'] : 'https://www.linkedin.com';
+		$linkedin = parse_url($linkedin)['scheme'] == 'https' ? $linkedin : "https://${linkedin}";
 		if($users_id && $bio && $github && $linkedin) {
 			$con = openDatabaseConnection();
 			$sql = "UPDATE profiles SET bio='${bio}', linkedin='${linkedin}', github='${github}' WHERE users_id=${users_id}";
 			mysqli_query($con, $sql);
-			echo json_encode(["result" => true, "page" => "profile.php"]);
+			$res = mysqli_affected_rows($con);
 		}
-		echo json_encode(["result" => false, "page" => "error.php"]);
+		echo json_encode($res == 1 ? ["result" => true, "page" => "profile.php"] : ["result" => false, "page" => "error.php"]);
 	}
 	
 	function getAssesment() {
