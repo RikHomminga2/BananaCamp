@@ -368,7 +368,7 @@ section#main-content {
     padding: 1vh;
 }
 
-section#main-content-right, #main-content-middle {
+section#main-content-right, #main-content-center {
     max-height: 55vh;
     overflow: scroll;
 }

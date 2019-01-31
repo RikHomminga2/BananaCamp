@@ -184,69 +184,70 @@ function displayResultExam(obj){
 		let lvl = makeElement('h4',[], obj[i].level);
 		let res = makeElement('h4',[], obj[i].results);
 		let amount = makeElement('h4',[], obj[i].results.length+' questions');
-		let data = obj[i].results;
+		let dataSet = obj[i].results;
 		section.appendChild(title);	
 		section.appendChild(cat);
 		section.appendChild(lvl);
 		section.appendChild(amount);
-		section.appendChild(res);
-		let doughnut = displayExamDoughnut(data);
+		let doughnut = displayExamDoughnut(dataSet);
 	}
 }
 
-function displayExamDoughnut(data){
-	let resFull = 1 / data.length * 100;// hard coded
-	let total = 100 / resFull;
-	let res = Math.round(resFull);
-	const width = 600;
-    const height = 200;
-	let svg = d3.select("#main-content-center")
-				.append("svg")
-				.attr("width", width)
-                .attr("height", height)
-				.attr("viewBox", "0 0 " + width + " " + height )
-				.attr("preserveAspectRatio", "xMidYMid")
-				.attr("id", "circle");
-		svg.append("circle")
-				.attr("cx", 100)
-				.attr("cy", 100)
-				.attr("r",  50)
-				.attr("fill", "#FFEF15");
-		svg.append("circle")
-				.attr("cx", 100)
-				.attr("cy", 100)
-				.attr("r", 50)
-				.attr("fill", "transparent")
-				.attr("stroke-width", 30)
-				.attr("stroke", "red");				
-		svg.append("circle")
-				.attr("cx", 100)
-				.attr("cy", 100)
-				.attr("r", 50)
-				.attr("fill", "transparent")
-				.attr("stroke-width", 30)
-				.attr("stroke", "green")
-				.attr("stroke-dasharray", ((2 * 50 * Math.PI) / total))
-				.attr("stroke-dashoffset", 0);			
-		svg.append("text")         
-				.style("fill", "#7ad1ef")  
+function displayExamDoughnut(dataSet){
+	let count = 0;
+	for(let i = 0; i < dataSet.length; i++){
+		if(dataSet[i] == true){
+			count++;
+		}
+	}
+	let data = [{ "answer": "fout",   "count": dataSet.length-count}, { "answer": "goed",  "count": count}];
+	let precentage = count / dataSet.length * 100;
+	let res = Math.round(precentage);
+	let margin = {top:20, right:20, bottom:20, left:20};
+	let width  = 400 - margin.right - margin.left;
+	let height = 400 - margin.top - margin.bottom;
+	let radius = width/2;
+	let color = d3.scaleOrdinal()
+				.range(['#B80F0A' , '#228B22']);
+	let arc = d3.arc()
+				.outerRadius(radius - 10)
+				.innerRadius(radius - 100);		
+	let labelArc = d3.arc()
+				.outerRadius(radius)
+				.innerRadius(radius - 117);
+	let pie = d3.pie()
+				.sort(null)
+				.value((d) => d.count);		
+	let svg = d3.select('#main-content-center').append('svg')
+				.attr('width', width)
+				.attr('height', height)
+				.append('g')
+				.attr('transform', 'translate('+ width/2 +', '+height/2+')')
+				.attr('id', 'doughnut')
+	let g = svg.selectAll('.arc')
+				.data(pie(data))
+				.enter().append('g')
+				.attr('class', 'arc');
+	g.append('path')
+				.attr('d', arc)
+				.style('fill', (d) => color(d.data.answer))
+				.attr('stroke', '#fff')
+				.attr('stroke-width', '5px')	
+	g.append('text')
+				.attr('transform',((d) => 'translate('+labelArc.centroid(d) +')'))	
+                .attr("text-anchor", "middle")
+				.style("fill", "#fff")  
 				.attr("font-family", "Roboto Condensed", "sans-serif")
-				.attr("font-size", "16px")
+				.attr("font-size", "28px")
 				.attr("font-weight", "bold")
-				.attr("x", 102)          
-				.attr("y", 105)          
-				.attr("text-anchor", "middle") 
-				.text(res + "%"); 
-				
-	// resize
-	let chart = $("#circle");
-	let aspect = chart.width() / chart.height();
-	let container = chart.parent();
-	$(window).on("resize", function(){
-		let targetWidth = container.width();
-		chart.attr("width", targetWidth);
-		chart.attr("height", Math.round(targetWidth / aspect));	
-	}).trigger("resize");
+				.text((d) => d.data.count);	
+	g.append("text")
+				.attr("text-anchor", "middle")
+				.attr('font-size', '3em')
+				.attr("font-family", "Roboto Condensed", "sans-serif")
+				.attr("font-weight", "bold")
+				.attr('y', 18)
+				.text(res + '%');				
 }
 
 function populateExamsSectionHtml(obj){
