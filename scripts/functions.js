@@ -55,6 +55,11 @@ const fetchQuestions = () => {
 	fetchPostRequest(body, createQuestionsForm);
 }
 
+const fetchFilterQuestions = (cat) => {
+	let body = 'request=getFilterQuestions&category='+cat+'';
+	fetchPostRequest(body, createQuestionsForm);
+}
+
 const fetchAssesment = () => {
 	let body = 'request=getAssesment';
 	fetchPostRequest(body, createAssesmentForm);
@@ -380,13 +385,33 @@ function updateUserInfo() {
 	fetchPostRequest(body, redirect);
 }
 
+function filterQuestions(){
+	let cat = document.querySelector('#filter').value;
+	fetchFilterQuestions(cat);
+}
+
 function createQuestionsForm(obj) {
+	document.querySelector('#get-questions').innerHTML = '';
 	let elem = document.getElementById('get-questions');
 	let frm = makeElement('form', [['method', 'post'], ['action', 'main.php'], ['id', 'create-exam']]);
 	let ipt = makeElement('input', [['type', 'text'], ['name', 'description'], ['class', 'iptfield'], ['placeholder', 'Description of Exam'], ['required', true]]);
 	let br = makeElement('br');
 	elem.appendChild(frm);
-	frm.appendChild(ipt); frm.appendChild(br);
+	frm.appendChild(ipt); 
+	let select = makeElement('select',[['class', 'formbtn'],['onchange', 'filterQuestions()'],['id', 'filter']]);
+	frm.appendChild(select);
+	let cat = document.createElement('option');
+	cat.setAttribute("value", "");
+	cat.setAttribute("disabled", "");
+	cat.setAttribute("selected", "");
+	cat.innerText = 'Category';
+	select.appendChild(cat);
+	let options = ['html', 'css', 'javascript', 'php', 'sql'];
+	for(let i = 0; i < options.length; i++){
+		let option = makeElement('option',[['value', options[i]]], options[i])
+		select.appendChild(option);	
+	}
+	frm.appendChild(br);
 	for(let q of obj) {
 		let checkbx = makeElement('input', [['type', 'checkbox'], ['id', `question${q.id}`], ['name', `question${q.id}`], ['value', q.id]]);
 		let lbl = makeElement('label', [['class', 'lbl'], ['for', `question${q.id}`]], `${q.question}?`);

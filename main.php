@@ -44,8 +44,7 @@
 		if($request == 'getAssesmentResultForUser'){
 			getAssesmentResultForUser();
 		}
-		
-		
+			
 		if($request == 'getExamResultForUser'){
 			getExamResultForUser();
 		}
@@ -56,6 +55,10 @@
 		
 		if($request == 'getQuestions') {
 			getQuestions();
+		}
+		
+		if($request == 'getFilterQuestions') {
+			getFilterQuestions();
 		}
 		
 		if($request == 'createExam') {

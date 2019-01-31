@@ -191,6 +191,18 @@
 		return $stager;
 	}
 	
+	function getFilterQuestions(){
+		$category = $_POST['category'];
+		$stager = [];
+		$con = openDatabaseConnection();
+		$res = mysqli_query($con, "SELECT * FROM questions WHERE category='$category'");
+		while($row = mysqli_fetch_assoc($res)) {
+			$stager [] = ["id" => $row['id'], "question" => $row['question'], "answers" => json_decode($row['answers'])];
+		}
+		closeDatabaseConnection($con);
+		echo json_encode($stager);	
+	}
+	
 	function createExam() {
         $description = isset($_POST['description']) && !empty($_POST['description']) ? trim($_POST['description']) : 'no description';
 		$level = isset($_POST['level']) ? trim($_POST['level']) : 'easy';
