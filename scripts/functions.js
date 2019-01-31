@@ -153,6 +153,7 @@ function populateProfile() {
 	fetchSqlExams();
 	fetchDisplayResults();
 	displayOverlay();
+	populateAssesment();
 }
 
 function fetchDisplayResults(){
@@ -248,6 +249,14 @@ function displayExamDoughnut(dataSet){
 				.attr("font-weight", "bold")
 				.attr('y', 18)
 				.text(res + '%');				
+}
+
+function populateAssesment() {
+	let section = document.querySelector('#main-content-right');
+	let h2 = makeElement('h2', [], 'Assesment');
+	let btns = makeElement('button', [['class', 'navbtn'], ['onclick', 'fetchAssesment()']], 'Assesment');
+	section.appendChild(h2);
+	section.appendChild(btns);
 }
 
 function populateExamsSectionHtml(obj){
@@ -443,8 +452,9 @@ function createQuestionsForm(obj) {
 
 function createAssesmentForm(obj) {
 	emptyMain();
-	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }	
+	if(!obj || typeof obj != 'object') { throw new Error('not an object'); }
 	let main = document.querySelector('main');
+	main.setAttribute('class', 'main-assesment');
 	let h1 = makeElement('h1', [], obj.title);
 	let h2 = makeElement('h2', [], obj.description);
 	let section = document.createElement('section');
