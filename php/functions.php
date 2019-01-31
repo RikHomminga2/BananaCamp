@@ -219,7 +219,9 @@
         $stager = json_encode($stager);
         $con = openDatabaseConnection();
         mysqli_query($con, "INSERT INTO exams (description, questions, level, category) VALUES ('${description}', '${stager}', '${level}', '${category}');");
+		$res = mysqli_affected_rows($con);
 		closeDatabaseConnection($con);
+		return $res == 1;
     }
 	
 	function getExam($exam_id){
