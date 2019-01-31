@@ -285,15 +285,15 @@
 	}
 	
 	function storeExamResult(){
+		$res = 0;
 		$id = isset($_POST['id']) ? $_POST['id'] : false;
 		$result = isset($_POST['result']) ? $_POST['result'] : false;
 		$users_id = isset($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
 		if($id && $result && $users_id) {
 			$con = openDatabaseConnection();
 			mysqli_query($con, "INSERT INTO exam_results (exams_id, users_id, results) VALUES('${id}','${users_id}','${result}');");
+			$res = mysqli_affected_rows($con);
 			closeDatabaseConnection($con);
-			echo json_encode(["result" => true, "page" => "profile.php"]);
-		} else {
-			echo json_encode(["result" => false, "page" => "error.php"]);
-		}	
+		}
+		echo json_encode($res == 1 ? ["result" => true, "page" => "profile.php"] : ["result" => false, "page" => "error.php"]);
 	}
