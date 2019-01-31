@@ -204,6 +204,12 @@ function displayExamDoughnut(dataSet){
 	let data = [{ "answer": "fout",   "count": dataSet.length-count}, { "answer": "goed",  "count": count}];
 	let precentage = count / dataSet.length * 100;
 	let res = Math.round(precentage);
+	let stroke = '5px';
+	let size = '26px'
+	if(count == 0 || (count == dataSet.length)){
+		stroke = '0px';
+		size = '0px';
+	}
 	let margin = {top:20, right:20, bottom:20, left:20};
 	let width  = 400 - margin.right - margin.left;
 	let height = 400 - margin.top - margin.bottom;
@@ -233,13 +239,13 @@ function displayExamDoughnut(dataSet){
 				.attr('d', arc)
 				.style('fill', (d) => color(d.data.answer))
 				.attr('stroke', '#fff')
-				.attr('stroke-width', '5px')	
+				.attr('stroke-width', stroke);
 	g.append('text')
 				.attr('transform',((d) => 'translate('+labelArc.centroid(d) +')'))	
                 .attr("text-anchor", "middle")
 				.style("fill", "#fff")  
 				.attr("font-family", "Roboto Condensed", "sans-serif")
-				.attr("font-size", "28px")
+				.attr("font-size", size)
 				.attr("font-weight", "bold")
 				.text((d) => d.data.count);	
 	g.append("text")
