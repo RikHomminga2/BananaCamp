@@ -120,9 +120,8 @@
 			INNER JOIN assesment_results
 			ON assesments.id = assesment_results.assesments_id
 			WHERE users_id=${users_id} LIMIT 1");
-		while($row = mysqli_fetch_assoc($res)){
-			echo json_encode(["id" => $row['id'], "title" => $row['title'], "assesment" => json_decode($row['assesment']), "results" => json_decode($row['results'])]);
-		}
+		$row = mysqli_fetch_assoc($res);
+		echo json_encode(["id" => $row['id'], "title" => $row['title'], "assesment" => json_decode($row['assesment']), "results" => json_decode($row['results'])]);
 	}
 	
 	function getExamResultForUser(){
