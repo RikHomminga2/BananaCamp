@@ -14,27 +14,28 @@
 	
 	function register() {
 		$con = openDatabaseConnection();
-		$email = isset($_POST['email']) ? $_POST['email'] : false;
-		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
-		$firstname = isset($_POST['firstname']) ? $_POST['firstname'] : false;
-		$lastname = isset($_POST['lastname']) ? $_POST['lastname'] : false;
+		$email = isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : false;
+		$password = isset($_POST['password']) && !empty($_POST['password']) ? hash('sha512', $_POST['password']) : false;
+		$firstname = isset($_POST['firstname']) && !empty($_POST['firstname']) ? $_POST['firstname'] : false;
+		$lastname = isset($_POST['lastname']) && !empty($_POST['lastname']) ? $_POST['lastname'] : false;
 		if($email && $password && $firstname && $lastname) {
 			mysqli_query($con, "INSERT INTO users (email, password) VALUES('${email}', '${password}');");
-			login();
-			$users_id = $_SESSION['users_id'];
+			if(mysqli_affected_rows($con) == 1) { $users_id = mysqli_insert_id($con); }
+			else { return false; }
 			mysqli_query($con, "INSERT INTO profiles (users_id, firstname, lastname) VALUES ('${users_id}', '${firstname}', '${lastname}');");
+			$res = mysqli_affected_rows($con);
 			closeDatabaseConnection($con);
-			return true;
 		}
-		return false;	
+		return $res == 1 ? login() : false;
 	}
 
 	function login() {
-		$email = isset($_POST['email']) ? $_POST['email'] : false;
-		$password = isset($_POST['password']) ? hash('sha512', $_POST['password']) : false;
+		$email = isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : false;
+		$password = isset($_POST['password']) && !empty($_POST['password']) ? hash('sha512', $_POST['password']) : false;
 		if($email && $password) {
 			$con = openDatabaseConnection();
 			$res = mysqli_query($con, "SELECT * FROM users WHERE email='${email}' and password='${password}';");
+			if(mysqli_num_rows($res) != 1) { return false; }
 			$row = mysqli_fetch_assoc($res);
 			if($row['id'] != '') {
 				$_SESSION['authenticated'] = true;
