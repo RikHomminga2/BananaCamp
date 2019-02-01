@@ -181,19 +181,19 @@ function displayResultExam(obj){
 	let section = document.querySelector('#main-content-center');
 	for(let i = 0; i < obj.length; i++){
 		let dataSet = obj[i].results;
-		let examResultContainer = makeElement('section',[['id', 'examResultContainer'+obj[i].id+'']]);
+		let examResultContainer = makeElement('section',[['id', 'examResultContainer'+obj[i].id+''], ['class', 'exam-container']]);
 		section.appendChild(examResultContainer);
-		let examData = makeElement('section',[['id', 'examData'+obj[i].id+'']]);
+		let examData = makeElement('section',[['id', 'examData'+obj[i].id+''], ['class', 'exam-text']]);
 		examResultContainer.appendChild(examData);
-		let title = makeElement('h2',[], obj[i].description);
-		let cat = makeElement('h4',[], obj[i].category);
-		let lvl = makeElement('h4',[], obj[i].level);
-		let amount = makeElement('h4',[], obj[i].results.length+' questions');
+		let title = makeElement('h2',[['style', 'text-decoration:underline']], obj[i].description);
+		let cat = makeElement('h3',[], obj[i].category);
+		let lvl = makeElement('h3',[], obj[i].level);
+		let amount = makeElement('h3',[], obj[i].results.length+' questions');
 		examData.appendChild(title);
 		examData.appendChild(cat);
 		examData.appendChild(lvl);	
 		examData.appendChild(amount);
-		let examDoughnut = makeElement('section',[['id', 'examDoughnut'+obj[i].id+'']]);
+		let examDoughnut = makeElement('section',[['id', 'examDoughnut'+obj[i].id+''], ['class', 'doughnut']]);
 		examResultContainer.appendChild(examDoughnut);
 		let count = 0;
 		for(let i = 0; i < dataSet.length; i++){

@@ -368,7 +368,7 @@ section#main-content {
     padding: 1vh;
 }
 
-section#main-content-right, #main-content-center {
+section#main-content-right, #main-content-center, #main-content-left {
     max-height: 55vh;
     overflow: scroll;
 }
@@ -405,6 +405,35 @@ figure {
     border-radius: 0.25vh;
     box-shadow: 0 0 1.5vh #202020;
 }
+
+.exam-container {
+    box-sizing: border-box;
+    border-radius: 0.25vh;
+    box-shadow: 0 0 0.5vh #202020;
+    padding: 1vh;
+    margin: 1vh;
+}
+
+.exam-text {
+    float:  right;
+    width: 50%;
+    text-align: center;
+    padding-top: 7vh;
+}
+
+.doughnut {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.exam-container:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
 
 /*TRAINER PAGE*/
 .main-trainer {
@@ -555,21 +584,26 @@ footer {
         grid-template-rows: 12vh 100vh 4vh;
     }
     
-    #main-content-right {
-        min-height: 60vh;
-        max-height: 100%;
+    .main-profile {
+        min-height: 100vh;
+    }
+    
+    #main-content-left, #main-content-center, #main-content-right {
+        min-height: 65vh;
         overflow: scroll;
     }
     
-    #main-content-middle {
-        max-height: 100%;
-        overflow: scroll;
+    .exam-text {
+        width: 100%;
+        text-align: center;
+        padding-top: 7vh;
     }
     
-    #main-content-left {
-        max-height: 100%;
-        overflow: scroll;
+    .doughnut {
+        width: 100%;
+        text-align: center;
     }
+    
     #main-top-left, .fab, hr {
         font-size: 14px;
         color: #7ad1ef;
