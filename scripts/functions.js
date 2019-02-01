@@ -180,81 +180,82 @@ function showAssesmentsResults(){
 function displayResultExam(obj){
 	let section = document.querySelector('#main-content-center');
 	for(let i = 0; i < obj.length; i++){
+		let dataSet = obj[i].results;
+		let examResultContainer = makeElement('section',[['id', 'examResultContainer'+obj[i].id+'']]);
+		section.appendChild(examResultContainer);
+		let examData = makeElement('section',[['id', 'examData'+obj[i].id+'']]);
+		examResultContainer.appendChild(examData);
 		let title = makeElement('h2',[], obj[i].description);
 		let cat = makeElement('h4',[], obj[i].category);
 		let lvl = makeElement('h4',[], obj[i].level);
-		let res = makeElement('h4',[], obj[i].results);
 		let amount = makeElement('h4',[], obj[i].results.length+' questions');
-		let dataSet = obj[i].results;
-		section.appendChild(title);	
-		section.appendChild(cat);
-		section.appendChild(lvl);
-		section.appendChild(amount);
-		let doughnut = displayExamDoughnut(dataSet);
-	}
-}
-
-function displayExamDoughnut(dataSet){
-	let count = 0;
-	for(let i = 0; i < dataSet.length; i++){
-		if(dataSet[i] == true){
-			count++;
+		examData.appendChild(title);
+		examData.appendChild(cat);
+		examData.appendChild(lvl);	
+		examData.appendChild(amount);
+		let examDoughnut = makeElement('section',[['id', 'examDoughnut'+obj[i].id+'']]);
+		examResultContainer.appendChild(examDoughnut);
+		let count = 0;
+		for(let i = 0; i < dataSet.length; i++){
+			if(dataSet[i] == true){
+				count++;
+			}
 		}
+		let data = [{ "answer": "fout",   "count": dataSet.length-count}, { "answer": "goed",  "count": count}];
+		let precentage = count / dataSet.length * 100;
+		let res = Math.round(precentage);
+		let stroke = '5px';
+		let size = '26px'
+		if(count == 0 || (count == dataSet.length)){
+			stroke = '0px';
+			size = '0px';
+		}
+		let margin = {top:20, right:20, bottom:20, left:20};
+		let width  = 400 - margin.right - margin.left;
+		let height = 400 - margin.top - margin.bottom;
+		let radius = width/2;
+		let color = d3.scaleOrdinal()
+					.range(['#B80F0A' , '#228B22']);
+		let arc = d3.arc()
+					.outerRadius(radius - 10)
+					.innerRadius(radius - 100);		
+		let labelArc = d3.arc()
+					.outerRadius(radius)
+					.innerRadius(radius - 117);
+		let pie = d3.pie()
+					.sort(null)
+					.value((d) => d.count);		
+		let svg = d3.select('#examDoughnut'+obj[i].id+'').append('svg')
+					.attr('width', width)
+					.attr('height', height)
+					.attr('id', 'doughnut'+obj[i].id)
+					.append('g')
+					.attr('transform', 'translate('+ width/2 +', '+height/2+')')			
+		let g = svg.selectAll('.arc')
+					.data(pie(data))
+					.enter().append('g')
+					.attr('class', 'arc');
+		g.append('path')
+					.attr('d', arc)
+					.style('fill', (d) => color(d.data.answer))
+					.attr('stroke', '#fff')
+					.attr('stroke-width', stroke);
+		g.append('text')
+					.attr('transform',((d) => 'translate('+labelArc.centroid(d) +')'))	
+					.attr("text-anchor", "middle")
+					.style("fill", "#fff")  
+					.attr("font-family", "Roboto Condensed", "sans-serif")
+					.attr("font-size", size)
+					.attr("font-weight", "bold")
+					.text((d) => d.data.count);	
+		g.append("text")
+					.attr("text-anchor", "middle")
+					.attr('font-size', '3em')
+					.attr("font-family", "Roboto Condensed", "sans-serif")
+					.attr("font-weight", "bold")
+					.attr('y', 18)
+					.text(res + '%');	
 	}
-	let data = [{ "answer": "fout",   "count": dataSet.length-count}, { "answer": "goed",  "count": count}];
-	let precentage = count / dataSet.length * 100;
-	let res = Math.round(precentage);
-	let stroke = '5px';
-	let size = '26px'
-	if(count == 0 || (count == dataSet.length)){
-		stroke = '0px';
-		size = '0px';
-	}
-	let margin = {top:20, right:20, bottom:20, left:20};
-	let width  = 400 - margin.right - margin.left;
-	let height = 400 - margin.top - margin.bottom;
-	let radius = width/2;
-	let color = d3.scaleOrdinal()
-				.range(['#B80F0A' , '#228B22']);
-	let arc = d3.arc()
-				.outerRadius(radius - 10)
-				.innerRadius(radius - 100);		
-	let labelArc = d3.arc()
-				.outerRadius(radius)
-				.innerRadius(radius - 117);
-	let pie = d3.pie()
-				.sort(null)
-				.value((d) => d.count);		
-	let svg = d3.select('#main-content-center').append('svg')
-				.attr('width', width)
-				.attr('height', height)
-				.append('g')
-				.attr('transform', 'translate('+ width/2 +', '+height/2+')')
-				.attr('id', 'doughnut')
-	let g = svg.selectAll('.arc')
-				.data(pie(data))
-				.enter().append('g')
-				.attr('class', 'arc');
-	g.append('path')
-				.attr('d', arc)
-				.style('fill', (d) => color(d.data.answer))
-				.attr('stroke', '#fff')
-				.attr('stroke-width', stroke);
-	g.append('text')
-				.attr('transform',((d) => 'translate('+labelArc.centroid(d) +')'))	
-                .attr("text-anchor", "middle")
-				.style("fill", "#fff")  
-				.attr("font-family", "Roboto Condensed", "sans-serif")
-				.attr("font-size", size)
-				.attr("font-weight", "bold")
-				.text((d) => d.data.count);	
-	g.append("text")
-				.attr("text-anchor", "middle")
-				.attr('font-size', '3em')
-				.attr("font-family", "Roboto Condensed", "sans-serif")
-				.attr("font-weight", "bold")
-				.attr('y', 18)
-				.text(res + '%');				
 }
 
 function populateAssesment() {
