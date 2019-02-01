@@ -60,6 +60,10 @@
 		if($request == 'getFilterQuestions') {
 			getFilterQuestions();
 		}
+
+		if($request == 'getViewStudents') {
+			getStudentList();
+		}
 		
 		if($request == 'createExam') {
             createExam() ? header('Location: trainer.php') : header('Location: error.php');

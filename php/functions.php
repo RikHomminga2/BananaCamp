@@ -154,6 +154,20 @@
 		return false;
 	}
 	
+	function getStudentList() {
+		$con = openDatabaseConnection();
+		$stager = [];
+		$res = mysqli_query($con, "SELECT users.role, profiles.firstname, profiles.lastname
+			FROM users
+			INNER JOIN profiles
+			ON users.id = profiles.users_id
+			WHERE users.role='student'");
+		while($row = mysqli_fetch_assoc($res)) {
+			$stager[] = $row;
+		}
+		echo json_encode($stager);
+	}
+
 	function addQuestion() {
 		$question = isset($_POST['question']) ? trim($_POST['question']) : false;
 		$answer1 = isset($_POST['answer1']) ? trim($_POST['answer1']) : false;

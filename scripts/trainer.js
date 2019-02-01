@@ -13,4 +13,5 @@ function toggle(id) {
 		}
 	}
 	if(id == 'get-questions') { document.getElementById(id).innerText = ''; fetchQuestions(); }
+	if(id == 'view-students') { document.getElementById(id).innerText = ''; fetchViewStudents(); }
 }

@@ -6,6 +6,11 @@ const getRandomInt = (max=1000) => {
 	return Math.floor(Math.random() * max) + 1;
 }
 
+const fetchViewStudents = () => {
+	let body = 'request=getViewStudents';
+	fetchPostRequest(body, DisplayViewStudents);
+}
+
 /**
  * fetch helper functions
  */
@@ -644,4 +649,18 @@ function getResultExam() {
 		res.push(elem.checked);
 	}
 	storeExamResult(id, res);
+}
+
+function DisplayViewStudents(obj) {
+		let section = document.querySelector('#view-students');
+		let div = makeElement('div');
+		let h2 = makeElement('h2', [], 'Student list');
+		let ul = makeElement('ul');
+		for(let i = 0; i < obj.length; i++) {
+		let li = makeElement('li', [], obj[i].firstname +' '+ obj[i].lastname);
+		section.appendChild(div);
+		div.appendChild(h2);
+		div.appendChild(ul);
+		ul.appendChild(li);
+	}
 }
