@@ -189,9 +189,81 @@ function fetchDisplayResults(){
 }
 
 function displayTotalProgressionForUser(obj){
+	let dataset = [];
+	let datanames = [];
+	let datacats = [];
 	for(let i = 0; i < obj.length; i++){
-		console.log(obj[i]);
-	}	
+		datanames.push(obj[i].description);
+		datacats.push(obj[i].category);
+		let count = 0;
+		for(let j = 0; j < obj[i].results.length; j++){
+			if(obj[i].results[j] == true){
+				count++;
+			}			
+		}
+		let total = count / obj[i].results.length * 10;
+		let percentage = Math.round(total);
+		dataset.push(percentage);
+	}
+    const w = 600;
+    const h = 200;
+	const barPadding = 5;
+    const svg = d3.select("#main-content-center")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h + 35)
+				.attr("viewBox", "0 0 " + w + " " + h )
+				.attr("preserveAspectRatio", "xMidYMid")
+				.attr("id", "progressionChart");
+    svg.selectAll("rect")
+			   .data(dataset)
+			   .enter()
+			   .append("rect")
+			   .attr("x", (d, i) => i * w / dataset.length)
+			   .attr("y", (d, i) => h - 20 * d)
+			   .attr("width", w / dataset.length - barPadding)
+			   .attr("height", (d, i) => (d * 100))
+			   .attr("fill", (d => (d < 6) ? "red" : "green"))
+			   .attr("class", "bar")
+			   .append("title")
+			   .attr("class", "tooltip")
+			   .text((d, i) => (datanames,datanames[i]));
+	svg.selectAll("text.dataset")
+			   .data(dataset)
+			   .enter()
+			   .append("text")
+			   .attr("font-family", "Roboto Condensed", "sans-serif")
+			   .attr("font-size", "16px")
+			   .attr("font-weight", "bold")
+			   .attr("fill", "#000")
+			   .attr("text-anchor", "middle")
+			   .text((d) => d)
+			   .attr("x", (d, i) => i * (w / dataset.length) + (w / dataset.length - barPadding) / 2)
+			   .attr("y", (d, i) => h - (d * 20 + 4) );
+	svg.selectAll("text.datanames")
+			   .data(datacats)
+			   .enter()
+			   .append("text")
+			   .attr("font-family", "Roboto Condensed", "sans-serif")
+			   .attr("font-size", "16px")
+			   .attr("font-weight", "bold")
+			   .attr("fill", "#000")
+			   .attr("text-anchor", "middle")
+			   .text((d) => d)
+			   .attr("x", (d, i) => i * (w / dataset.length) + (w / dataset.length - barPadding) / 2)
+			   .attr("y", (d, i) => h + 10 );
+	   
+
+	// resize
+	let chart = $("#progressionChart");
+	let aspect = chart.width() / chart.height();
+	let container = chart.parent();	
+	$(window).on("resize", function(){	
+		let targetWidth = container.width();
+		chart.attr("width", targetWidth);
+		chart.attr("height", Math.round(targetWidth / aspect));	
+	}).trigger("resize"); 
+
 }
 
 function showProgressionResults(){
