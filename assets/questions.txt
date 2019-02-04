@@ -45,3 +45,9 @@ Wat is react, javascript library, php library, python library, css library, JAVA
 Wat is vue, javascript framework, python framwork, php framework, css framework, JAVASCRIPT
 Wat is geen html tag, <tail>, <cite>, <abbr>, <blockquote>, HTML
 Welke van de volgende tags in een inline element, <span>, <blockquote>, <h1>, <ul>, HTML
+Met welk commando selecteer je data uit een SQL database, SELECT, INSERT, UPDATE, DELETE, SQL
+Met welk commando data uit meerdere tabellen in een SQL database, JOIN, PAIR, COUNT, QUERY, SQL
+Met welk commando verwijder je data uit een tabel, DELETE, UNCREATE, SHIFT, REMOVE, SQL
+Met welk commando sorteer je een resultatenset van een query, ORDER BY, SORT BY, LIMIT, REMOVE, SQL
+Met welk commando limiteer je het aantal resultaten van een query, LIMIT, MAX, MIN, TRIM, SQL
+Met welk PHP commando maak je verbinding met een MySQLi database, mysqli_connect, mysqli_make_connection, mysqli_open_database, mysqli_close, SQL
