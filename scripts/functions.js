@@ -75,6 +75,14 @@ const fetchAllAssesments = () => {
 	fetchPostRequest(body, createAssesmentForm2);	
 }
 
+const fetchAllExams = () => {
+	let body = 'request=getAllExams';
+	fetchPostRequest(body, displayAllExams);	
+}
+function displayAllExams(obj){
+	console.log(obj);
+	
+}
 const fetchAssesmentResultForUser = () => {
 	let body = 'request=getAssesmentResultForUser';
 	fetchPostRequest(body, displayResult);
@@ -83,6 +91,11 @@ const fetchAssesmentResultForUser = () => {
 const fetchExamResultForUser = () => {
 	let body = 'request=getExamResultForUser';
 	fetchPostRequest(body, displayResultExam);
+}
+
+const fetchTotalProgressionForUser = () => {
+	let body = 'request=getTotalProgressionForUser';
+	fetchPostRequest(body, displayTotalProgressionForUser);
 }
 
 const storeAssesmentResult = (id, res) => {
@@ -159,16 +172,32 @@ function populateProfile() {
 	fetchDisplayResults();
 	displayOverlay();
 	populateAssesment();
+	fetchAllExams();
+	showProgressionResults();
 }
 
 function fetchDisplayResults(){
 	let section = document.querySelector('#main-content-center');
 	let nav = makeElement('nav');
-	let btn_exams = makeElement('button',[['class', 'navbtn'], ['onclick', 'showExamsResults()']], 'Exam results');
-	let btn_asses = makeElement('button',[['class', 'navbtn'],['onclick', 'showAssesmentsResults()']], 'Assesment results');
+	let btnTotalProgress = makeElement('button',[['class', 'navbtn'],['onclick', 'showProgressionResults()']], 'Progression');
+	let btnExams = makeElement('button',[['class', 'navbtn'], ['onclick', 'showExamsResults()']], 'Exam results');
+	let btnAssess = makeElement('button',[['class', 'navbtn'],['onclick', 'showAssesmentsResults()']], 'Assesment results');
 	section.appendChild(nav);
-	nav.appendChild(btn_exams);
-	nav.appendChild(btn_asses);
+	nav.appendChild(btnTotalProgress);
+	nav.appendChild(btnAssess);
+	nav.appendChild(btnExams);	
+}
+
+function displayTotalProgressionForUser(obj){
+	for(let i = 0; i < obj.length; i++){
+		console.log(obj[i]);
+	}	
+}
+
+function showProgressionResults(){
+	document.querySelector('#main-content-center').innerText = '';
+	fetchDisplayResults();
+	fetchTotalProgressionForUser();	
 }
 
 function showExamsResults(){

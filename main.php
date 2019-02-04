@@ -49,6 +49,10 @@
 			getExamResultForUser();
 		}
 		
+		if($request == 'getTotalProgressionForUser'){
+			getTotalProgressionForUser();
+		}
+		
 		if($request == 'addQuestion') {
 			addQuestion() ? header('Location: trainer.php') : header('Location: error.php');
 		}
