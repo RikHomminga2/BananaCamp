@@ -223,7 +223,7 @@ function displayTotalProgressionForUser(obj){
 			   .attr("y", (d, i) => h - 20 * d)
 			   .attr("width", w / dataset.length - barPadding)
 			   .attr("height", (d, i) => (d * 100))
-			   .attr("fill", (d => (d < 6) ? "red" : "green"))
+			   .attr("fill", (d => (d < 6) ? "#B80F0A" : "#228B22"))
 			   .attr("class", "bar")
 			   .append("title")
 			   .attr("class", "tooltip")
@@ -671,7 +671,7 @@ function displayResult(obj) {
        .attr("y", (d, i) => h - d)
        .attr("width", w / dataset.length - barPadding)
 	   .attr("height", (d, i) => d)
-       .attr("fill", (d => (d < 60) ? "red" : "green"))
+       .attr("fill", (d => (d < 60) ? "#B80F0A" : "#228B22"))
        .attr("class", "bar")
 		// create tooltip
        .append("title")
