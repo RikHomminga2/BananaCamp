@@ -237,7 +237,7 @@
 		$category = isset($_POST['category']) ? trim($_POST['category']) : 'uncategorized';
         $stager = [];
         foreach ($_POST as $k => $v) {
-            if (!($k == 'description' || $k == 'request')) {
+            if (!($k == 'description' || $k == 'request' || $k == 'category' || $k == 'level')) {
                 $stager[] = $v;
             }   
         }
