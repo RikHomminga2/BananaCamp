@@ -3,7 +3,12 @@ require_once 'includes/banner.php';
 if($_SESSION['role'] != 'trainer'){
 	header ('Location: profile.php');
 }
-?>	
+?>
+
+	<script>
+		addEventListener('DOMContentLoaded', function() {
+			setTimeout(function() { location.href = 'trainer.php'}, 1000);});
+	</script>
 		<main class="main-trainer">
 			<h1>TRAINER INTERFACE</h1>
 			<nav>
@@ -46,5 +51,7 @@ if($_SESSION['role'] != 'trainer'){
 			<section class="hidden" id="get-questions">
 				<h2>Add an exam</h2>
 			</section>
+			<br>
+			<h1 style="color:#228B22">ADDED SUCCESSFULLY!</h1>
 		</main>
 <?php include 'includes/footer.php'; ?>

@@ -31,7 +31,7 @@
 		}
 		
 		if($request == 'addAssesment') {
-			(addAssesment()) ? header('Location: trainer.php') : header('Location: error.php');
+			(addAssesment()) ? header('Location: success.php') : header('Location: error.php');
 		}
 			
 		if($request == 'getAssesment') {
@@ -54,7 +54,7 @@
 		}
 		
 		if($request == 'addQuestion') {
-			addQuestion() ? header('Location: trainer.php') : header('Location: error.php');
+			addQuestion() ? header('Location: success.php') : header('Location: error.php');
 		}
 		
 		if($request == 'getQuestions') {
@@ -70,7 +70,7 @@
 		}
 		
 		if($request == 'createExam') {
-            createExam() ? header('Location: trainer.php') : header('Location: error.php');
+            createExam() ? header('Location: success.php') : header('Location: error.php');
         }
 		
 		if($request == 'getExam') {
