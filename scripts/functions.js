@@ -240,7 +240,16 @@ function displayTotalProgressionForUser(obj){
 			   .text((d) => d)
 			   .attr("x", (d, i) => i * (w / dataset.length) + (w / dataset.length - barPadding) / 2)
 			   .attr("y", (d, i) => h - (d * 20 + 4) );
-	svg.selectAll("text.datanames")
+	const width = 600;
+    const height = 30;   			   
+	const svg2 = d3.select("#main-content-center")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+				.attr("viewBox", "0 0 " + width + " " + height )
+				.attr("preserveAspectRatio", "xMidYMid")
+				.attr("id", "progressionNames");			   
+			   	svg2.selectAll("text.datanames")
 			   .data(datacats)
 			   .enter()
 			   .append("text")
@@ -250,9 +259,8 @@ function displayTotalProgressionForUser(obj){
 			   .attr("fill", "#000")
 			   .attr("text-anchor", "middle")
 			   .text((d) => d)
-			   .attr("x", (d, i) => i * (w / dataset.length) + (w / dataset.length - barPadding) / 2)
-			   .attr("y", (d, i) => h + 10 );
-	   
+			   .attr("x", (d, i) => i * (width / dataset.length) + (width / dataset.length - barPadding) / 2)
+			   .attr("y", (d, i) => height - 150 );
 
 	// resize
 	let chart = $("#progressionChart");
@@ -263,7 +271,15 @@ function displayTotalProgressionForUser(obj){
 		chart.attr("width", targetWidth);
 		chart.attr("height", Math.round(targetWidth / aspect));	
 	}).trigger("resize"); 
-
+	
+	let names = $("#progressionNames");
+	let aspct = names.width() / chart.height();
+	let contnr = names.parent();	
+	$(window).on("resize", function(){	
+		let targetWidth = contnr.width();
+		names.attr("width", targetWidth);
+		names.attr("height", Math.round(targetWidth / aspct));	
+	}).trigger("resize"); 
 }
 
 function showProgressionResults(){
