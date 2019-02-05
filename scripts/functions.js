@@ -311,7 +311,7 @@ function displayResultExam(obj){
 		let precentage = count / dataSet.length * 100;
 		let res = Math.round(precentage);
 		let stroke = '5px';
-		let size = '26px'
+		let size = '26px';
 		if(count == 0 || (count == dataSet.length)){
 			stroke = '0px';
 			size = '0px';
@@ -531,7 +531,7 @@ function createQuestionsForm(obj) {
 	select.appendChild(cat);
 	let options = ['html', 'css', 'javascript', 'php', 'sql'];
 	for(let i = 0; i < options.length; i++){
-		let option = makeElement('option',[['value', options[i]]], options[i])
+		let option = makeElement('option',[['value', options[i]]], options[i]);
 		select.appendChild(option);	
 	}
 	frm.appendChild(br);
@@ -723,7 +723,7 @@ function displayExam(obj) {
 	let questions = obj[1];
 	let main = document.querySelector('main');
 	main.setAttribute('class', 'main-exam');
-	let section = makeElement('section', [['id', 'exam']])
+	let section = makeElement('section', [['id', 'exam']]);
 	let btn = makeElement('button', [['onclick', 'getResultExam()'], ['class', 'formbtn']], 'Submit');
 	let hide = makeElement('input', [['type', 'hidden'], ['value', `${exam.id}`], ['id', 'exams_id']]);
 	main.appendChild(section);
@@ -753,15 +753,23 @@ function getResultExam() {
 }
 
 function DisplayViewStudents(obj) {
-		let section = document.querySelector('#view-students');
-		let div = makeElement('div');
-		let h2 = makeElement('h2', [], 'Student list');
-		let ul = makeElement('ul');
-		for(let i = 0; i < obj.length; i++) {
-		let li = makeElement('li', [], obj[i].firstname +' '+ obj[i].lastname);
-		section.appendChild(div);
-		div.appendChild(h2);
-		div.appendChild(ul);
-		ul.appendChild(li);
+	let section = document.querySelector('#view-students');
+	let h2 = makeElement('h2', [], 'Student List');
+	let table = makeElement('table');
+	let tr = makeElement('tr');
+	let th1 = makeElement('th', [], 'Firstname');
+	let th2 = makeElement('th', [], 'Lastname');
+	section.appendChild(h2);
+	table.appendChild(tr);
+	tr.appendChild(th1);
+	tr.appendChild(th2);
+	for(let i = 0; i < obj.length; i++) {
+		let tr = makeElement('tr');
+		let td1 = makeElement('td', [], obj[i].firstname);
+		let td2 = makeElement('td', [], obj[i].lastname);
+		table.appendChild(tr);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
 	}
+	section.appendChild(table);
 }

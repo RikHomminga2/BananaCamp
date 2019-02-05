@@ -447,6 +447,24 @@ figure {
     overflow: scroll;
 }
 
+table {
+    margin: auto;
+    width: 20vw;
+    padding: 3vh;
+    text-align: left;
+}
+
+th {
+    padding: 0.5vh;
+    border-bottom: 0.25vh solid #202020;
+}
+
+td {
+    text-align: left;
+    padding: 0.5vh;
+    border-bottom: 0.1vh solid #202020;
+}
+
 #create-exam {
     text-align: left;
     width: 40vw;
