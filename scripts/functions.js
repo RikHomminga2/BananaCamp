@@ -254,7 +254,7 @@ function displayTotalProgressionForUser(obj){
 			   .enter()
 			   .append("text")
 			   .attr("font-family", "Roboto Condensed", "sans-serif")
-			   .attr("font-size", "16px")
+			   .attr("font-size", "12px")
 			   .attr("font-weight", "bold")
 			   .attr("fill", "#000")
 			   .attr("text-anchor", "middle")
@@ -279,7 +279,55 @@ function displayTotalProgressionForUser(obj){
 		let targetWidth = contnr.width();
 		names.attr("width", targetWidth);
 		names.attr("height", Math.round(targetWidth / aspct));	
-	}).trigger("resize"); 
+	}).trigger("resize");
+
+addStars(datacats, dataset);	
+}
+
+function addStars(datacats, dataset){
+	let keys = [];
+	let iterator = dataset.keys(); 
+	for (let key of iterator) {
+		keys.push(key);
+	}
+	let result = {};
+	let keysRes = [];
+	keys.forEach((key, i) => result[key] = dataset[i]);
+	for (let key of Object.keys(result)) {
+		if (result[key] >= 6){
+			keysRes.push(key);
+		}	
+	}
+	let cats = [];
+	for(let i = 0; i < keysRes.length; i++){
+		cats.push(datacats[keysRes[i]]);
+	}
+	for(var i = 0; i < cats.length; ++i){
+		let badge = document.querySelector('#'+cats[i]);
+		badge.appendChild(makeElement('i', [['class', 'far fa-star']]));
+	}
+	let count = [];
+	let cat = ['html', 'css', 'sql', 'php', 'javascript'];
+	for(let j = 0; j < cat.length; j++){
+		let badge = document.querySelector('#'+cat[j]);
+		count.push(badge.childElementCount);
+	}
+	const reducer = (accumulator, currentValue) => accumulator + currentValue;
+	let lvl = count.reduce(reducer);
+	addLevel(lvl);		
+}
+
+function addLevel(lvl){
+	let img = document.querySelector('section#main-top-left');
+	if(lvl >= 3 && lvl < 6){
+		img.style.backgroundImage = "url('https://i.imgur.com/d0H6Bsu.jpg')";
+	}else if(lvl >= 6 && lvl < 9){
+		img.style.backgroundImage = "url('https://i.imgur.com/3je6Wa2.jpg')";
+	}else if(lvl >= 9 && lvl < 12){
+		img.style.backgroundImage = "url('https://i.imgur.com/rfgD6kv.jpg')";
+	}else if(lvl >= 12){
+		img.style.backgroundImage = "url('https://i.imgur.com/2M7l4D9.jpg')";
+	}	
 }
 
 function showProgressionResults(){
@@ -453,12 +501,13 @@ function populateUserBadges(obj) {
 		section.append(figs[i]);
 		figs[i].append(imgs[i]);
 	}
-	for(let i = 0; i < 5; i++) {
-		let figcaption = makeElement('figcaption');
-		for(let j = 0; j < 3; j++) {
+	let cats = ['html', 'css', 'sql', 'php', 'javascript'];
+	for(let i = 0; i < cats.length; i++) {
+		let figcaption = makeElement('figcaption',[['id', cats[i]]]);
+		/*for(let j = 0; j < 3; j++) {
 			figcaption.appendChild(makeElement('i', [['class', 'far fa-star']]));
-		}
-		section.appendChild(figcaption);
+		}*/
+		section.appendChild(figcaption);	
 	}
 }
 
