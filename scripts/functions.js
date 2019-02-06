@@ -285,6 +285,10 @@ addStars(datacats, dataset);
 }
 
 function addStars(datacats, dataset){
+	let id = ['html', 'css', 'sql', 'php', 'javascript'];
+	for(var i = 0; i < id.length; ++i){
+		let el = document.getElementById(id[i]).innerHTML = '';
+	}
 	let keys = [];
 	let iterator = dataset.keys(); 
 	for (let key of iterator) {
