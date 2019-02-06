@@ -323,13 +323,13 @@ function addStars(datacats, dataset){
 
 function addLevel(lvl){
 	let img = document.querySelector('section#main-top-left');
-	if(lvl >= 3 && lvl < 6){
+	if(lvl >= 6 && lvl < 9){
 		img.style.backgroundImage = "url('https://i.imgur.com/d0H6Bsu.jpg')";
-	}else if(lvl >= 6 && lvl < 9){
-		img.style.backgroundImage = "url('https://i.imgur.com/3je6Wa2.jpg')";
 	}else if(lvl >= 9 && lvl < 12){
+		img.style.backgroundImage = "url('https://i.imgur.com/3je6Wa2.jpg')";
+	}else if(lvl >= 12 && lvl < 15){
 		img.style.backgroundImage = "url('https://i.imgur.com/rfgD6kv.jpg')";
-	}else if(lvl >= 12){
+	}else if(lvl >= 15){
 		img.style.backgroundImage = "url('https://i.imgur.com/2M7l4D9.jpg')";
 	}	
 }
