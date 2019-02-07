@@ -51,3 +51,12 @@ Met welk commando verwijder je data uit een tabel, DELETE, UNCREATE, SHIFT, REMO
 Met welk commando sorteer je een resultatenset van een query, ORDER BY, SORT BY, LIMIT, REMOVE, SQL
 Met welk commando limiteer je het aantal resultaten van een query, LIMIT, MAX, MIN, TRIM, SQL
 Met welk PHP commando maak je verbinding met een MySQLi database, mysqli_connect, mysqli_make_connection, mysqli_open_database, mysqli_close, SQL
+Welke CSS eigenschap bepaalt de tekstgrootte?, font-size, text-size, text-stle, font-style, CSS
+Wat is de juiste CSS-syntax om alle <p>-elementen vetgedrukt te maken?, p{font-weight:bold;}, <p style=”font-size:bold;”>, <p style=”text-size:bold;”>, p{text-size:bold;}, CSS
+Hoe toon je een hyperlink zonder onderstreping?, a {text-decoration:none}, a {decoration:no-underline;}, a {text-decoration:no-underline;}, a {underline:none;}, CSS
+Hoe selecteer je een element dat en ID "demo" heeft?, #demo, demo, *demo, demo, CSS
+Hoe selecteer je een elementen met de Class "test"?, .test, test, *test, #test, CSS
+Wat is de standaardwaarde van de eigenschap "position"?, static, absolute, fixed, relative, CSS
+Welke van de volgende opties zou worden gebruikt om een ​​ID te maken met de naam header die een breedte heeft van 750px, een hoogte van 30px en de kleur van de tekst zwart is?, #header { height: 30px; width: 750px; color: black; }, .header { height: 30px; width: 750px; colour: black; }, #header { height: 30px; width: 750px; text: black; }, .header { height: 30px; width: 750px; color: black; }, CSS
+Wat is de juiste CSS-syntaxs om de naam van het lettertype te wijzigen?, font-family:, font-name:, font:, fontname:, CSS
+Wat is de juiste syntaxs voor het importeren van een stylesheet in CSS?, @import url(css/example.css);, @import-stylesheet url(css/example.css);, import-css url(css/example.css);, @import-style url(css/example.css);, CSS
